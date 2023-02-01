@@ -1,5 +1,5 @@
 @echo off
 
-set LANG=zh_tw
+set LANG=
 
 call runlog.bat
