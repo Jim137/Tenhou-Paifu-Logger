@@ -3,7 +3,6 @@ from datetime import datetime
 import os
 import urllib.request
 import sys
-
 import src.local as local
 import src.get_place as get_place
 
@@ -21,7 +20,7 @@ if __name__ == '__main__':
     url = input(local_str.hint_input)
     try:
         ban = int(url[-1])
-        p, r = get_place.gethaifuandplace(lang, url, ban)
+        p, r = get_place.gethaifuandplace(local_str.haifu, url, ban)
         try:
             wb = xl.load_workbook(f'{local_str.haifu}.xlsx')
             sheet = wb.active

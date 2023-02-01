@@ -3,7 +3,7 @@
 牌譜/
 Haifu/
 *.xlsx
-runlog-user.bat
+/runlog-user.bat
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

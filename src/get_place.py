@@ -2,14 +2,11 @@ import urllib.request
 import gzip
 import xml.etree.ElementTree as ET
 
-from .local import localized_str
 
-
-def gethaifuandplace(lang, url, ban):
+def gethaifuandplace(haifu, url, ban):
     '''
     Download the haifu and return the placing and rate before match
     '''
-    local_str = localized_str(lang)
 
     HEADER = {
         'Host': 'e.mjv.jp',
@@ -19,7 +16,7 @@ def gethaifuandplace(lang, url, ban):
         'Accept-Encoding': 'gzip, deflate',
         'Connection': 'keep-alive'
     }
-    t = open(f'./{local_str.haifu}/'+url[26:]+'.xml', 'w')
+    t = open(f'./{haifu}/'+url[26:]+'.xml', 'w')
     url = 'https://tenhou.net/0/log/?'+url[26:-5]
     req = urllib.request.Request(url=url, headers=HEADER)
     opener = urllib.request.build_opener()

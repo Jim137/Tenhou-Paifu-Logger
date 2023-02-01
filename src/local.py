@@ -1,12 +1,15 @@
-from .localizations.zh_tw import zh_tw
-from .localizations.en import en
+import json
+from .localizations.local_str import local_str
 
 
 def localized_str(lang: str):
-    if lang == 'zh_tw':
-        local_str = zh_tw()
-    elif lang == 'en':
-        local_str = en()
-    else:
-        local_str = en()
-    return local_str
+    localized = local_str()
+    try:
+        with open(f'./src/localizations/{lang}.json') as f:
+            data = json.load(f)
+            localized.load_data(data)
+    except FileNotFoundError:
+        with open('./src/localizations/en.json') as f:
+            data = json.load(f)
+            localized.load_data(data)
+    return localized
