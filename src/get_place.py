@@ -2,14 +2,14 @@ import urllib.request
 import gzip
 import xml.etree.ElementTree as ET
 
-import src.localizations.local as local
+from .local import localized_str
 
 
 def gethaifuandplace(lang, url, ban):
     '''
     Download the haifu and return the placing and rate before match
     '''
-    local_str = local.localized_str(lang)
+    local_str = localized_str(lang)
 
     HEADER = {
         'Host': 'e.mjv.jp',

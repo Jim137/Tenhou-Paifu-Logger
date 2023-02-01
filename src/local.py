@@ -1,7 +1,8 @@
-from .zh_tw import zh_tw
-from .en import en
+from .localizations.zh_tw import zh_tw
+from .localizations.en import en
 
-def localized_str(lang:str):
+
+def localized_str(lang: str):
     if lang == 'zh_tw':
         local_str = zh_tw()
     elif lang == 'en':

@@ -4,7 +4,7 @@ import os
 import urllib.request
 import sys
 
-import src.localizations.local as local
+import src.local as local
 import src.get_place as get_place
 
 
