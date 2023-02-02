@@ -2,6 +2,7 @@
 
 快速記錄天鳳牌譜的工具。
 
+[下載](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest) | [English](README.md)
 ## 使用方法
 
 1. 首次使用時，右鍵編輯 `runlog-user.bat`，在set LANG=後加上語言代碼 `zh_tw`，保存後運行此檔案。
@@ -22,3 +23,4 @@
 * [ ] 跳過已記錄的牌譜
 * [ ] 對局R值變化
 * [ ] 和銃分析
+* [ ] 圖形使用者介面（GUI）

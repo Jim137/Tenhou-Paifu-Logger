@@ -2,7 +2,7 @@
 
 Logging tenhou haifu into excel file with some key information.
 
-[中文說明](README_zh.md)
+[Downloads](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest) | [中文說明](README_zh.md)
 
 ## Usage
 
@@ -24,6 +24,7 @@ Logging tenhou haifu into excel file with some key information.
 * [ ] Skip already logged haifu
 * [ ] The change of Rate
 * [ ] Agari analysis
+* [ ] GUI
 
 ## License
 
