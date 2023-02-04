@@ -12,7 +12,6 @@ class local_str():
         super().__setattr__(name, val)
 
     def __getattr__(self, name):
-        import json
         with open('./localizations/en.json') as f:
             data = json.load(f)
         return data[name]
