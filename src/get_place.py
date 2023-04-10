@@ -21,5 +21,4 @@ def get_place(haifu: Haifu, ban):
             for j in range(3):
                 if(sp[i] < sp[j]):
                     placing[i] += 1
-    print(placing[ban])
     return placing[ban]
