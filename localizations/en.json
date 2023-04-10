@@ -10,5 +10,7 @@
     "hint_record2": " has been recorded.\n",
     "hint_url": "Please check the URL of match.\n",
     "hint_tw": "Please check the URL of match and whether &tw=(seat) is attached to the end of the URL.\n",
-    "excelE": 17
+    "excelE": 17,
+    "sanma": "Sanma",
+    "yonma": ""
 }

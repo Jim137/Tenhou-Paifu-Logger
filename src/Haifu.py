@@ -1,8 +1,10 @@
 import xml.etree.ElementTree as ET
 
+
 class Haifu():
-    def __init__(self, ban: int, root: ET.Element):
-        self.ban = ban
+    def __init__(self, url: str, root: ET.Element):
+        self.url = url
+        self.ban = int(url[-1])
         self.root = root
 
         self.go_type = int(root[1].get('type'))

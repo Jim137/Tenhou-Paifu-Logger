@@ -10,6 +10,7 @@ HEADER = {
     'Connection': 'keep-alive'
 }
 
+
 def url_request_handler(url: str):
     url = 'https://tenhou.net/0/log/?'+url[26:-5]
     req = urllib.request.Request(url=url, headers=HEADER)
