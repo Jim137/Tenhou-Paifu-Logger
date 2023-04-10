@@ -24,7 +24,7 @@ class local_str():
 def localized_str(lang: str):
     localized = local_str()
     try:
-        with open(os.path.abspath(os.path.join(bundle_dir, f'localizations\{lang}.json'))) as f:
+        with open(os.path.abspath(os.path.join(bundle_dir, f'localizations\{lang}.json')), encoding='utf-8') as f:
             data = json.load(f)
             localized.load_data(data)
     except FileNotFoundError:
