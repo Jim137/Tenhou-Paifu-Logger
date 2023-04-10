@@ -4,6 +4,7 @@ import sys
 
 bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
 
+
 class local_str():
     def __init__(self):
         pass
@@ -20,6 +21,7 @@ class local_str():
         with open(os.path.abspath(os.path.join(bundle_dir, 'localizations\en.json'))) as f:
             data = json.load(f)
         return data[name]
+
 
 def localized_str(lang: str):
     localized = local_str()
