@@ -1,5 +1,6 @@
 import json
 
+
 class local_str():
     def __init__(self):
         pass
@@ -15,6 +16,7 @@ class local_str():
         with open('./localizations/en.json') as f:
             data = json.load(f)
         return data[name]
+
 
 def localized_str(lang: str):
     localized = local_str()

@@ -10,5 +10,7 @@
     "hint_record2": "牌譜記錄\n",
     "hint_url": "請檢查牌譜網址是否正確\n",
     "hint_tw": "請檢查網址後面&tw:(席次)是否附上\n",
-    "excelE": 11
+    "excelE": 11,
+    "sanma": "三麻",
+    "yonma": "四麻"
 }
