@@ -3,8 +3,7 @@ from datetime import datetime
 import os
 import urllib.request
 import sys
-import src.local as local
-import src.get_place as get_place
+from src import *
 
 
 if __name__ == '__main__':
@@ -12,15 +11,16 @@ if __name__ == '__main__':
         lang = sys.argv[1]
     else:
         lang = 'en'
-    local_str = local.localized_str(lang)
+    local_str = localized_str(lang)
 
     if not os.path.isdir(f'./{local_str.haifu}/'):
         os.makedirs(f'./{local_str.haifu}/')
 
     url = input(local_str.hint_input)
     try:
-        ban = int(url[-1])
-        p, r = get_place.gethaifuandplace(local_str.haifu, url, ban)
+        haifu = get_haifu(url, local_str.haifu)
+        p = get_place(haifu, haifu.ban)
+        r = haifu.r[haifu.ban]
         try:
             wb = xl.load_workbook(f'{local_str.haifu}.xlsx')
             sheet = wb.active
