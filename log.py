@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     url = input(local_str.hint_input)
     try:
-        haifu = get_haifu(url, local_str.haifu)
+        haifu = get_haifu(url, local_str)
         p = get_place(haifu, haifu.ban)
         r = haifu.r[haifu.ban]
         try:
