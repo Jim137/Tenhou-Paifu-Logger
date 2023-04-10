@@ -2,20 +2,20 @@ import urllib.request
 import gzip
 import xml.etree.ElementTree as ET
 
+HEADER = {
+    'Host': 'e.mjv.jp',
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate',
+    'Connection': 'keep-alive'
+}
 
 def gethaifuandplace(haifu, url, ban):
     '''
     Download the haifu and return the placing and rate before match
     '''
 
-    HEADER = {
-        'Host': 'e.mjv.jp',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Accept-Encoding': 'gzip, deflate',
-        'Connection': 'keep-alive'
-    }
     t = open(f'./{haifu}/'+url[26:]+'.xml', 'w')
     url = 'https://tenhou.net/0/log/?'+url[26:-5]
     req = urllib.request.Request(url=url, headers=HEADER)
