@@ -2,12 +2,12 @@
 
 快速記錄天鳳牌譜的工具。
 
-[下載](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Haifu-Logger/blob/master/README.md)
+[下載](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md)
 ## 使用方法
 
-1. Clone此專案或下載[最新版本](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest)。
+1. Clone此專案或下載[最新版本](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)。
    
-    `git clone https://github.com/Jim137/Tenhou-Haifu-Logger.git`
+    `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
     
 2. 首次使用時，右鍵編輯 `runlog-user.bat`，在set LANG=後加上語言代碼 `zh_tw`，保存後運行此檔案。
 3. 複製天鳳牌譜至剪貼簿。

@@ -12,8 +12,8 @@ if __name__ == '__main__':
 
     url = input(local_str.hint_input)
     try:
-        haifu = get_haifu(url, local_str)
-        log_into_xlsx(haifu, local_str)
+        paifu = get_paifu(url, local_str)
+        log_into_xlsx(paifu, local_str)
     except urllib.error.URLError:
         print(local_str.hint_url)
     except ValueError:

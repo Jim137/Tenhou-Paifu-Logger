@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 
-class Haifu():
+class Paifu():
     def __init__(self, url: str, root: ET.Element):
         self.url = url
         self.ban = int(url[-1])
