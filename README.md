@@ -1,23 +1,23 @@
-# Tenhou Haifu Logger
+# Tenhou Paifu Logger
 
-Logging tenhou haifu into excel file with some key information.
+Logging tenhou paifu into excel file with some key information.
 
-[Downloads](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Haifu-Logger/blob/master/READMEs/README_zh.md)
+[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
 
 ## Usage
 
-1. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest).
+1. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
    
-   `git clone https://github.com/Jim137/Tenhou-Haifu-Logger.git`
+   `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
    
-2. Copy the haifu URL from tenhou.net to clipboard.
+2. Copy the paifu URL from tenhou.net to clipboard.
 3. Open `runlog-user.bat`.
-4. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the haifu URL and press Enter.
-5. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the haifu is successfully logged.
+4. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.
+5. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
 6. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
 ## Features
-* [x] Log haifu into excel file with some key information.
+* [x] Log paifu into excel file with some key information.
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 
 ## Information logged
@@ -29,7 +29,7 @@ Logging tenhou haifu into excel file with some key information.
 
 ## Future features
 
-* [ ] Skip already logged haifu
+* [ ] Skip already logged paifu
 * [ ] The change of Rate
 * [ ] Agari analysis
 * [ ] GUI

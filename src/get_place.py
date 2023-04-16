@@ -1,13 +1,13 @@
-from .Haifu import Haifu
+from .Paifu import Paifu
 
 
-def get_place(haifu: Haifu, ban):
+def get_place(paifu: Paifu, ban):
     '''
-    Download the haifu and return the placing and rate before match
+    Download the paifu and return the placing and rate before match
     '''
-    o0, s0, o1, s1, o2, s2, o3, s3 = haifu.owari
+    o0, s0, o1, s1, o2, s2, o3, s3 = paifu.owari
 
-    if haifu.player_num == 4:
+    if paifu.player_num == 4:
         sp = [float(s0), float(s1), float(s2), float(s3)]
         placing = [1, 1, 1, 1]
         for i in range(4):
