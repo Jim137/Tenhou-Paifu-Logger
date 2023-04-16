@@ -1,5 +1,7 @@
 # Tenhou Paifu Logger
 
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/latest/total">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+
 Logging tenhou paifu into excel file with some key information.
 
 [Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
