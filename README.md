@@ -1,5 +1,7 @@
 # Tenhou Haifu Logger
 
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Haifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Haifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Haifu-Logger/latest/total">](https://github.com/Jim137/Tenhou-Haifu-Logger/releases)
+
 Logging tenhou haifu into excel file with some key information.
 
 [Downloads](https://github.com/Jim137/Tenhou-Haifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Haifu-Logger/blob/master/READMEs/README_zh.md)
