@@ -7,16 +7,17 @@ url_reg = r'https://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
 
 
 def log(args):
-    if not args.url:
-        urls = input(local_str.hint_input)
-    else:
-        urls = args.url
-
     if args.lang:
         lang = args.lang
     else:
         lang = 'en'
     local_str = localized_str(lang)
+
+    urls = []
+    if not args.url:
+        urls.append(input(local_str.hint_input))
+    else:
+        urls = args.url
 
     if args.format:
         format = args.format
@@ -45,8 +46,8 @@ def log(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("url",
-                        nargs='+',
-                        help="URL of the game log.")
+                        nargs='*',
+                        help="URL of the match.")
     parser.add_argument("-l",
                         "--lang",
                         type=str,
