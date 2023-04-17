@@ -112,5 +112,5 @@ def log_into_html(paifu: Paifu, local_str: local_str):
         html_str, local_str), local_str)
     with open(f'./{local_str.paifu}/{paifu_str}.html', 'w') as f:
         f.write(html_str)
-    print(local_str.hint_record1+paifu.url[26:]+local_str.hint_record2)
+    print('html: '+local_str.hint_record1+paifu.url[26:]+local_str.hint_record2)
     return None
