@@ -11,7 +11,7 @@ pause
 exit
 
 :start
-if %ALLFORMAT% == "true" goto:start_all
+if %ALLFORMAT% == true goto:start_all
 python log.py -l %LANG% -f %FORMAT%
 if %ERRORLEVEL% == 1 goto:error
 goto:start
