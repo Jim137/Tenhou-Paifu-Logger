@@ -1,10 +1,52 @@
 import urllib.request
 import argparse
+import re
 from src import *
+
+url_reg = r'https://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
+
+
+def log(args):
+    if not args.url:
+        urls = input(local_str.hint_input)
+    else:
+        urls = args.url
+
+    if args.lang:
+        lang = args.lang
+    else:
+        lang = 'en'
+    local_str = localized_str(lang)
+
+    if args.format:
+        format = args.format
+    else:
+        format = 'xlsx'
+
+    for url in urls:
+        if not re.match(url_reg, url):
+            print(local_str.hint_url, url)
+            continue
+        try:
+            paifu = get_paifu(url, local_str)
+            if args.all_formats:
+                log_into_html(paifu, local_str)
+                log_into_xlsx(paifu, local_str)
+            elif format == 'xlsx':
+                log_into_xlsx(paifu, local_str)
+            elif format == 'html':
+                log_into_html(paifu, local_str)
+        except urllib.error.URLError:
+            print(local_str.hint_url, url)
+        except ValueError:
+            print(local_str.hint_tw, url)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument("url",
+                        nargs='+',
+                        help="URL of the game log.")
     parser.add_argument("-l",
                         "--lang",
                         type=str,
@@ -17,27 +59,4 @@ if __name__ == '__main__':
                         action="store_true",
                         help="Output all formats.")
     args = parser.parse_args()
-    if args.lang:
-        lang = args.lang
-    else:
-        lang = 'en'
-    if args.format:
-        format = args.format
-    else:
-        format = 'xlsx'
-    local_str = localized_str(lang)
-
-    url = input(local_str.hint_input)
-    try:
-        paifu = get_paifu(url, local_str)
-        if args.all_format:
-            log_into_html(paifu, local_str)
-            log_into_xlsx(paifu, local_str)
-        elif format == 'xlsx':
-            log_into_xlsx(paifu, local_str)
-        elif format == 'html':
-            log_into_html(paifu, local_str)
-    except urllib.error.URLError:
-        print(local_str.hint_url)
-    except ValueError:
-        print(local_str.hint_tw)
+    log(args)
