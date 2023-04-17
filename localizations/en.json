@@ -8,9 +8,10 @@
     "avg_plc": "Average Placing",
     "hint_record1": "Match of ",
     "hint_record2": " has been recorded.\n",
-    "hint_url": "Please check the URL of match and the network.\n",
-    "hint_tw": "Please check the URL of match and whether &tw=(seat) is attached to the end of the URL.\n",
+    "hint_url": "Please check the URL of match and the network.",
+    "hint_tw": "Please check the URL of match and whether &tw=(seat) is attached to the end of the URL.",
     "excelE": 17,
     "sanma": "Sanma",
-    "yonma": ""
+    "yonma": "",
+    "hint_duplicate": "The match is duplicated."
 }

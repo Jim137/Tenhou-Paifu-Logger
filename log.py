@@ -28,6 +28,9 @@ def log(args):
         if not re.match(url_reg, url):
             print(local_str.hint_url, url)
             continue
+        if check_duplicate(url, local_str):
+            print(local_str.hint_duplicate, url)
+            continue
         try:
             paifu = get_paifu(url, local_str)
             if args.all_formats:
@@ -37,6 +40,7 @@ def log(args):
                 log_into_xlsx(paifu, local_str)
             elif format == 'html':
                 log_into_html(paifu, local_str)
+            url_log(url, local_str)
         except urllib.error.URLError:
             print(local_str.hint_url, url)
         except ValueError:

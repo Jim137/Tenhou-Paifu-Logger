@@ -21,6 +21,7 @@ Logging tenhou paifu into excel or html file with some key information.
 ## Features
 * [x] Log paifu into excel or html file with some key information.
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
+* [x] Skip duplicated paifu
 
 ## Information logged
 
@@ -31,7 +32,6 @@ Logging tenhou paifu into excel or html file with some key information.
 
 ## Future features
 
-* [ ] Skip already logged paifu
 * [ ] Add match replay for every round in html file
 * [ ] The change of Rate
 * [ ] Agari analysis
