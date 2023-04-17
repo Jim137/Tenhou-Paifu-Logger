@@ -2,7 +2,7 @@
 
 [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
 
-Logging tenhou paifu into excel file with some key information.
+Logging tenhou paifu into excel or html file with some key information.
 
 [Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
 
@@ -19,7 +19,7 @@ Logging tenhou paifu into excel file with some key information.
 6. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
 ## Features
-* [x] Log paifu into excel file with some key information.
+* [x] Log paifu into excel or html file with some key information.
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 
 ## Information logged
@@ -32,8 +32,10 @@ Logging tenhou paifu into excel file with some key information.
 ## Future features
 
 * [ ] Skip already logged paifu
+* [ ] Add match replay for every round in html file
 * [ ] The change of Rate
 * [ ] Agari analysis
+* [ ] Support Majsoul paifu
 * [ ] GUI
 
 ## License
