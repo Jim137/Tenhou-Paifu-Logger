@@ -8,9 +8,10 @@
     "avg_plc": "平順",
     "hint_record1": "已將",
     "hint_record2": "牌譜記錄\n",
-    "hint_url": "請檢查牌譜網址是否正確以及網路狀態\n",
-    "hint_tw": "請檢查網址後面&tw:(席次)是否附上\n",
+    "hint_url": "請檢查牌譜網址是否正確以及網路狀態",
+    "hint_tw": "請檢查網址後面&tw:(席次)是否附上",
     "excelE": 11,
     "sanma": "三麻",
-    "yonma": "四麻"
+    "yonma": "四麻",
+    "hint_duplicate": "已記錄過此牌譜"
 }
