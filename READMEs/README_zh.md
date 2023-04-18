@@ -1,5 +1,7 @@
 # 天鳳牌譜記錄器
 
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+
 快速記錄天鳳牌譜的工具。
 
 [下載](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md)
@@ -16,8 +18,9 @@
 6. 當再次出現![1675260159266](image/README_zh/1675260159266.png)，即可輸入下個牌譜。
 
 ## 功能
-* [x] 將牌譜記錄到Excel檔案中。
+* [x] 將牌譜記錄到Excel或html檔案中。
 * [x] 區分三麻和四麻，並分別記錄到不同的檔案中。
+* [x] 跳過已記錄過的牌譜。
 
 ## 牌譜紀錄訊息
 
@@ -28,7 +31,8 @@
 
 ## 預計新增功能
 
-* [ ] 跳過已記錄的牌譜
+* [ ] 每一本場的對局回放（html）
 * [ ] 對局R值變化
 * [ ] 和銃分析
+* [ ] 雀魂牌譜支援
 * [ ] 圖形使用者介面（GUI）
