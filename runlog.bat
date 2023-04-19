@@ -18,8 +18,8 @@ goto:start
 
 :start_all
 python log.py -l %LANG% --all-formats
-if %ERRORLEVEL% == 1 goto:start_all
-goto:start
+if %ERRORLEVEL% == 1 goto:error
+goto:start_all
 
 :error
 echo "Error occurred"
