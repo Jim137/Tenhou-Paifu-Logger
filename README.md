@@ -22,6 +22,7 @@ Logging tenhou paifu into excel or html file with some key information.
 * [x] Log paifu into excel or html file with some key information.
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 * [x] Skip duplicated paifu
+* [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
 
 ## Information logged
 
