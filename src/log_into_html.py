@@ -7,9 +7,9 @@ from .local import local_str
 
 def create_html(html_str, paifu_str, local_str: local_str):
     html_str += f'''<!DOCTYPE html>
-    <html lang="en">
+    <html lang={local_str.lang}>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <title>{paifu_str}</title>
         <style>
             table {{
@@ -101,7 +101,7 @@ def log_into_html(paifu: Paifu, local_str: local_str):
     else:
         paifu_str = local_str.yonma + local_str.paifu
     try:
-        with open(f'./{local_str.paifu}/{paifu_str}.html', 'r') as f:
+        with open(f'./{local_str.paifu}/{paifu_str}.html', 'r', encoding='utf-8') as f:
             html_str = f.read()
         html_str = clear_end(html_str)
     except FileNotFoundError:
@@ -110,7 +110,8 @@ def log_into_html(paifu: Paifu, local_str: local_str):
     html_str = log_into_table(html_str, paifu, local_str)
     html_str = end_of_table(html_str, average_plc(
         html_str, local_str), local_str)
-    with open(f'./{local_str.paifu}/{paifu_str}.html', 'w') as f:
+    with open(f'./{local_str.paifu}/{paifu_str}.html', 'w', encoding='utf-8') as f:
         f.write(html_str)
-    print('html: '+local_str.hint_record1+paifu.url[26:]+local_str.hint_record2)
+    print('html: '+local_str.hint_record1 +
+          paifu.url[26:]+local_str.hint_record2)
     return None

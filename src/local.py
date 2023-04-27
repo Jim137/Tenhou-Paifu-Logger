@@ -2,7 +2,8 @@ import json
 
 
 class local_str():
-    def __init__(self):
+    def __init__(self, lang: str='en'):
+        self.lang = lang
         pass
 
     def load_data(self, data):
@@ -19,7 +20,7 @@ class local_str():
 
 
 def localized_str(lang: str):
-    localized = local_str()
+    localized = local_str(lang)
     try:
         with open(f'./localizations/{lang}.json', encoding='utf-8') as f:
             data = json.load(f)
