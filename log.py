@@ -28,7 +28,7 @@ def log(args):
     if args.remake:
         store = HDFStore(f'./{local_str.paifu}/url_log.h5')
         if 'url' not in store:
-            store['url'] = DataFrame({'url': ['']})
+            store['url'] = pd.DataFrame(columns=['url'])
         urls = store['url']['url'].values
         store.close()
     elif not args.url:
@@ -44,8 +44,8 @@ def log(args):
 
     # if remake, remove old files
     if args.remake:
-        paifu_str3 = local_str.sanma + local_str.paifu
-        paifu_str4 = local_str.yonma + local_str.paifu
+        paifu_str3 = local_str.paifu + '/' + local_str.sanma + local_str.paifu
+        paifu_str4 = local_str.paifu + '/' + local_str.yonma + local_str.paifu
         try:
             if args.all_formats:
                 remove_old_paifu(paifu_str3, 'html')
