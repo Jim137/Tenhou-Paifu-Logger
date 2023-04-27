@@ -8,6 +8,12 @@ from src import *
 url_reg = r'https://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
 
 
+def remove_old_paifu(paifu_str: str, format):
+    if os.path.exists(f'./{paifu_str}.{format}'):
+        os.remove(f'./{paifu_str}.{format}')
+    return None
+
+
 def log(args):
 
     # get language
@@ -38,13 +44,18 @@ def log(args):
 
     # if remake, remove old files
     if args.remake:
+        paifu_str3 = local_str.sanma + local_str.paifu
+        paifu_str4 = local_str.yonma + local_str.paifu
         try:
             if args.all_formats:
-                os.remove(f'./{local_str.paifu}/{local_str.paifu}.xlsx')
-                os.remove(f'./{local_str.paifu}/{local_str.paifu}.html')
+                remove_old_paifu(paifu_str3, 'html')
+                remove_old_paifu(paifu_str3, 'xlsx')
+                remove_old_paifu(paifu_str4, 'html')
+                remove_old_paifu(paifu_str4, 'xlsx')
             else:
-                os.remove(f'./{local_str.paifu}/{local_str.paifu}.{format}')
-        except OSError:
+                remove_old_paifu(paifu_str3, format)
+                remove_old_paifu(paifu_str4, format)
+        except:
             pass
 
     # log
