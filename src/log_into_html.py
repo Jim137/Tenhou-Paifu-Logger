@@ -1,5 +1,5 @@
 from datetime import datetime
-import pandas as pd
+from pandas import read_html
 from .get_place import get_place
 from .Paifu import Paifu
 from .local import local_str
@@ -62,7 +62,7 @@ def average_plc(html_str, local_str: local_str):
     </body>
     </html>
     '''
-    df = pd.read_html(html_p)[0]
+    df = read_html(html_p)[0]
     avg_plc = df[f'{local_str.plc}'].mean()
     return avg_plc
 
