@@ -12,7 +12,8 @@ HEADER = {
 
 
 def url_request_handler(url: str):
-    url = 'https://tenhou.net/0/log/?'+url[26:-5]
+    url = url.split('=')[1]
+    url = 'https://tenhou.net/0/log/?'+url[:-3]
     req = urllib.request.Request(url=url, headers=HEADER)
     opener = urllib.request.build_opener()
     response = opener.open(req)
