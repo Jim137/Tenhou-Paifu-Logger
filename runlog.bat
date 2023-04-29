@@ -1,7 +1,10 @@
 @echo off
+if not defined skip_pip set set skip_pip=false
 if not defined LANG set LANG=en
 if not defined FORMAT set FORMAT=xlsx
 if not defined ALLFORMAT set ALLFORMAT=false
+
+if %skip_pip% == true goto :start
 
 :check_pip
 pip install -r requirements.txt >nul
