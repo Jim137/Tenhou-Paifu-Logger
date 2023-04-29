@@ -44,7 +44,8 @@ def create_html(html_str, paifu_str, local_str: local_str):
 
 
 def log_into_table(html_str, paifu: Paifu, local_str: local_str):
-    time_str = datetime.strptime(re.findall(r'\d{10}', paifu.url)[0], "%Y%m%d%H")
+    time_str = datetime.strptime(re.findall(
+        r'\d{10}', paifu.url)[0], "%Y%m%d%H")
     html_str += f'''
                 <tr>
                     <td>{time_str}</td>
@@ -115,5 +116,5 @@ def log_into_html(paifu: Paifu, local_str: local_str):
     with open(f'./{local_str.paifu}/{paifu_str}.html', 'w', encoding='utf-8') as f:
         f.write(html_str)
     print('html: '+local_str.hint_record1 +
-          paifu.url[26:]+local_str.hint_record2)
+          re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0]+local_str.hint_record2)
     return None

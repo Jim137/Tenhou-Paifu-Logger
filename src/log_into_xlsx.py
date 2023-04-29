@@ -29,5 +29,6 @@ def log_into_xlsx(paifu: Paifu, local_str: local_str):
     sheet.append(
         [local_str.avg_plc, '=average(B2:B'+str(sheet.max_row)+')'])
     wb.save(f'./{local_str.paifu}/{paifu_str}.xlsx')
-    print('xlsx: '+local_str.hint_record1+paifu.url[26:]+local_str.hint_record2)
+    print('xlsx: '+local_str.hint_record1 +
+          re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0]+local_str.hint_record2)
     return None
