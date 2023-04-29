@@ -28,7 +28,7 @@ def log(args):
     if args.remake:
         store = HDFStore(f'./{local_str.paifu}/url_log.h5')
         if 'url' not in store:
-            store['url'] = pd.DataFrame(columns=['url'])
+            store['url'] = DataFrame(columns=['url'])
         urls = store['url']['url'].values
         store.close()
     elif not args.url:
