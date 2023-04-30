@@ -1,5 +1,7 @@
 @echo off
 rem.||(
+Set skip_pip=true will skip check pip install
+
 Set language after LANG=, default is English
 Traditional Chinese: zh_tw
 
@@ -9,6 +11,8 @@ html: html
 
 Set ALLFORMAT=true to generate all formats
 )
+
+set skip_pip=
 
 set LANG=
 set FORMAT=
