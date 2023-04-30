@@ -29,7 +29,12 @@ def log(args):
         store = HDFStore(f'./{local_str.paifu}/url_log.h5')
         if 'url' not in store:
             store['url'] = DataFrame(columns=['url'])
-        urls = store['url']['url'].values
+        urlstore = store['url']['url'].values
+        for url in urlstore:
+            if not re.match(url_reg, url):
+                urls.append('https://'+url)
+                continue
+            urls.append(url)
         store.close()
     elif not args.url:
         urls.append(input(local_str.hint_input))
