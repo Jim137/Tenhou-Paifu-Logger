@@ -12,6 +12,7 @@ def get_paifu(url: str, local_str: local_str):
     if not os.path.isdir(f'./{local_str.paifu}/{paifu.go_str}/'):
         os.makedirs(f'./{local_str.paifu}/{paifu.go_str}/')
 
-    with open(f'./{local_str.paifu}/{paifu.go_str}/'+url[26:]+'.xml', 'w') as t:
+    url = url.split('=')[1]+'='+url.split('=')[2]
+    with open(f'./{local_str.paifu}/{paifu.go_str}/'+url+'.xml', 'w') as t:
         t.write(response)
     return paifu

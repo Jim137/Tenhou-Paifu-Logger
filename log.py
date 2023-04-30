@@ -5,7 +5,7 @@ import os
 from pandas import HDFStore, DataFrame
 from src import *
 
-url_reg = r'https://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
+url_reg = r'https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
 
 
 def remove_old_paifu(paifu_str: str, format):
@@ -29,7 +29,12 @@ def log(args):
         store = HDFStore(f'./{local_str.paifu}/url_log.h5')
         if 'url' not in store:
             store['url'] = DataFrame(columns=['url'])
-        urls = store['url']['url'].values
+        urlstore = store['url']['url'].values
+        for url in urlstore:
+            if not re.match(url_reg, url):
+                urls.append('https://'+url)
+                continue
+            urls.append(url)
         store.close()
     elif not args.url:
         urls.append(input(local_str.hint_input))
