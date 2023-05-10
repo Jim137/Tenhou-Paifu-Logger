@@ -41,6 +41,7 @@ Note: In the latest version, you can input multiple URLs at once, separted by wh
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
+* [ ] pip install
 
 ## Contribute
 We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.
