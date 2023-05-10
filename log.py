@@ -37,7 +37,8 @@ def log(args):
             urls.append(url)
         store.close()
     elif not args.url:
-        urls.append(input(local_str.hint_input))
+        for url in re.findall(url_reg, input(local_str.hint_input)):
+            urls.append(url)
     else:
         urls = args.url
 
@@ -86,6 +87,8 @@ def log(args):
                 pass
             else:
                 url_log(url, local_str)
+        except OSError:
+            print(local_str.hint_url, url)
         except urllib.error.URLError:
             print(local_str.hint_url, url)
         except ValueError:
