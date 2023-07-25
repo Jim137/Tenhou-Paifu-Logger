@@ -107,7 +107,8 @@ if __name__ == '__main__':
     parser.add_argument("-f",
                         "--format",
                         type=str,
-                        help="Format of the output file. Default is xlsx. Available formats: xlsx, html.")
+                        help="Format of the output file. Default is xlsx. Available formats: xlsx, html.",
+                        choices=['xlsx', 'html'])
     parser.add_argument("-a",
                         "--all-formats",
                         action="store_true",
