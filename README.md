@@ -4,6 +4,8 @@
 
 Logging tenhou paifu into excel or html file with some key information.
 
+If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
+
 [Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
 
 ## Usage
@@ -14,7 +16,8 @@ Logging tenhou paifu into excel or html file with some key information.
    
 2. Copy the paifu URL from tenhou.net to clipboard.
 3. Open `runlog-user.bat`.
-4. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.
+4. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
+Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
 5. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
 6. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
@@ -38,6 +41,10 @@ Logging tenhou paifu into excel or html file with some key information.
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
+* [ ] pip install
+
+## Contribute
+We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.
 
 ## License
 
