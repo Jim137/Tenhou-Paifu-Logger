@@ -15,7 +15,7 @@ check_pip() {
 }
 
 start() {
-    "${python_cmd}" log.py -l "$LANG" -f "$FORMAT"
+    "${python_cmd}" log.py -l "$LANG" -f "$FORMAT" -o "$OUTPUT_DIR"
     if [ $? != 0 ]
     then
         printf "Error occurred"
@@ -25,7 +25,7 @@ start() {
 }
 
 start_all() {
-    "${python_cmd}" log.py -l "$LANG" --all-formats
+    "${python_cmd}" log.py -l "$LANG" --all-formats -o "$OUTPUT_DIR"
     if [ $? != 0 ]
     then
         printf "Error occurred"
@@ -54,6 +54,10 @@ fi
 if [ -z $ALLFORMAT ]
 then
     ALLFORMAT=false
+fi
+if [ -z $OUTPUT_DIR ]
+then
+    OUTPUT_DIR=./
 fi
 
 if [ $skip_pip = true ]

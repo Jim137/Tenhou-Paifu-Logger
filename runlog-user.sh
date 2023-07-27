@@ -30,6 +30,9 @@
 # Set ALLFORMAT=true to generate all formats
 # export ALLFORMAT=
 
+# Set output directory after OUTPUT_DIR=, default is current directory
+# export OUTPUT_DIR=
+
 ###########################################
 
 . runlog.sh
