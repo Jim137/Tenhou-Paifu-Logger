@@ -98,13 +98,14 @@ def clear_end(html_str):
     return html_str
 
 
-def log_into_html(paifu: Paifu, local_str: local_str):
+def log_into_html(paifu: Paifu, local_str: local_str, output: str):
     if paifu.player_num == 3:
         paifu_str = local_str.sanma + local_str.paifu
     else:
         paifu_str = local_str.yonma + local_str.paifu
+    path = f'{output}/{local_str.paifu}/{paifu_str}.html'
     try:
-        with open(f'./{local_str.paifu}/{paifu_str}.html', 'r', encoding='utf-8') as f:
+        with open(path, 'r', encoding='utf-8') as f:
             html_str = f.read()
         html_str = clear_end(html_str)
     except FileNotFoundError:
@@ -113,7 +114,7 @@ def log_into_html(paifu: Paifu, local_str: local_str):
     html_str = log_into_table(html_str, paifu, local_str)
     html_str = end_of_table(html_str, average_plc(
         html_str, local_str), local_str)
-    with open(f'./{local_str.paifu}/{paifu_str}.html', 'w', encoding='utf-8') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         f.write(html_str)
     print('html: '+local_str.hint_record1 +
           re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0]+local_str.hint_record2)

@@ -26,6 +26,12 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 * [x] Skip duplicated paifu
 * [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
+* [x] Customized output directory (-o, --output)
+* [x] Localization support (-l, --language)
+  * [x] English: en
+  * [x] Traditional Chinese: zh_tw
+  * [x] Simplified Chinese: zh
+  * [x] Japanese (ChatGPT): ja
 
 ## Information logged
 

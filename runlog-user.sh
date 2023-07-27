@@ -1,4 +1,13 @@
 # !/bin/bash
+###########################################
+# If error "command not found" occurs on wsl,
+# please uncomment the followings.
+
+# dos2unix runlog-user.sh
+# dos2unix runlog.sh
+
+###########################################
+
 #########################################################
 # Uncomment and change the variables below to your need:#
 #########################################################
@@ -20,6 +29,9 @@
 
 # Set ALLFORMAT=true to generate all formats
 # export ALLFORMAT=
+
+# Set output directory after OUTPUT_DIR=, default is current directory
+# export OUTPUT_DIR=
 
 ###########################################
 
