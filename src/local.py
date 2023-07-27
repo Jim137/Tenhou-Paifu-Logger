@@ -1,4 +1,8 @@
 import json
+import os
+import sys
+
+bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
 
 
 class local_str():
