@@ -17,7 +17,7 @@ If you like this project, please leave a star. It will be a great encouragement 
 2. Copy the paifu URL from tenhou.net to clipboard.
 3. Open `runlog-user.bat`.
 4. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
-Note: In the latest version, you can input multiple URLs at once, separted by whatever you like. If you are lazy, you can just paste w/o anything.
+Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
 5. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
 6. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
@@ -26,6 +26,12 @@ Note: In the latest version, you can input multiple URLs at once, separted by wh
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 * [x] Skip duplicated paifu
 * [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
+* [x] Customized output directory (-o, --output)
+* [x] Localization support (-l, --language)
+  * [x] English: en
+  * [x] Traditional Chinese: zh_tw
+  * [x] Simplified Chinese: zh
+  * [x] Japanese (ChatGPT): ja
 
 ## Information logged
 
@@ -41,6 +47,7 @@ Note: In the latest version, you can input multiple URLs at once, separted by wh
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
+* [ ] pip install
 
 ## Contribute
 We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.

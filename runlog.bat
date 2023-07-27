@@ -3,6 +3,7 @@ if not defined skip_pip set skip_pip=false
 if not defined LANG set LANG=en
 if not defined FORMAT set FORMAT=xlsx
 if not defined ALLFORMAT set ALLFORMAT=false
+if not defined OUTPUT_DIR set OUTPUT_DIR=./
 
 if %skip_pip% == true goto :start
 
@@ -15,12 +16,12 @@ exit
 
 :start
 if %ALLFORMAT% == true goto:start_all
-python log.py -l %LANG% -f %FORMAT%
+python log.py -l %LANG% -f %FORMAT% -o %OUTPUT_DIR%
 if %ERRORLEVEL% == 1 goto:error
 goto:start
 
 :start_all
-python log.py -l %LANG% --all-formats
+python log.py -l %LANG% --all-formats -o %OUTPUT_DIR%
 if %ERRORLEVEL% == 1 goto:error
 goto:start_all
 

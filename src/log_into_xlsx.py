@@ -6,13 +6,14 @@ from .Paifu import Paifu
 from .local import local_str
 
 
-def log_into_xlsx(paifu: Paifu, local_str: local_str):
+def log_into_xlsx(paifu: Paifu, local_str: local_str, output: str):
     try:
         if paifu.player_num == 3:
             paifu_str = local_str.sanma + local_str.paifu
         else:
             paifu_str = local_str.yonma + local_str.paifu
-        wb = xl.load_workbook(f'./{local_str.paifu}/{paifu_str}.xlsx')
+        path = f'{output}/{local_str.paifu}/{paifu_str}.xlsx'
+        wb = xl.load_workbook(path)
         sheet = wb.active
         sheet.delete_rows(sheet.max_row)
     except FileNotFoundError:
@@ -28,7 +29,7 @@ def log_into_xlsx(paifu: Paifu, local_str: local_str):
     sheet['C'+str(sheet.max_row)].style = "Hyperlink"
     sheet.append(
         [local_str.avg_plc, '=average(B2:B'+str(sheet.max_row)+')'])
-    wb.save(f'./{local_str.paifu}/{paifu_str}.xlsx')
+    wb.save(path)
     print('xlsx: '+local_str.hint_record1 +
           re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0]+local_str.hint_record2)
     return None
