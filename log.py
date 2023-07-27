@@ -21,12 +21,19 @@ def log(args):
         lang = args.lang
     else:
         lang = 'en'
-    local_str = localized_str(lang)
+    main_path = os.path.dirname(os.path.abspath(__file__))
+    local_str = localized_str(lang, main_path)
 
+    # get output directory
+    if args.output:
+        output = args.output
+    else:
+        output = os.path.abspath('./')
+        
     # get urls
     urls = []
     if args.remake:
-        store = HDFStore(f'./{local_str.paifu}/url_log.h5')
+        store = HDFStore(f'{output}/{local_str.paifu}/url_log.h5')
         if 'url' not in store:
             store['url'] = DataFrame(columns=['url'])
         urlstore = store['url']['url'].values
@@ -54,13 +61,13 @@ def log(args):
         paifu_str4 = local_str.paifu + '/' + local_str.yonma + local_str.paifu
         try:
             if args.all_formats:
-                remove_old_paifu(paifu_str3, 'html')
-                remove_old_paifu(paifu_str3, 'xlsx')
-                remove_old_paifu(paifu_str4, 'html')
-                remove_old_paifu(paifu_str4, 'xlsx')
+                remove_old_paifu(paifu_str3, 'html', output)
+                remove_old_paifu(paifu_str3, 'xlsx', output)
+                remove_old_paifu(paifu_str4, 'html', output)
+                remove_old_paifu(paifu_str4, 'xlsx', output)
             else:
-                remove_old_paifu(paifu_str3, format)
-                remove_old_paifu(paifu_str4, format)
+                remove_old_paifu(paifu_str3, format, output)
+                remove_old_paifu(paifu_str4, format, output)
         except:
             pass
 
@@ -71,22 +78,22 @@ def log(args):
             continue
         if args.remake:
             pass
-        elif check_duplicate(url, local_str):
+        elif check_duplicate(url, local_str, output):
             print(local_str.hint_duplicate, url)
             continue
         try:
             paifu = get_paifu(url, local_str)
             if args.all_formats:
-                log_into_html(paifu, local_str)
-                log_into_xlsx(paifu, local_str)
+                log_into_html(paifu, local_str, output)
+                log_into_xlsx(paifu, local_str, output)
             elif format == 'xlsx':
-                log_into_xlsx(paifu, local_str)
+                log_into_xlsx(paifu, local_str, output)
             elif format == 'html':
-                log_into_html(paifu, local_str)
+                log_into_html(paifu, local_str, output)
             if args.remake:
                 pass
             else:
-                url_log(url, local_str)
+                url_log(url, local_str, output)
         except OSError:
             print(local_str.hint_url, url)
         except urllib.error.URLError:
@@ -117,5 +124,9 @@ if __name__ == '__main__':
                         "--remake",
                         action="store_true",
                         help="Remake the log file from url_log.h5 (past logging log). Use this when the program is updated, changing format or language of the log file, or the log file is missing. Note that this will overwrite the log file.")
+    parser.add_argument("-o",
+                        "--output",
+                        type=str,
+                        help="Output directory. Default is './'.")
     args = parser.parse_args()
     log(args)
