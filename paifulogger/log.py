@@ -3,7 +3,8 @@ import argparse
 import re
 import os
 from pandas import HDFStore, DataFrame
-from src import *
+
+from .src import *
 
 url_reg = r'https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
 

@@ -15,7 +15,7 @@ check_pip() {
 }
 
 start() {
-    "${python_cmd}" log.py -l "$LANG" -f "$FORMAT" -o "$OUTPUT_DIR"
+    "${python_cmd}" launch.py -l "$LANG" -f "$FORMAT" -o "$OUTPUT_DIR"
     if [ $? != 0 ]
     then
         printf "Error occurred"
@@ -25,7 +25,7 @@ start() {
 }
 
 start_all() {
-    "${python_cmd}" log.py -l "$LANG" --all-formats -o "$OUTPUT_DIR"
+    "${python_cmd}" launch.py -l "$LANG" --all-formats -o "$OUTPUT_DIR"
     if [ $? != 0 ]
     then
         printf "Error occurred"
