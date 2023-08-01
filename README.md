@@ -1,6 +1,6 @@
 # Tenhou Paifu Logger
 
-[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"><img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/)[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 Logging tenhou paifu into excel or html file with some key information.
 
@@ -11,17 +11,25 @@ If you like this project, please leave a star. It will be a great encouragement 
 ## Usage
 
 1. Download the project.
-  a. Download from github.
-    i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
-      `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
-    ii. Copy the paifu URL from tenhou.net to clipboard.
-    iii. Open `runlog-user.bat`.
+
+  >a. Download from github.
+
+  >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
+
+     git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+
+  >>ii. Copy the paifu URL from tenhou.net to clipboard.
+  >>iii. Open `runlog-user.bat`.
     
-  b. Download from pypi.
-    i. Open command line and type
-      `pip install tenhou-paifu-logger`
-    ii. Copy the paifu URL from tenhou.net to clipboard. And type
-      `log -l [language] -o [output directory] [paifu URLs]`
+  >b. Download from pypi.
+
+  >>i. Open command line and type
+
+    pip install Tenhou-Paifu-Logger
+
+  >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
+
+    log -l [language] -o [output directory] [paifu URLs]
 
 2. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
