@@ -7,7 +7,7 @@
     "preR": "対局前R値",
     "avg_plc": "平均順位",
     "hint_record1": "以下の牌譜を記録しました：",
-    "hint_record2": "牌譜の記録\n",
+    "hint_record2": "\n",
     "hint_url": "牌譜のURLが正しいか、ネットワークの状態を確認してください",
     "hint_tw": "URLの後に&tw:(席次)が含まれているか確認してください",
     "excelE": 11,
