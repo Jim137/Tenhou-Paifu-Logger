@@ -6,7 +6,7 @@ ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要情報�
 
 このプロジェクトが気に入った場合は、スターを付けていただけると大変励みになります。また、提案がある場合は、遠慮なく問題を作成してください。
 
-[ダウンロード](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
+[ダウンロード](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
 
 ## 使い方
 

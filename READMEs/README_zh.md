@@ -6,7 +6,7 @@
 
 如果你喜歡這個專案，請給我一顆star，這將會是我很大的鼓勵。如果你有任何建議，歡迎開issue來討論。
 
-[下載](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md)
+[下載](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 ## 使用方法
 
 1. Clone此專案或下載[最新版本](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)或使用pip下載。
