@@ -16,12 +16,12 @@ exit
 
 :start
 if %ALLFORMAT% == true goto:start_all
-python log.py -l %LANG% -f %FORMAT% -o %OUTPUT_DIR%
+python launch.py -l %LANG% -f %FORMAT% -o %OUTPUT_DIR%
 if %ERRORLEVEL% == 1 goto:error
 goto:start
 
 :start_all
-python log.py -l %LANG% --all-formats -o %OUTPUT_DIR%
+python launch.py -l %LANG% --all-formats -o %OUTPUT_DIR%
 if %ERRORLEVEL% == 1 goto:error
 goto:start_all
 
