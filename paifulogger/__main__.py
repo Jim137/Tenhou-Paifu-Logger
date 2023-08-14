@@ -29,6 +29,14 @@ def main():
                         "--output",
                         type=str,
                         help="Output directory. Default is './'.")
+    parser.add_argument("-v",
+                        "--version",
+                        action="store_true",
+                        help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.")
+    # Args for Debugging
+    parser.add_argument("--ignore-duplicated",
+                        action="store_true",
+                        help=argparse.SUPPRESS)
     args = parser.parse_args()
     log.log(args)
 

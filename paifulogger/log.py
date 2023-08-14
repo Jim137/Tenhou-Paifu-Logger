@@ -4,6 +4,7 @@ import re
 import os
 from pandas import HDFStore, DataFrame
 
+from paifulogger import __version__
 from .src import *
 
 url_reg = r'https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d'
@@ -16,6 +17,11 @@ def remove_old_paifu(paifu_str: str, format):
 
 
 def log(args):
+
+    # get version and exit
+    if args.version:
+        print('Tenhou-Paifu-Logger', __version__)
+        return None
 
     # get language
     if args.lang:
@@ -79,7 +85,7 @@ def log(args):
             continue
         if args.remake:
             pass
-        elif check_duplicate(url, local_str, output):
+        elif check_duplicate(url, local_str, output) and not args.ignore_duplicated:
             print(local_str.hint_duplicate, url)
             continue
         try:
@@ -129,5 +135,13 @@ if __name__ == '__main__':
                         "--output",
                         type=str,
                         help="Output directory. Default is './'.")
+    parser.add_argument("-v",
+                        "--version",
+                        action="store_true",
+                        help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.")
+    # Args for Debugging
+    parser.add_argument("--ignore-duplicated",
+                        action="store_true",
+                        help=argparse.SUPPRESS)
     args = parser.parse_args()
     log(args)
