@@ -1,0 +1,17 @@
+{
+    "hint_input": "请输入牌谱网址:",
+    "paifu": "牌谱",
+    "date": "日期",
+    "plc": "顺位",
+    "remark": "备注",
+    "preR": "对局前R值",
+    "avg_plc": "平顺",
+    "hint_record1": "已将",
+    "hint_record2": "牌谱记录\n",
+    "hint_url": "请检查牌谱网址是否正确以及网络状态",
+    "hint_tw": "请检查网址后面&tw:(席次)是否附上",
+    "excelE": 11,
+    "sanma": "三麻",
+    "yonma": "四麻",
+    "hint_duplicate": "已记录过此牌谱"
+}
