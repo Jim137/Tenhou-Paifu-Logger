@@ -1,6 +1,6 @@
 # 天鳳牌譜記錄器
 
-[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 快速記錄天鳳牌譜的工具。
 
@@ -9,11 +9,17 @@
 [下載](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md)
 ## 使用方法
 
-1. Clone此專案或下載[最新版本](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)。
+1. Clone此專案或下載[最新版本](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)或使用pip下載。
    
     `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
+
+    `pip install Tenhou-Paifu-Logger`
     
-2. 首次使用時，右鍵編輯 `runlog-user.bat`，在set LANG=後加上語言代碼 `zh_tw`，保存後運行此檔案。
+2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
+  使用pip則運行以下命令。
+
+    `log -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
+
 3. 複製天鳳牌譜至剪貼簿。
 4. 在出現![1675260159266](image/README_zh/1675260159266.png)後，貼上天鳳牌譜並按下Enter。\
 注意：在最新版本中，你可以一次輸入多個牌譜網址，用任何你喜歡的符號隔開即可。如果你很懶，你也可以直接貼上，不用加任何符號。
@@ -46,7 +52,6 @@
 * [ ] 和銃分析
 * [ ] 雀魂牌譜支援
 * [ ] 圖形使用者介面（GUI）
-* [ ] pip安裝
 
 ## 做出貢獻
 我們歡迎各種貢獻，包括但不限於回報bug、PR、功能要求、文件改進、本地化...等。
