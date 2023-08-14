@@ -117,7 +117,7 @@ if __name__ == '__main__':
     parser.add_argument("-l",
                         "--lang",
                         type=str,
-                        help="Language of the program and output files. Default is English. Available languages: English(en), 繁體中文(zh_tw).")
+                        help="Language of the program and output files. Default is English. Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).")
     parser.add_argument("-f",
                         "--format",
                         type=str,
