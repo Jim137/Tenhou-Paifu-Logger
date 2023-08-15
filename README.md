@@ -16,7 +16,7 @@ If you like this project, please leave a star. It will be a great encouragement 
 
   >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
 
-     git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+    git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
 
   >>ii. Copy the paifu URL from tenhou.net to clipboard.
   >>iii. Open `runlog-user.bat`.
