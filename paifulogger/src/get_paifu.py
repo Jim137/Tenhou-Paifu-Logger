@@ -29,6 +29,6 @@ def get_paifu(url: str, local_str: local_str, mjai: bool = False):
             print(local_str.log2mjai_import_error)
             return paifu
         with open (f'./{local_str.paifu}/{paifu.go_str}/'+url+'.mjson', 'w', encoding='UTF-8') as f:
-            f.write(parse_mjlog_to_mjai(load_mjlog(f'./{local_str.paifu}/{paifu.go_str}/'+url+'.xml')))
+            f.write(parse_mjlog_to_mjai(load_mjlog(f'./{local_str.paifu}/mjai/'+url+'.xml')))
 
     return paifu
