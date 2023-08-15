@@ -14,5 +14,6 @@
     "sanma": "Sanma",
     "yonma": "",
     "hint_duplicate": "The match is duplicated.",
-    "sanma_mjai_error": "The Sanma match does not support Mjai format."
+    "sanma_mjai_error": "The Sanma match does not support Mjai format.",
+    "log2mjai_import_error": "The submodule \"mjlog2mjai\" not found. Please run `git pull --recurse-submodules`"
 }
