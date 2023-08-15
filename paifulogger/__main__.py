@@ -33,6 +33,9 @@ def main():
                         "--version",
                         action="store_true",
                         help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.")
+    parser.add_argument("--mjai",
+                    action="store_true",
+                    help="Output MJAI format paifu.")
     # Args for Debugging
     parser.add_argument("--ignore-duplicated",
                         action="store_true",

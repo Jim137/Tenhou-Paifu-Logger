@@ -13,5 +13,6 @@
     "excelE": 17,
     "sanma": "Sanma",
     "yonma": "",
-    "hint_duplicate": "The match is duplicated."
+    "hint_duplicate": "The match is duplicated.",
+    "sanma_mjai_error": "The Sanma match does not support Mjai format."
 }

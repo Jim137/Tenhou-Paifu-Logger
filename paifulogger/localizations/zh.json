@@ -13,5 +13,6 @@
     "excelE": 11,
     "sanma": "三麻",
     "yonma": "四麻",
-    "hint_duplicate": "已记录过此牌谱"
+    "hint_duplicate": "已记录过此牌谱",
+    "sanma_mjai_error": "三麻对局尚不持mjai牌谱格式"
 }
