@@ -4,6 +4,14 @@ if not defined LANG set LANG=en
 if not defined FORMAT set FORMAT=xlsx
 if not defined ALLFORMAT set ALLFORMAT=false
 if not defined OUTPUT_DIR set OUTPUT_DIR=./
+if not defined mjai set mjai=false
+
+if %ALLFORMAT% == true (
+set args=-l %LANG% --all-formats -o %OUTPUT_DIR%
+) else (
+    set args=-l %LANG% -f %FORMAT% -o %OUTPUT_DIR%
+)
+if %mjai% == true set args=%args% --mjai
 
 if %skip_pip% == true goto :start
 
@@ -16,14 +24,9 @@ exit
 
 :start
 if %ALLFORMAT% == true goto:start_all
-python launch.py -l %LANG% -f %FORMAT% -o %OUTPUT_DIR%
+python launch.py %args%
 if %ERRORLEVEL% == 1 goto:error
 goto:start
-
-:start_all
-python launch.py -l %LANG% --all-formats -o %OUTPUT_DIR%
-if %ERRORLEVEL% == 1 goto:error
-goto:start_all
 
 :error
 echo "Error occurred"
