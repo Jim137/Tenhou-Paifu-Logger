@@ -25,16 +25,16 @@ If you like this project, please leave a star. It will be a great encouragement 
 
   >>i. Open command line and type
 
-    pip install Tenhou-Paifu-Logger
+    pip install PaifuLogger
 
   >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
 
     log -l [language] -o [output directory] [paifu URLs]
 
-2. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
+1. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
-3. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
-4. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
+1. After ![1675264143738](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
+2. When ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
 ## Features
 * [x] Log paifu into excel or html file with some key information.

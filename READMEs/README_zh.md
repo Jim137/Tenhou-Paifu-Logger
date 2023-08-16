@@ -13,18 +13,18 @@
    
     `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
 
-    `pip install Tenhou-Paifu-Logger`
+    `pip install PaifuLogger`
     
 2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
   使用pip則運行以下命令。
 
     `log -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
 
-3. 複製天鳳牌譜至剪貼簿。
-4. 在出現![1675260159266](image/README_zh/1675260159266.png)後，貼上天鳳牌譜並按下Enter。\
+1. 複製天鳳牌譜至剪貼簿。
+2. 在出現![1675260159266](image/README_zh/1675260159266.png)後，貼上天鳳牌譜並按下Enter。\
 注意：在最新版本中，你可以一次輸入多個牌譜網址，用任何你喜歡的符號隔開即可。如果你很懶，你也可以直接貼上，不用加任何符號。
-5. 當出現![1675260331020](image/README_zh/1675260331020.png)後，則表示牌譜已經成功記錄。
-6. 當再次出現![1675260159266](image/README_zh/1675260159266.png)，即可輸入下個牌譜。
+1. 當出現![1675260331020](image/README_zh/1675260331020.png)後，則表示牌譜已經成功記錄。
+2. 當再次出現![1675260159266](image/README_zh/1675260159266.png)，即可輸入下個牌譜。
 
 ## 功能
 * [x] 將牌譜記錄到Excel或html檔案中。
