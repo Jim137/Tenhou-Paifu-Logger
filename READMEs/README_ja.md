@@ -1,6 +1,6 @@
 # Tenhou Paifu Logger
 
-[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要情報とともに記録します。
 
@@ -31,10 +31,10 @@ ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要情報�
 
     log -l [言語] -o [出力ディレクトリ] [牌譜のURL]
 
-1. 一度 ![Enter URLs](image/README_ja/enter_url.png) が表示されると、牌譜のURLを貼り付けてEnterキーを押します。\
+2. 一度 ![Enter URLs](image/README_ja/enter_url.png) が表示されると、牌譜のURLを貼り付けてEnterキーを押します。\
 注意: 最新バージョンでは、一度に複数のURLを任意の区切り文字で区切って入力できます。 pre> 怠け者の場合は、何も貼り付けないでください。
-1. ![Recorded](image/README_ja/recorded.png) が表示された後、牌譜は正常に記録されます。
-2. 再び ![Enter URLs](image/README_ja/enter_url.png) が表示されると、次のURLを貼り付けることができます。
+3. ![Recorded](image/README_ja/recorded.png) が表示された後、牌譜は正常に記録されます。
+4. 再び ![Enter URLs](image/README_ja/enter_url.png) が表示されると、次のURLを貼り付けることができます。
 
 ## 機能
 * [x] いくつかの主要情報とともに牌譜をExcelまたはHTMLファイルに記録します。
