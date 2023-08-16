@@ -89,7 +89,7 @@ def log(args):
             print(local_str.hint_duplicate, url)
             continue
         try:
-            paifu = get_paifu(url, local_str)
+            paifu = get_paifu(url, local_str, args.mjai)
             if args.all_formats:
                 log_into_html(paifu, local_str, output)
                 log_into_xlsx(paifu, local_str, output)
@@ -139,6 +139,9 @@ if __name__ == '__main__':
                         "--version",
                         action="store_true",
                         help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.")
+    parser.add_argument("--mjai",
+                    action="store_true",
+                    help="Output MJAI format paifu.")
     # Args for Debugging
     parser.add_argument("--ignore-duplicated",
                         action="store_true",
