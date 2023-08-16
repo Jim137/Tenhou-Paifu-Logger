@@ -3,35 +3,20 @@
 check_pip() {
     pip install -r requirements.txt > /dev/null
     if [ $? = 0 ]; then
-        if [ $ALLFORMAT = true ]
-        then
-            start_all
-        else
             start
-        fi
     fi
     printf "Checking pip error"
     exit 1
 }
 
 start() {
-    "${python_cmd}" launch.py -l "$LANG" -f "$FORMAT" -o "$OUTPUT_DIR"
+    "${python_cmd}" launch.py $args
     if [ $? != 0 ]
     then
         printf "Error occurred"
         exit 1
     fi
     start
-}
-
-start_all() {
-    "${python_cmd}" launch.py -l "$LANG" --all-formats -o "$OUTPUT_DIR"
-    if [ $? != 0 ]
-    then
-        printf "Error occurred"
-        exit 1
-    fi
-    start_all
 }
 
 # python3 executable
@@ -58,6 +43,18 @@ fi
 if [ -z $OUTPUT_DIR ]
 then
     OUTPUT_DIR=./
+fi
+if [ -z $mjai ]
+then
+    mjai=false
+fi
+
+if [ $ALLFORMAT = true ]
+    then args="-l $LANG --all-formats -o $OUTPUT_DIR"
+    else args="-l $LANG -f $FORMAT -o $OUTPUT_DIR"
+fi
+if [ $mjai = true ]
+    then args="$args --mjai"
 fi
 
 if [ $skip_pip = true ]

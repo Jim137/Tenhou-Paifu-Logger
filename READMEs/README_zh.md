@@ -13,7 +13,7 @@
    
     `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
 
-    `pip install Tenhou-Paifu-Logger`
+    `pip install PaifuLogger`
     
 2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
   使用pip則運行以下命令。

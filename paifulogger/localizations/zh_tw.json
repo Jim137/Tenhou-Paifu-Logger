@@ -13,5 +13,7 @@
     "excelE": 11,
     "sanma": "三麻",
     "yonma": "四麻",
-    "hint_duplicate": "已記錄過此牌譜"
+    "hint_duplicate": "已記錄過此牌譜",
+    "sanma_mjai_error": "三麻對局尚不支援mjai牌譜格式",
+    "log2mjai_import_error": "找不到子模組 \"mjlog2mjai\"。請執行 `git pull --recurse-submodules`"
 }

@@ -25,7 +25,7 @@ ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要情報�
 
   >>i. コマンドラインを開き、次のコマンドを入力します。
 
-    pip install Tenhou-Paifu-Logger
+    pip install PaifuLogger
 
   >>ii. 天鳳.netから牌譜のURLをクリップボードにコピーします。次に、次のコマンドを入力します。
 
