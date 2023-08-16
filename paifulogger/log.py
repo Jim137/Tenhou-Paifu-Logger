@@ -89,7 +89,7 @@ def log(args):
             print(local_str.hint_duplicate, url)
             continue
         try:
-            paifu = get_paifu(url, local_str, args.mjai)
+            paifu = get_paifu(url, local_str, output, args.mjai)
             if args.all_formats:
                 log_into_html(paifu, local_str, output)
                 log_into_xlsx(paifu, local_str, output)
