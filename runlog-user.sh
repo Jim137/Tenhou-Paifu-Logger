@@ -19,7 +19,10 @@
 # export skip_pip=
 
 # Set language after LANG=, default is English
+# English: en
 # Traditional Chinese: zh_tw
+# Simplified Chinese: zh
+# Japanese: ja
 # export LANG=
 
 # Set format after FORMAT=, default is html
@@ -33,6 +36,8 @@
 # Set output directory after OUTPUT_DIR=, default is current directory
 # export OUTPUT_DIR=
 
+# Set mjai=true to generate mjai format paifu
+# export mjai=
 ###########################################
 
 . runlog.sh

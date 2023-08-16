@@ -2,7 +2,9 @@ name: Publish Python 🐍 distributions 📦 to PyPI
 
 on: 
   release:
-    types: [created]
+    types: [published]
+
+  workflow_dispatch:
 
 jobs:
     build-n-publish:
@@ -10,6 +12,8 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
+          with:
+            submodules: recursive
         - name: Set up Python
           uses: actions/setup-python@v4
           with:

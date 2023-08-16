@@ -1,6 +1,6 @@
 # 天鳳牌譜記錄器
 
-[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 快速記錄天鳳牌譜的工具。
 
@@ -13,7 +13,7 @@
    
     `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
 
-    `pip install Tenhou-Paifu-Logger`
+    `pip install PaifuLogger`
     
 2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
   使用pip則運行以下命令。
