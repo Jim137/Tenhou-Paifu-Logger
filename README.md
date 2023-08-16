@@ -42,6 +42,7 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 * [x] Skip duplicated paifu
 * [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
 * [x] Customized output directory (-o, --output)
+* [x] Support mjai format paifu output (--mjai). *You have to run `git pull --recurse-submodules` first*.
 * [x] Localization support (-l, --language)
   * [x] English: en
   * [x] Traditional Chinese: zh_tw
