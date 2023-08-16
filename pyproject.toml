@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PaifuLogger"
-version = "0.3.3"
+version = "0.3.3a"
 description = "Logging tenhou paifu into excel or html file with some key information."
 readme = "README.md"
 authors = [{ name = "Jim137", email = "jim@mail.jim137.eu.org" }]

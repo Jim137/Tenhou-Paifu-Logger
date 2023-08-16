@@ -1,6 +1,6 @@
 # 天鳳牌譜記錄器
 
-[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 快速記錄天鳳牌譜的工具。
 
