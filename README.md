@@ -1,12 +1,12 @@
 # Tenhou Paifu Logger
 
-[<img src="https://img.shields.io/pypi/v/Tenhou-Paifu-Logger?style=plastic"><img src="https://img.shields.io/pypi/wheel/Tenhou-Paifu-Logger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/)[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 Logging tenhou paifu into excel or html file with some key information.
 
 If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
 
-[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
+[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 
 ## Usage
 
@@ -16,7 +16,7 @@ If you like this project, please leave a star. It will be a great encouragement 
 
   >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
 
-     git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+    git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
 
   >>ii. Copy the paifu URL from tenhou.net to clipboard.
   >>iii. Open `runlog-user.bat`.
@@ -25,16 +25,16 @@ If you like this project, please leave a star. It will be a great encouragement 
 
   >>i. Open command line and type
 
-    pip install Tenhou-Paifu-Logger
+    pip install PaifuLogger
 
   >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
 
     log -l [language] -o [output directory] [paifu URLs]
 
-2. Once ![1675261153312](READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
+2. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
-3. After ![1675264143738](READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
-4. When ![1675261153312](READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
+3. After ![1675264143738](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
+4. When ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
 ## Features
 * [x] Log paifu into excel or html file with some key information.

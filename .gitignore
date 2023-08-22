@@ -5,6 +5,7 @@ Paifu/
 *.xlsx
 /runlog-user.bat
 my_runlog.bat
+debug.bat
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
