@@ -28,6 +28,7 @@ Homepage = "https://github.com/Jim137/Tenhou-Paifu-Logger"
 
 [project.scripts]
 log = "paifulogger.__main__:main"
+plog = "paifulogger.__main__:main"
 
 [tool.setuptools.packages.find]
 exclude = [
