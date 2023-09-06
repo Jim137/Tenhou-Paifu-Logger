@@ -3,7 +3,7 @@ import os
 
 from .url_request_handler import url_request_handler
 from .Paifu import Paifu
-from .local import local_str
+from .i18n import local_str
 
 
 def get_paifu(url: str, local_str: local_str, output: str, mjai: bool = False):
