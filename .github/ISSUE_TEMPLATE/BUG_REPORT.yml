@@ -1,0 +1,74 @@
+name: Bug report or Question
+description: Create a report to help us improve
+labels: ["bug"]
+assignees:
+  - Jim137
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        Please provide a brief description of the problem in the title.
+  - type: checkboxes
+    id: beforeraise
+    attributes:
+      label: Before raising the issue...
+      options:
+        - label: I've filled in a brief title.
+          required: true
+        - label: I've verified that the latest version has not fixed this problem and no one has previously reported this issue.
+          required: true
+  - type: dropdown
+    id: typequestion
+    attributes:
+      label: Issue types
+      description: Which kind of problem incurred?
+      options:
+        - Command Line
+        - Output files
+        - Localizations
+        - Other issues
+        - Unable to determine
+    validations:
+      required: true
+  - type: "textarea"
+    id: describe
+    attributes:
+      label: Issue description
+      description: |
+        Please provide a detailed description of the issue or error. If there is an error message, please paste it here.
+    validations:
+      required: true
+  - type: "textarea"
+    id: step
+    attributes:
+      label: Reproducing steps
+      description: |
+        What steps did you take when the issue occurred?
+    validations:
+      required: false
+  - type: "textarea"
+    id: config
+    attributes:
+      label: Relevant configurations
+      description: |
+        Please describe your environment configurations here, such as Python version or OS system.
+    validations:
+      required: false
+  - type: input
+    id: nativeLanguage
+    attributes:
+      label: Native Language
+      description: |
+        If you are not familiar with English, please fill in your native language to help us gather information more effectively.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checkagain
+    attributes:
+      label: Important notes
+      description: |
+        1. Please ensure that paifulogger version is up to date.
+        2. Please correctly install the requirements with `pip install -r requirements.txt` and submodules with `git pull --recurse-submodules`.
+      options:
+        - label: I've confirmed the above notes.
+          required: true
