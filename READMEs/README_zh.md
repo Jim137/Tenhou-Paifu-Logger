@@ -32,6 +32,7 @@
 * [x] 跳過已記錄過的牌譜。
 * [x] 重製已記錄過的牌譜（-r, --remake）。當我們更新了牌譜記錄的內容時，這個功能將會很有用。
 * [x] 指定輸出目錄（-o, --output）
+* [x] 支援mjai牌譜輸出（--mjai）。*首次需要先執行 `git pull --recurse-submodules`*。
 * [x] 本地化支援（-l, --language）
   * [x] 英文: en
   * [x] 繁體中文: zh_tw

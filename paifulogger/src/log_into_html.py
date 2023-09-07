@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from .get_place import get_place
 from .Paifu import Paifu
-from .local import local_str
+from .i18n import local_str
 
 
 def create_html(html_str, paifu_str, local_str: local_str):

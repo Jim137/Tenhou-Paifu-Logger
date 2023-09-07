@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from .local import local_str
+from .i18n import local_str
 
 
 def check_duplicate(url, local_str: local_str, output: str):
