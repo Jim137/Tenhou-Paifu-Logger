@@ -2,6 +2,7 @@ import urllib.request
 import argparse
 import re
 import os
+import sys
 from pandas import HDFStore, DataFrame
 
 from paifulogger import __version__
@@ -36,7 +37,7 @@ def log(args):
         output = args.output
     else:
         output = os.path.abspath('./')
-        
+
     # get urls
     urls = []
     if args.remake:
@@ -109,7 +110,7 @@ def log(args):
             print(local_str.hint_tw, url)
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("url",
                         nargs='*',
@@ -140,11 +141,16 @@ if __name__ == '__main__':
                         action="store_true",
                         help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.")
     parser.add_argument("--mjai",
-                    action="store_true",
-                    help="Output MJAI format paifu.")
+                        action="store_true",
+                        help="Output MJAI format paifu.")
     # Args for Debugging
     parser.add_argument("--ignore-duplicated",
                         action="store_true",
                         help=argparse.SUPPRESS)
     args = parser.parse_args()
     log(args)
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
