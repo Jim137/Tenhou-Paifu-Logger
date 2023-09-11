@@ -14,6 +14,16 @@ class Paifu():
         self.go_type_distinguish()
 
     def go_type_distinguish(self):
+        """
+        Distinguish the type of the game. And set the go_str and player_num.
+
+        ---
+
+        Examples:
+            三鳳南喰赤速 (go_type = 127) -> go_str = '三南喰赤速', player_num = 3
+
+        """
+
         self.go_str = ''
         if self.go_type & 1:
             # PVP
