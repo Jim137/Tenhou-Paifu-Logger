@@ -67,6 +67,8 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 ## Contribute
 We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.
 
+See [CONTRIBUTING.md](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/CONTRIBUTING.md) for more details.
+
 ## License
 
 [MIT](LICENSE)
