@@ -70,8 +70,10 @@ def log(args):
             if args.all_formats:
                 remove_old_paifu(paifu_str3, "html", output)
                 remove_old_paifu(paifu_str3, "xlsx", output)
+                remove_old_paifu(paifu_str3, "csv", output)
                 remove_old_paifu(paifu_str4, "html", output)
                 remove_old_paifu(paifu_str4, "xlsx", output)
+                remove_old_paifu(paifu_str4, "csv", output)
             else:
                 remove_old_paifu(paifu_str3, format, output)
                 remove_old_paifu(paifu_str4, format, output)
@@ -93,10 +95,13 @@ def log(args):
             if args.all_formats:
                 log_into_html(paifu, local_str, output)
                 log_into_xlsx(paifu, local_str, output)
+                log_into_csv(paifu, local_str, output)
             elif format == "xlsx":
                 log_into_xlsx(paifu, local_str, output)
             elif format == "html":
                 log_into_html(paifu, local_str, output)
+            elif format == "csv":
+                log_into_csv(paifu, local_str, output)
             if args.remake:
                 pass
             else:
@@ -122,8 +127,8 @@ def main():
         "-f",
         "--format",
         type=str,
-        help="Format of the output file. Default is xlsx. Available formats: xlsx, html.",
-        choices=["xlsx", "html"],
+        help="Format of the output file. Default is xlsx. Available formats: xlsx, html, csv.",
+        choices=["xlsx", "html", "csv"],
     )
     parser.add_argument(
         "-a", "--all-formats", action="store_true", help="Output all formats."
