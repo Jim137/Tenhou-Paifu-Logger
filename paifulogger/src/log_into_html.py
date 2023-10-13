@@ -1,6 +1,8 @@
 from datetime import datetime
+import io
 import re
 import pandas as pd
+
 from .get_place import get_place
 from .Paifu import Paifu
 from .i18n import local_str
@@ -65,7 +67,8 @@ def average_plc(html_str, local_str: local_str):
     </body>
     </html>
     '''
-    df = pd.read_html(html_p)[0]
+    wrapper = io.StringIO(html_p)
+    df = pd.read_html(wrapper)[0]
     avg_plc = df[f'{local_str.plc}'].mean()
     return avg_plc
 
