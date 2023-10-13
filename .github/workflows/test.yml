@@ -41,6 +41,6 @@ jobs:
                     # stop the build if there are Python syntax errors or undefined names
                     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
                     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-                    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --per-file-ignores="paifulogger/log.py:C901,F401,F403,F405,E501 paifulogger/src/__init__.py:F401" --exclude mjlog2mjai
+                    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --per-file-ignores="paifulogger/log.py:C901,F401,F403,F405,E501 paifulogger/src/__init__.py:F401 test/test.py:E402" --exclude mjlog2mjai
             -   name: Test with test
                 run: python ./test/test.py

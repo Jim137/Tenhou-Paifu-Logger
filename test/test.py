@@ -2,10 +2,10 @@ import argparse
 import os
 import sys
 
+sys.path.append(os.getcwd())
+
 from paifulogger import log
 
-
-sys.path.append(os.getcwd())
 
 ATTR = [
     "url",
