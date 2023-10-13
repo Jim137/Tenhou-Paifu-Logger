@@ -2,7 +2,7 @@
 
 [<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
-Logging tenhou paifu into excel or html file with some key information.
+Logging tenhou paifu into excel, csv or html file with some key information.
 
 If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
 
@@ -37,7 +37,7 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 4. When ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
 
 ## Features
-* [x] Log paifu into excel or html file with some key information.
+* [x] Log paifu into excel, csv or html file with some key information. (-f, --format)
 * [x] Distinguish Sanma(3p) and Yonma(4p) and log into separate sheets.
 * [x] Skip duplicated paifu
 * [x] Remake the paifu with URL already logged (-r, --remake). It will be useful when we updated the logging information in future.
