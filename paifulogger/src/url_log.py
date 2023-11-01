@@ -8,7 +8,7 @@ Log File:
     you log the first URL.
 
 Functions:
-    - url_log(url, local_str: local_str, output: str) -> Non:
+    - url_log(url, local_str: local_str, output: str) -> None:
         Logs the given URL to the log file.
 
     - check_duplicate(url, local_str: local_str, output: str) -> bool:
