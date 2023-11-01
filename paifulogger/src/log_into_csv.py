@@ -46,4 +46,5 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
         + re.findall(r"\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d", paifu.url)[0]
         + local_str.hint_record2
     )
+    csvfile.close()
     return None
