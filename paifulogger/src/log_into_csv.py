@@ -23,7 +23,7 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
         writer = csv.writer(csvfile)
         writer.writerow(
             [
-                "id",
+                "# id",
                 local_str.date,
                 local_str.plc,
                 local_str.paifu,
