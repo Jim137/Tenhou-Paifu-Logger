@@ -15,5 +15,5 @@
     "yonma": "四麻",
     "hint_duplicate": "已记录过此牌谱",
     "sanma_mjai_error": "三麻对局尚不持mjai牌谱格式",
-    "log2mjai_import_error": "找不到子模块 \"mjlog2mjai\"。请执行 `git pull --recurse-submodules`"
+    "log2mjai_import_error": "找不到子模块 \"mjlog2mjai\"。请执行 `git pull --recurse-submodules` 或 `git submodule update --init --recursive` 来更新子模块。"
 }

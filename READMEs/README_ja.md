@@ -67,6 +67,8 @@ ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要情報�
 ## 貢献
 バグ報告、プルリクエスト、機能要求、ドキュメントの改善、ローカリゼーションなど、さまざまな貢献を歓迎します。
 
+詳細については、[CONTRIBUTING.md](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/CONTRIBUTING.md) をご覧ください。
+
 ## ライセンス
 
 [MIT](LICENSE)

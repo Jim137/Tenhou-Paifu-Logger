@@ -57,5 +57,7 @@
 ## 做出貢獻
 我們歡迎各種貢獻，包括但不限於回報bug、PR、功能要求、文件改進、本地化...等。
 
+參見[CONTRIBUTING.md](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/CONTRIBUTING.md)取得更多訊息。
+
 ## 授權
 [MIT](LICENSE)
