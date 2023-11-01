@@ -16,10 +16,10 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
         paifu_str = local_str.yonma + local_str.paifu
     path = f"{output}/{local_str.paifu}/{paifu_str}.csv"
     if os.path.isfile(path):
-        csvfile = open(path, "a+")
+        csvfile = open(path, "a+", encoding="utf-8")
         writer = csv.writer(csvfile)
     else:
-        csvfile = open(path, "w")
+        csvfile = open(path, "w", encoding="utf-8")
         writer = csv.writer(csvfile)
         writer.writerow(
             [
