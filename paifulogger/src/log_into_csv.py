@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 import re
 import os.path
-import pandas as pd
+from pandas import read_csv
 
 from .get_place import get_place
 from .Paifu import Paifu
@@ -30,7 +30,7 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
                 local_str.preR,
             ]
         )
-    df = pd.read_csv(path, index_col=0)
+    df = read_csv(path, index_col=0)
     writer.writerow(
         [
             df.shape[0],

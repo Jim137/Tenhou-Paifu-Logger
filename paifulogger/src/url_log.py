@@ -25,7 +25,7 @@ def check_duplicate(url, local_str: local_str, output: str) -> bool:
     path = f"{output}/{local_str.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)
-    store = pd.HDFStore(f"{path}/url_log.h5")
+    store = HDFStore(f"{path}/url_log.h5")
     if "url" not in store:
         store["url"] = DataFrame(columns=["url"])
     duplicated = url.split("//")[1] in store["url"]["url"].values
@@ -37,7 +37,7 @@ def url_log(url, local_str: local_str, output: str) -> None:
     path = f"{output}/{local_str.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)
-    store = pd.HDFStore(f"{path}/url_log.h5")
+    store = HDFStore(f"{path}/url_log.h5")
     if "url" not in store:
         store["url"] = DataFrame(columns=["url"])
     urls = store["url"]
