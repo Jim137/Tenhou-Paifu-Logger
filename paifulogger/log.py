@@ -11,9 +11,9 @@ from .src import *
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
-def remove_old_paifu(paifu_str: str, format):
-    if os.path.exists(f"./{paifu_str}.{format}"):
-        os.remove(f"./{paifu_str}.{format}")
+def remove_old_paifu(paifu_str: str, format, output):
+    if os.path.exists(f"{output}/{paifu_str}.{format}"):
+        os.remove(f"{output}/{paifu_str}.{format}")
     return None
 
 
