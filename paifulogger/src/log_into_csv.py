@@ -2,7 +2,8 @@ import csv
 from datetime import datetime
 import re
 import os.path
-from pandas import read_csv
+from pandas import read_csv, DataFrame
+import pandas.errors
 
 from .get_place import get_place
 from .Paifu import Paifu
@@ -30,7 +31,10 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
                 local_str.preR,
             ]
         )
-    df = read_csv(path, index_col=0, encoding="utf-8")
+    try:
+        df = read_csv(path, index_col=0, encoding="utf-8")
+    except pandas.errors.EmptyDataError:
+        df = DataFrame(columns=["id", "date", "plc", "paifu", "preR"])
     writer.writerow(
         [
             df.shape[0],
