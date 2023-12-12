@@ -10,6 +10,7 @@ from .i18n import local_str
 
 
 def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
+    breakpoint()
     if paifu.player_num == 3:
         paifu_str = local_str.sanma + local_str.paifu
     else:
@@ -30,7 +31,10 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
                 local_str.preR,
             ]
         )
-    df = pd.read_csv(path, index_col=0, encoding="utf-8")
+    try:
+        df = pd.read_csv(path, index_col=0, encoding="utf-8")
+    except pd.errors.EmptyDataError:
+        df = pd.DataFrame(columns=["id", "date", "plc", "paifu", "preR"])
     writer.writerow(
         [
             df.shape[0],
