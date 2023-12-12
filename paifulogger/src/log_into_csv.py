@@ -10,7 +10,6 @@ from .i18n import local_str
 
 
 def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
-    breakpoint()
     if paifu.player_num == 3:
         paifu_str = local_str.sanma + local_str.paifu
     else:
