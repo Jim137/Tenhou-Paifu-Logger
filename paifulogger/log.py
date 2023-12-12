@@ -1,5 +1,6 @@
-import urllib.request
 import argparse
+from functools import partial
+import urllib.request
 import re
 import os
 import sys
@@ -9,11 +10,13 @@ from paifulogger import __version__
 from .src import *
 
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
+avaiable_formats = ["xlsx", "html", "csv"]
 
 
-def remove_old_paifu(paifu_str: str, format, output):
-    if os.path.exists(f"{output}/{paifu_str}.{format}"):
-        os.remove(f"{output}/{paifu_str}.{format}")
+def remove_old_paifu(paifu_str: str, formats, output):
+    for format in formats:
+        if os.path.exists(f"{output}/{paifu_str}.{format}"):
+            os.remove(f"{output}/{paifu_str}.{format}")
     return None
 
 
@@ -58,9 +61,9 @@ def log(args):
 
     # get format
     if args.format:
-        format = args.format
+        formats = args.format
     else:
-        format = "xlsx"
+        formats = ["xlsx"]
 
     # if remake, remove old files
     if args.remake:
@@ -68,17 +71,29 @@ def log(args):
         paifu_str4 = local_str.paifu + "/" + local_str.yonma + local_str.paifu
         try:
             if args.all_formats:
-                remove_old_paifu(paifu_str3, "html", output)
-                remove_old_paifu(paifu_str3, "xlsx", output)
-                remove_old_paifu(paifu_str3, "csv", output)
-                remove_old_paifu(paifu_str4, "html", output)
-                remove_old_paifu(paifu_str4, "xlsx", output)
-                remove_old_paifu(paifu_str4, "csv", output)
+                remove_old_paifu(paifu_str3, avaiable_formats, output)
+                remove_old_paifu(paifu_str4, avaiable_formats, output)
             else:
-                remove_old_paifu(paifu_str3, format, output)
-                remove_old_paifu(paifu_str4, format, output)
+                remove_old_paifu(paifu_str3, formats, output)
+                remove_old_paifu(paifu_str4, formats, output)
         except OSError:
             pass
+
+    # Parsing different formats log function
+    if args.all_formats:
+        log_formats = [
+            log_into_xlsx,
+            log_into_html,
+            log_into_csv,
+        ]
+    else:
+        log_formats = []
+        if "xlsx" in formats:
+            log_formats.append(log_into_xlsx)
+        if "html" in formats:
+            log_formats.append(log_into_html)
+        if "csv" in formats:
+            log_formats.append(log_into_csv)
 
     # log
     for url in urls:
@@ -92,16 +107,8 @@ def log(args):
             continue
         try:
             paifu = get_paifu(url, local_str, output, args.mjai)
-            if args.all_formats:
-                log_into_html(paifu, local_str, output)
-                log_into_xlsx(paifu, local_str, output)
-                log_into_csv(paifu, local_str, output)
-            elif format == "xlsx":
-                log_into_xlsx(paifu, local_str, output)
-            elif format == "html":
-                log_into_html(paifu, local_str, output)
-            elif format == "csv":
-                log_into_csv(paifu, local_str, output)
+            for log_into_format in log_formats:
+                log_into_format(paifu, local_str, output)
             if args.remake:
                 pass
             else:
@@ -126,9 +133,10 @@ def main():
     parser.add_argument(
         "-f",
         "--format",
+        action="append",
         type=str,
         help="Format of the output file. Default is xlsx. Available formats: xlsx, html, csv.",
-        choices=["xlsx", "html", "csv"],
+        choices=avaiable_formats,
     )
     parser.add_argument(
         "-a", "--all-formats", action="store_true", help="Output all formats."
