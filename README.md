@@ -14,24 +14,31 @@ If you like this project, please leave a star. It will be a great encouragement 
 
 1. Download the project.
 
-  >a. Download from github.
+> a. Download from github.
+>
+>> i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
+>>
+>> ```
+>> git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+>> ```
+>>
+>> ii. Copy the paifu URL from tenhou.net to clipboard.
+>>
+>> iii. Open `runlog-user.bat`.
 
-  >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
-
-    git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
-
-  >>ii. Copy the paifu URL from tenhou.net to clipboard.
-  >>iii. Open `runlog-user.bat`.
-    
-  >b. Download from pypi.
-
-  >>i. Open command line and type
-
-    pip install PaifuLogger
-
-  >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
-
-    log -l [language] -o [output directory] [paifu URLs]
+>b. Download from pypi.
+>
+>> i. Open command line and type
+>>
+>> ```
+>> pip install PaifuLogger
+>> ```
+>>
+>> ii. Copy the paifu URL from tenhou.net to clipboard. And type
+>>
+>> ```
+>> log -l [language] -o [output directory] [paifu URLs]
+>> ```
 
 2. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
