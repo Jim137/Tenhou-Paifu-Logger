@@ -14,24 +14,31 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
 
 1. プロジェクトをダウンロードします。
 
-  >a. GitHubからダウンロードします。
-
-  >>i. リポジトリをクローンするか、[最新リリース](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)をダウンロードします。
-
-     git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
-
-  >>ii. 天鳳.netから牌譜のURLをクリップボードにコピーします。
-  >>iii. `runlog-user.bat`を開きます。
-    
-  >b. PyPIからダウンロードします。
-
-  >>i. コマンドラインを開き、次のコマンドを入力します。
-
-    pip install PaifuLogger
-
-  >>ii. 天鳳.netから牌譜のURLをクリップボードにコピーします。次に、次のコマンドを入力します。
-
-    log -l [言語] -o [出力ディレクトリ] [牌譜のURL]
+> a. GitHubからダウンロードします。
+>
+>> i. リポジトリをクローンするか、[最新リリース](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)をダウンロードします。
+>>
+>> ```
+>> git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+>> ```
+>>
+>> ii. 天鳳.netから牌譜のURLをクリップボードにコピーします。
+>>
+>> iii. `runlog-user.bat`を開きます。
+  
+> b. PyPIからダウンロードします。
+>
+>> i. コマンドラインを開き、次のコマンドを入力します。
+>>
+>> ```
+>> pip install PaifuLogger
+>> ```
+>>
+>>ii. 天鳳.netから牌譜のURLをクリップボードにコピーします。次に、次のコマンドを入力します。
+>>
+>> ```
+>> log -l [言語] -o [出力ディレクトリ] [牌譜のURL]
+>> ```
 
 2. 一度 ![Enter URLs](image/README_ja/enter_url.png) が表示されると、牌譜のURLを貼り付けてEnterキーを押します。\
 注意: 最新バージョンでは、一度に複数のURLを任意の区切り文字で区切って入力できます。 pre> 怠け者の場合は、何も貼り付けないでください。
