@@ -25,8 +25,8 @@ If you like this project, please leave a star. It will be a great encouragement 
 >> ii. Copy the paifu URL from tenhou.net to clipboard.
 >>
 >> iii. Open `runlog-user.bat`.
-
->b. Download from pypi.
+>
+> b. Download from pypi.
 >
 >> i. Open command line and type
 >>
