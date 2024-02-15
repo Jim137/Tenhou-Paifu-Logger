@@ -23,7 +23,6 @@ pause
 exit
 
 :start
-if %ALLFORMAT% == true goto:start_all
 python launch.py %args%
 if %ERRORLEVEL% == 1 goto:error
 goto:start
