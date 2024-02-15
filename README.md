@@ -1,6 +1,13 @@
 # Tenhou Paifu Logger
 
-[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[![build](https://github.com/Jim137/Tenhou-Paifu-Logger/workflows/build/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions?query=workflow%3Abuild)
+[![lint](https://github.com/Jim137/Tenhou-Paifu-Logger/workflows/lint/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions?query=workflow%3ALint)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/)
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/)
+[<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+![support-version](https://img.shields.io/pypi/pyversions/PaifuLogger?style=plastic)
+![platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgray?style=plastic)
+![License](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 Logging tenhou paifu into excel, csv or html file with some key information.
 
@@ -25,8 +32,8 @@ If you like this project, please leave a star. It will be a great encouragement 
 >> ii. Copy the paifu URL from tenhou.net to clipboard.
 >>
 >> iii. Open `runlog-user.bat`.
-
->b. Download from pypi.
+>
+> b. Download from pypi.
 >
 >> i. Open command line and type
 >>
