@@ -6,11 +6,11 @@ from .Paifu import Paifu
 from .i18n import local_str
 
 
-def get_paifu(url: str, local_str: local_str, output: str, mjai: bool = False):
+def get_paifu(url: str, local_lang: local_str, output: str, mjai: bool = False):
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
-    path = f"{output}/{local_str.paifu}/{paifu.go_str}/"
+    path = f"{output}/{local_lang.paifu}/{paifu.go_str}/"
     if not os.path.isdir(path):
         os.makedirs(path)
 
@@ -21,13 +21,13 @@ def get_paifu(url: str, local_str: local_str, output: str, mjai: bool = False):
     # mjai format output
     if mjai:
         if paifu.player_num == 3:
-            print(local_str.sanma_mjai_error)
+            print(local_lang.sanma_mjai_error)
             return paifu
 
         try:
             from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
         except ImportError:
-            print(local_str.log2mjai_import_error)
+            print(local_lang.log2mjai_import_error)
             return paifu
         if not os.path.isdir(path + "/mjai/"):
             os.makedirs(path + "/mjai/")

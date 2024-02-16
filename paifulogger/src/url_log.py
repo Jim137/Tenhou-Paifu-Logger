@@ -8,10 +8,10 @@ Log File:
     you log the first URL.
 
 Functions:
-    - url_log(url, local_str: local_str, output: str) -> None:
+    - url_log(url, local_lang: local_str, output: str) -> None:
         Logs the given URL to the log file.
 
-    - check_duplicate(url, local_str: local_str, output: str) -> bool:
+    - check_duplicate(url, local_lang: local_str, output: str) -> bool:
         Checks if the given URL already exists in the log file.
 
 """
@@ -22,8 +22,8 @@ import os
 from .i18n import local_str
 
 
-def check_duplicate(url, local_str: local_str, output: str) -> bool:
-    path = f"{output}/{local_str.paifu}"
+def check_duplicate(url, local_lang: local_str, output: str) -> bool:
+    path = f"{output}/{local_lang.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)
     store = pd.HDFStore(f"{path}/url_log.h5")
@@ -34,8 +34,8 @@ def check_duplicate(url, local_str: local_str, output: str) -> bool:
     return duplicated
 
 
-def url_log(url, local_str: local_str, output: str) -> None:
-    path = f"{output}/{local_str.paifu}"
+def url_log(url, local_lang: local_str, output: str) -> None:
+    path = f"{output}/{local_lang.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)
     store = pd.HDFStore(f"{path}/url_log.h5")
