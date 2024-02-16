@@ -40,6 +40,8 @@ def log(args):
         output = os.path.abspath("./")
 
     # get urls
+    # if remake, get urls from url_log.h5
+    # if not remake, get urls from input or args.url
     urls = []
     if args.remake:
         store = HDFStore(f"{output}/{local_str.paifu}/url_log.h5")
@@ -56,7 +58,8 @@ def log(args):
         for url in re.findall(url_reg, input(local_str.hint_input)):
             urls.append(url)
     else:
-        urls = args.url
+        for url in args.url:
+            urls.extend(re.findall(url_reg, url))
 
     # get format
     if args.format:
