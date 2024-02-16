@@ -85,15 +85,23 @@ def _get_urls(
     urls = []
     if args.remake:
         store = HDFStore(f"{output}/{local_lang.paifu}/url_log.h5")
-        if "url" not in store:
-            store["url"] = DataFrame(columns=["url"])
-        urlstore = store["url"]["url"].values
-        for url in urlstore:
-            if not re.match(url_reg, url):
-                urls.append("https://" + url)
-                continue
-            urls.append(url)
-        store.close()
+        try:
+            # Special case: if "url" not in store, add it.
+            # It will be deprecated in the future.
+            if "url" not in store:
+                store["url"] = DataFrame(columns=["url"])
+            
+            urlstore = store["url"]["url"].values
+            for url in urlstore:
+                # Special case: if the url does not start with "https://", add it.
+                # It will be deprecated in the future.
+                if not re.match(url_reg, url):
+                    urls.append("https://" + url)
+                    continue
+
+                urls.append(url)
+        finally:
+            store.close()
     elif not args.url:
         for url in re.findall(url_reg, input(local_lang.hint_input)):
             urls.append(url)
