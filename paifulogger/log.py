@@ -5,7 +5,13 @@ import os
 import sys
 from pandas import HDFStore, DataFrame
 
-from .src import *
+from .src.get_paifu import get_paifu
+from .src.i18n import localized_str, local_str
+from .src.log_into_csv import log_into_csv
+from .src.log_into_xlsx import log_into_xlsx
+from .src.log_into_html import log_into_html
+from .src.url_log import url_log, check_duplicate
+
 
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 avaiable_formats = ["xlsx", "html", "csv"]
@@ -90,7 +96,7 @@ def _get_urls(
             # It will be deprecated in the future.
             if "url" not in store:
                 store["url"] = DataFrame(columns=["url"])
-            
+
             urlstore = store["url"]["url"].values
             for url in urlstore:
                 # Special case: if the url does not start with "https://", add it.

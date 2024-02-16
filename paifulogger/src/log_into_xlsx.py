@@ -3,8 +3,8 @@ from datetime import datetime
 import re
 
 from .get_place import get_place
-from .Paifu import Paifu
 from .i18n import local_str
+from .Paifu import Paifu
 
 
 def log_into_xlsx(paifu: Paifu, local_lang: local_str, output: str):

@@ -5,8 +5,8 @@ import os.path
 import pandas as pd
 
 from .get_place import get_place
-from .Paifu import Paifu
 from .i18n import local_str
+from .Paifu import Paifu
 
 
 def log_into_csv(paifu: Paifu, local_lang: local_str, output: str):

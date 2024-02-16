@@ -1,9 +1,9 @@
 import xml.etree.ElementTree as ET
 import os
 
-from .url_request_handler import url_request_handler
-from .Paifu import Paifu
 from .i18n import local_str
+from .Paifu import Paifu
+from .url_request_handler import url_request_handler
 
 
 def get_paifu(url: str, local_lang: local_str, output: str, mjai: bool = False):

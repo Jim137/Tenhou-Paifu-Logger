@@ -4,8 +4,8 @@ import re
 import pandas as pd
 
 from .get_place import get_place
-from .Paifu import Paifu
 from .i18n import local_str
+from .Paifu import Paifu
 
 
 def create_html(html_str, paifu_str, local_lang: local_str):
