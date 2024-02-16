@@ -8,7 +8,7 @@ from .src.get_paifu import get_paifu
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
-def _get_urls(urls, local_lang: local_str, output: str) -> list[str]:
+def _get_urls(urls, local_lang: local_str) -> list[str]:
     """
     Get urls from input or args.url.
 
