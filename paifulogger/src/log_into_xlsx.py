@@ -1,6 +1,7 @@
 import openpyxl as xl
 from datetime import datetime
 import re
+
 from .get_place import get_place
 from .Paifu import Paifu
 from .i18n import local_str

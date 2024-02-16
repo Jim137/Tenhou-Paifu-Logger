@@ -1,5 +1,4 @@
 import argparse
-from functools import partial
 import urllib.request
 import re
 import os
