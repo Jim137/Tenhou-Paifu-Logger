@@ -22,6 +22,17 @@ ATTR = [
 
 
 class Test(unittest.TestCase):
+    def test0(self):
+        parser = argparse.ArgumentParser()
+        args = parser.parse_args()
+
+        for attr in ATTR:
+            setattr(args, attr.replace("-", "_"), None)
+
+        args.version = True
+
+        self.assertRaises(Exception, log.log(args))
+
     def test1(self):
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
