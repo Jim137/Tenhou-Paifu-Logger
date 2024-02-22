@@ -178,19 +178,40 @@ def _get_log_func(args: argparse.Namespace, formats: list[str]) -> list:
     return log_formats
 
 
-def _log(
+def log_paifu(
     urls: list[str],
-    local_lang: local_str,
-    output: str,
+    *,
     log_formats: list,
+    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    output: str = "./",
     remake: bool = False,
     ignore_duplicated: bool = False,
     mjai: bool = False,
-):
+) -> int:
     """
     Log the paifu files
+
+    Args:
+        urls: list[str]
+            The urls of the paifu files.
+        log_formats: list
+            The list of log functions.
+        local_lang: local_str
+            The localized string.
+        output: str
+            The output directory.
+        remake: bool
+            Remake the log file from url_log.h5.
+        ignore_duplicated: bool
+            Ignore duplicated urls.
+        mjai: bool
+            Output MJAI format paifu.
+
+    Returns:
+        int
     """
 
+    success = []
     for url in urls:
         if not re.match(url_reg, url):
             print(local_lang.hint_url, url)
@@ -208,16 +229,20 @@ def _log(
                 pass
             else:
                 url_log(url, local_lang, output)
-        except OSError:
-            print(local_lang.hint_url, url)
+            success.append(0)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
+            success.append(1)
+        except OSError:
+            print(local_lang.hint_url, url)
+            success.append(1)
         except ValueError:
             print(local_lang.hint_tw, url)
-    return None
+            success.append(1)
+    return max(success)
 
 
-def log(args: argparse.Namespace):
+def log(args: argparse.Namespace) -> int:
     """
     Parse the arguments and log the paifu files.
     """
@@ -241,14 +266,14 @@ def log(args: argparse.Namespace):
         _remake_log(args, local_lang, output, formats)
 
     log_formats = _get_log_func(args, formats)
-    _log(
+    return log_paifu(
         urls,
-        local_lang,
-        output,
-        log_formats,
-        args.remake,
-        args.ignore_duplicated,
-        args.mjai,
+        log_formats=log_formats,
+        local_lang=local_lang,
+        output=output,
+        remake=args.remake,
+        ignore_duplicated=args.ignore_duplicated,
+        mjai=args.mjai,
     )
 
 
@@ -293,8 +318,7 @@ def main():
         "--ignore-duplicated", action="store_true", help=argparse.SUPPRESS
     )
     args = parser.parse_args()
-    log(args)
-    return 0
+    return log(args)
 
 
 if __name__ == "__main__":
