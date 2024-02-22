@@ -50,7 +50,7 @@ def paifu_dl(
     if isinstance(urls, str):
         urls = [urls]
 
-    check_urls = _get_urls(urls, local_lang, output)
+    check_urls = _get_urls(urls, local_lang)
 
     for url in check_urls:
         try:
