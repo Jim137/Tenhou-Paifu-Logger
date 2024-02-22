@@ -45,51 +45,54 @@ def remove_old_paifu(paifu_str: str, formats, output) -> None:
     return None
 
 
-def _get_lang(args: argparse.Namespace):
+def _get_lang(lang: str | None = None) -> local_str:
     """
     Get the localized string.
 
     If not given, use English.
     """
 
-    if args.lang:
-        lang = args.lang
+    if lang:
+        _lang = lang
     else:
-        lang = "en"
+        _lang = "en"
     main_path = os.path.dirname(os.path.abspath(__file__))
-    local_lang = localized_str(lang, main_path)
+    local_lang = localized_str(_lang, main_path)
     return local_lang
 
 
-def _get_output(args: argparse.Namespace) -> str:
+def _get_output(output: str = "./") -> str:
     """
     Get output directory from args.output.
 
     If not given, use current directory "./".
     """
 
-    if args.output:
-        output = args.output
+    if output:
+        _output = output
     else:
-        output = os.path.abspath("./")
-    return output
+        _output = os.path.abspath("./")
+    return _output
 
 
 def _get_urls(
-    args: argparse.Namespace, local_lang: local_str, output: str
+    url: list[str] | None = None,
+    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    output: str = "./",
+    remake: bool = False,
 ) -> list[str]:
     """
     Get urls from input or args.url.
 
     If remake, get urls from url_log.h5
-    Else if not given args.url, get urls from input.
+    Else if not given url, get urls from input.
 
     Note:
         re.findall(url_reg, url) will return a list of urls that match the regular expression.
     """
 
     urls = []
-    if args.remake:
+    if remake:
         store = HDFStore(f"{output}/{local_lang.paifu}/url_log.h5")
         try:
             # Special case: if "url" not in store, add it.
@@ -108,31 +111,31 @@ def _get_urls(
                 urls.append(url)
         finally:
             store.close()
-    elif not args.url:
-        for url in re.findall(url_reg, input(local_lang.hint_input)):
-            urls.append(url)
+    elif not url:
+        for _url in re.findall(url_reg, input(local_lang.hint_input)):
+            urls.append(_url)
     else:
-        for url in args.url:
-            urls.extend(re.findall(url_reg, url))
+        for _url in url:
+            urls.extend(re.findall(url_reg, _url))
     return urls
 
 
-def _get_formats(args: argparse.Namespace) -> list:
+def _get_formats(format: list[str] | None = None) -> list:
     """
     Get formats from args.format.
 
     If not given, return ["xlsx"].
     """
 
-    if args.format:
-        formats = args.format
+    if format:
+        formats = format
     else:
         formats = ["xlsx"]
     return formats
 
 
 def _remake_log(
-    args: argparse.Namespace, local_lang: local_str, output: str, formats: list[str]
+    local_lang: local_str, output: str, formats: list[str], all_formats: bool = False
 ) -> None:
     """
     Remake the log file from url_log.h5 (past logging log).
@@ -141,7 +144,7 @@ def _remake_log(
     paifu_str3 = local_lang.paifu + "/" + local_lang.sanma + local_lang.paifu
     paifu_str4 = local_lang.paifu + "/" + local_lang.yonma + local_lang.paifu
     try:
-        if args.all_formats:
+        if all_formats:
             remove_old_paifu(paifu_str3, avaiable_formats, output)
             remove_old_paifu(paifu_str4, avaiable_formats, output)
         else:
@@ -152,16 +155,16 @@ def _remake_log(
     return None
 
 
-def _get_log_func(args: argparse.Namespace, formats: list[str]) -> list:
+def _get_log_func(formats: list[str], all_formats: bool = False) -> list:
     """
     Parse the formats and return the corresponding log functions.
 
-    If args.all_formats, return all log functions.
+    If all_formats, return all log functions.
     """
 
     assert formats, "No format is given."
 
-    if args.all_formats:
+    if all_formats:
         log_formats = [
             log_into_xlsx,
             log_into_html,
@@ -256,16 +259,16 @@ def log(args: argparse.Namespace) -> int:
         print("Tenhou-Paifu-Logger", __version__)
         return None
 
-    local_lang = _get_lang(args)
-    output = _get_output(args)
-    urls = _get_urls(args, local_lang, output)
-    formats = _get_formats(args)
+    local_lang = _get_lang(args.lang)
+    output = _get_output(args.output)
+    urls = _get_urls(args.url, local_lang, output, args.remake)
+    formats = _get_formats(args.format)
 
     # if remake, remove old files
     if args.remake:
-        _remake_log(args, local_lang, output, formats)
+        _remake_log(local_lang, output, formats, args.all_formats)
 
-    log_formats = _get_log_func(args, formats)
+    log_formats = _get_log_func(formats, args.all_formats)
     return log_paifu(
         urls,
         log_formats=log_formats,
