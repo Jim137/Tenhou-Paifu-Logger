@@ -4,6 +4,7 @@ import re
 import os
 import sys
 from pandas import HDFStore, DataFrame
+import warnings
 
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, local_str
@@ -82,7 +83,7 @@ def _get_urls(
     remake: bool = False,
 ) -> list[str]:
     """
-    Get urls from input or args.url.
+    Get urls from input or url.
 
     If remake, get urls from url_log.h5
     Else if not given url, get urls from input.
@@ -99,6 +100,13 @@ def _get_urls(
             # It will be deprecated in the future.
             if "url" not in store:
                 store["url"] = DataFrame(columns=["url"])
+                warnings.warn(
+                    """The url_log.h5 you used is deprecated. 
+                    You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
+                    The new url_log.h5 will be automatically created.
+                    """,
+                    DeprecationWarning,
+                )
 
             urlstore = store["url"]["url"].values
             for url in urlstore:
@@ -106,6 +114,13 @@ def _get_urls(
                 # It will be deprecated in the future.
                 if not re.match(url_reg, url):
                     urls.append("https://" + url)
+                    warnings.warn(
+                        """The url_log.h5 you used is deprecated. 
+                        You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
+                        The new url_log.h5 will be automatically created.
+                        """,
+                        DeprecationWarning,
+                    )
                     continue
 
                 urls.append(url)
