@@ -18,6 +18,10 @@ If you like this project, please leave a star. It will be a great encouragement 
 
 [Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 
+## Requirements
+
+* Python 3.10 or later
+
 ## Usage
 
 1. Download the project.
