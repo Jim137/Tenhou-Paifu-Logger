@@ -37,6 +37,9 @@ def remove_old_paifu(paifu_str: str, formats, output) -> None:
 
     Examples:
         >>> remove_old_paifu("paifu", ["xlsx", "html", "csv"], "./")
+        paifu.xlsx has been removed.
+        paifu.html has been removed.
+        paifu.csv has been removed.
     """
 
     for format in formats:
@@ -89,7 +92,7 @@ def _get_urls(
     Else if not given url, get urls from input.
 
     Note:
-        re.findall(url_reg, url) will return a list of urls that match the regular expression.
+        `re.findall(url_reg, _url)` will return a list of urls that match the regular expression.
     """
 
     urls = []

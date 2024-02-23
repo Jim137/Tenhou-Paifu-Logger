@@ -16,7 +16,7 @@ def _get_urls(urls, local_lang: local_str) -> list[str]:
     Else if not given args.url, get urls from input.
 
     Note:
-        re.findall(url_reg, url) will return a list of urls that match the regular expression.
+        `re.findall(url_reg, url)` will return a list of urls that match the regular expression.
     """
 
     check_urls = []
@@ -42,9 +42,12 @@ def paifu_dl(
     Args:
         urls: str | list[str]
             The url of the game log.
-
-    Returns:
-        None
+        local_lang: local_str
+            The localized string.
+        output: str
+            The output directory.
+        mjai: bool
+            If True, download MJAI format.
     """
 
     if isinstance(urls, str):
