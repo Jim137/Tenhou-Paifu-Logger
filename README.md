@@ -22,6 +22,14 @@ If you like this project, please leave a star. It will be a great encouragement 
 
 * Python 3.10 or later
 
+Since CLI-0.3.8, the project is only compatible with Python 3.10 or later.
+For Python 3.9 or earlier users, please use [CLI-0.3.7.1](https://github.com/Jim137/Tenhou-Paifu-Logger/tree/CLI-0.3.7.1) which is the last version that supports Python 3.9 or earlier.
+Or download from pypi with the following command.
+
+```
+pip install PaifuLogger==0.3.7.1
+```
+
 ## Usage
 
 1. Download the project.
