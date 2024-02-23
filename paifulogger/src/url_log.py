@@ -41,7 +41,11 @@ def url_log(url, local_lang: local_str, output: str) -> None:
     store = pd.HDFStore(f"{path}/url_log.h5")
     if "url" not in store:
         store["url"] = pd.DataFrame(columns=["url"])
+    if url.split("//")[1] in store["url"]["url"].values:
+        store.close()
+        return None
     urls = store["url"]
     urls.loc[len(urls)] = url.split("//")[1]
     store["url"] = urls
     store.close()
+    return None
