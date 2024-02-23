@@ -1,5 +1,5 @@
-import urllib.request
 import gzip
+import urllib.request
 
 HEADER = {
     "Host": "e.mjv.jp",

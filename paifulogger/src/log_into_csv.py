@@ -5,16 +5,16 @@ import os.path
 import pandas as pd
 
 from .get_place import get_place
-from .Paifu import Paifu
 from .i18n import local_str
+from .Paifu import Paifu
 
 
-def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
+def log_into_csv(paifu: Paifu, local_lang: local_str, output: str):
     if paifu.player_num == 3:
-        paifu_str = local_str.sanma + local_str.paifu
+        paifu_str = local_lang.sanma + local_lang.paifu
     else:
-        paifu_str = local_str.yonma + local_str.paifu
-    path = f"{output}/{local_str.paifu}/{paifu_str}.csv"
+        paifu_str = local_lang.yonma + local_lang.paifu
+    path = f"{output}/{local_lang.paifu}/{paifu_str}.csv"
     if os.path.isfile(path):
         csvfile = open(path, "a+", encoding="utf-8")
         writer = csv.writer(csvfile)
@@ -24,10 +24,10 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
         writer.writerow(
             [
                 "# id",
-                local_str.date,
-                local_str.plc,
-                local_str.paifu,
-                local_str.preR,
+                local_lang.date,
+                local_lang.plc,
+                local_lang.paifu,
+                local_lang.preR,
             ]
         )
     try:
@@ -45,9 +45,9 @@ def log_into_csv(paifu: Paifu, local_str: local_str, output: str):
     )
     print(
         "csv: "
-        + local_str.hint_record1
+        + local_lang.hint_record1
         + re.findall(r"\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d", paifu.url)[0]
-        + local_str.hint_record2
+        + local_lang.hint_record2
     )
     csvfile.close()
     return None
