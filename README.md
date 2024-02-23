@@ -45,7 +45,7 @@ If you like this project, please leave a star. It will be a great encouragement 
 >> ii. Copy the paifu URL from tenhou.net to clipboard. And type
 >>
 >> ```
->> log -l [language] -o [output directory] [paifu URLs]
+>> plog -l [language] -o [output directory] [paifu URLs]
 >> ```
 
 2. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\

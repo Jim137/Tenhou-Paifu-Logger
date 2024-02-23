@@ -28,7 +28,7 @@
 2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
   使用pip則運行以下命令。
 
-    `log -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
+    `plog -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
 
 3. 複製天鳳牌譜至剪貼簿。
 4. 在出現![1675260159266](image/README_zh/1675260159266.png)後，貼上天鳳牌譜並按下Enter。\
