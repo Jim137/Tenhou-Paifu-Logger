@@ -275,7 +275,7 @@ def log(args: argparse.Namespace) -> int:
         except ImportError:
             from . import __version__
         print("Tenhou-Paifu-Logger", __version__)
-        return None
+        return 0
 
     local_lang = _get_lang(args.lang)
     output = _get_output(args.output)
