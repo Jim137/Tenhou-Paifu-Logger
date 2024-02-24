@@ -144,13 +144,13 @@ def _get_formats(format: list[str] | None = None) -> list:
     """
     Get formats from args.format.
 
-    If not given, return ["xlsx"].
+    If not given, return ["csv"].
     """
 
     if format:
         formats = format
     else:
-        formats = ["xlsx"]
+        formats = ["csv"]
     return formats
 
 
@@ -204,7 +204,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 def log_paifu(
     urls: list[str],
     *,
-    log_formats: list[Callable],
+    log_formats: list[Callable] = [log_into_csv],
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     remake: bool = False,
@@ -314,7 +314,7 @@ def main():
         "--format",
         action="append",
         type=str,
-        help="Format of the output file. Default is xlsx. Available formats: xlsx, html, csv.",
+        help="Format of the output file. Default is csv. Available formats: xlsx, html, csv.",
         choices=avaiable_formats,
     )
     parser.add_argument(

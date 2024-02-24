@@ -8,9 +8,10 @@ Traditional Chinese: zh_tw
 Simplified Chinese: zh
 Japanese: ja
 
-Set format after FORMAT=, default is Excel
+Set format after FORMAT=, default is csv
 Excel: xlsx
 html: html
+csv: csv
 
 Set ALLFORMAT=true to generate all formats
 
