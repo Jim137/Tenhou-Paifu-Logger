@@ -1,4 +1,5 @@
 import argparse
+from typing import Callable
 import urllib.request
 import re
 import os
@@ -18,7 +19,7 @@ url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 avaiable_formats = ["xlsx", "html", "csv"]
 
 
-def remove_old_paifu(paifu_str: str, formats, output) -> None:
+def remove_old_paifu(paifu_str: str, formats: list[str], output: str) -> None:
     """
     Remove old paifu files.
 
@@ -112,11 +113,11 @@ def _get_urls(
                 )
 
             urlstore = store["url"]["url"].values
-            for url in urlstore:
+            for _url in urlstore:
                 # Special case: if the url does not start with "https://", add it.
                 # It will be deprecated in the future.
-                if not re.match(url_reg, url):
-                    urls.append("https://" + url)
+                if not re.match(url_reg, _url):
+                    urls.append("https://" + _url)
                     warnings.warn(
                         """The url_log.h5 you used is deprecated. 
                         You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
@@ -126,7 +127,7 @@ def _get_urls(
                     )
                     continue
 
-                urls.append(url)
+                urls.append(_url)
         finally:
             store.close()
     elif not url:
@@ -173,7 +174,7 @@ def _remake_log(
     return None
 
 
-def _get_log_func(formats: list[str], all_formats: bool = False) -> list:
+def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callable]:
     """
     Parse the formats and return the corresponding log functions.
 
@@ -202,7 +203,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list:
 def log_paifu(
     urls: list[str],
     *,
-    log_formats: list,
+    log_formats: list[Callable],
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     remake: bool = False,
