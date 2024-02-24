@@ -46,7 +46,7 @@ def url_log(url, local_lang: local_str, output: str) -> None:
         store.close()
         return None
     urls = store["url"]
-    urls.loc[len(urls)] = url.split("//")[1]
+    urls.loc[str(len(urls))] = url.split("//")[1]
     store["url"] = urls
     store.close()
     return None
