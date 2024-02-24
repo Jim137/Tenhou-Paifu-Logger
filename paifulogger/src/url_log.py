@@ -16,8 +16,9 @@ Functions:
 
 """
 
-import pandas as pd
 import os
+
+import pandas as pd
 
 from .i18n import local_str
 

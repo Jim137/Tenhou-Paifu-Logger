@@ -1,5 +1,6 @@
-import xml.etree.ElementTree as ET
 import os
+
+import xml.etree.ElementTree as ET
 
 from .i18n import local_str
 from .Paifu import Paifu

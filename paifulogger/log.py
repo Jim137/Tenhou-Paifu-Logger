@@ -4,8 +4,9 @@ import urllib.request
 import re
 import os
 import sys
-from pandas import HDFStore, DataFrame
 import warnings
+
+from pandas import HDFStore, DataFrame
 
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, local_str
