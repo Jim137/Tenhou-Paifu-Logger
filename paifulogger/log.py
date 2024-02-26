@@ -234,7 +234,7 @@ def log_paifu(
         int
     """
 
-    success = []
+    retCode = []
     for url in urls:
         if not re.match(url_reg, url):
             print(local_lang.hint_url, url)
@@ -252,17 +252,17 @@ def log_paifu(
                 pass
             else:
                 url_log(url, local_lang, output)
-            success.append(0)
+            retCode.append(0)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            success.append(1)
+            retCode.append(1)
         except OSError:
             print(local_lang.hint_url, url)
-            success.append(1)
+            retCode.append(1)
         except ValueError:
             print(local_lang.hint_tw, url)
-            success.append(1)
-    return max(success)
+            retCode.append(1)
+    return max(retCode)
 
 
 def log(args: argparse.Namespace) -> int:
