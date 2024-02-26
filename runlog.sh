@@ -34,7 +34,7 @@ then
 fi
 if [ -z $FORMAT ]
 then
-    FORMAT=html
+    FORMAT=csv
 fi
 if [ -z $ALLFORMAT ]
 then

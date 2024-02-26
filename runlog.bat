@@ -1,7 +1,7 @@
 @echo off
 if not defined skip_pip set skip_pip=false
 if not defined LANG set LANG=en
-if not defined FORMAT set FORMAT=xlsx
+if not defined FORMAT set FORMAT=csv
 if not defined ALLFORMAT set ALLFORMAT=false
 if not defined OUTPUT_DIR set OUTPUT_DIR=./
 if not defined mjai set mjai=false

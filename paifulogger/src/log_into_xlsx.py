@@ -1,6 +1,7 @@
-import openpyxl as xl
 from datetime import datetime
 import re
+
+import openpyxl as xl
 
 from .get_place import get_place
 from .i18n import local_str
