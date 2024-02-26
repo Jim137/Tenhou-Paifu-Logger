@@ -75,7 +75,7 @@ def _get_output(output: str = "./") -> str:
     """
 
     if output:
-        _output = output
+        _output = os.path.abspath(output)
     else:
         _output = os.path.abspath("./")
     return _output
@@ -84,7 +84,7 @@ def _get_output(output: str = "./") -> str:
 def _get_urls(
     url: list[str] | None = None,
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
-    output: str = "./",
+    output: str = os.path.abspath("./"),
     remake: bool = False,
 ) -> list[str]:
     """
@@ -206,7 +206,7 @@ def log_paifu(
     *,
     log_formats: list[Callable] = [log_into_csv],
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
-    output: str = "./",
+    output: str = os.path.abspath("./"),
     remake: bool = False,
     ignore_duplicated: bool = False,
     mjai: bool = False,
