@@ -193,8 +193,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 
 
 def log_paifu(
-    urls: list[str],
-    *,
+    *urls: list[str] | str,
     log_formats: list[Callable] = [log_into_csv],
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = os.path.abspath("./"),
@@ -226,7 +225,13 @@ def log_paifu(
     """
 
     retCode = []
+    _urls: list[str] = []
     for url in urls:
+        if isinstance(url, list):
+            _urls.extend(url)
+        else:
+            _urls.append(url)
+    for url in _urls:
         if not re.match(url_reg, url):
             print(local_lang.hint_url, url)
             continue
