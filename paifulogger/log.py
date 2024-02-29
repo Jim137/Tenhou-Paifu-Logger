@@ -75,7 +75,7 @@ def _get_output(output: str = "./") -> str:
     """
 
     if output:
-        _output = output
+        _output = os.path.abspath(output)
     else:
         _output = os.path.abspath("./")
     return _output
@@ -84,7 +84,7 @@ def _get_output(output: str = "./") -> str:
 def _get_urls(
     url: list[str] | None = None,
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
-    output: str = "./",
+    output: str = os.path.abspath("./"),
     remake: bool = False,
 ) -> list[str]:
     """
@@ -115,17 +115,8 @@ def _get_urls(
 
             urlstore = store["url"]["url"].values
             for _url in urlstore:
-                # Special case: if the url does not start with "https://", add it.
-                # It will be deprecated in the future.
                 if not re.match(url_reg, _url):
                     urls.append("https://" + _url)
-                    warnings.warn(
-                        """The url_log.h5 you used is deprecated. 
-                        You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
-                        The new url_log.h5 will be automatically created.
-                        """,
-                        DeprecationWarning,
-                    )
                     continue
 
                 urls.append(_url)
@@ -202,11 +193,10 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 
 
 def log_paifu(
-    urls: list[str],
-    *,
+    *urls: list[str] | str,
     log_formats: list[Callable] = [log_into_csv],
     local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
-    output: str = "./",
+    output: str = os.path.abspath("./"),
     remake: bool = False,
     ignore_duplicated: bool = False,
     mjai: bool = False,
@@ -234,8 +224,14 @@ def log_paifu(
         int
     """
 
-    success = []
+    retCode = []
+    _urls: list[str] = []
     for url in urls:
+        if isinstance(url, list):
+            _urls.extend(url)
+        else:
+            _urls.append(url)
+    for url in _urls:
         if not re.match(url_reg, url):
             print(local_lang.hint_url, url)
             continue
@@ -252,17 +248,17 @@ def log_paifu(
                 pass
             else:
                 url_log(url, local_lang, output)
-            success.append(0)
+            retCode.append(0)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            success.append(1)
+            retCode.append(1)
         except OSError:
             print(local_lang.hint_url, url)
-            success.append(1)
+            retCode.append(1)
         except ValueError:
             print(local_lang.hint_tw, url)
-            success.append(1)
-    return max(success)
+            retCode.append(1)
+    return max(retCode)
 
 
 def log(args: argparse.Namespace) -> int:
