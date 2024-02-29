@@ -115,17 +115,8 @@ def _get_urls(
 
             urlstore = store["url"]["url"].values
             for _url in urlstore:
-                # Special case: if the url does not start with "https://", add it.
-                # It will be deprecated in the future.
                 if not re.match(url_reg, _url):
                     urls.append("https://" + _url)
-                    warnings.warn(
-                        """The url_log.h5 you used is deprecated. 
-                        You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
-                        The new url_log.h5 will be automatically created.
-                        """,
-                        DeprecationWarning,
-                    )
                     continue
 
                 urls.append(_url)
