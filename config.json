@@ -1,0 +1,8 @@
+{
+    "lang": "en",
+    "format": "csv",
+    "all_formats": false,
+    "output": "./",
+    "mjai": false,
+    "ignore_duplicated": false
+}

@@ -1,4 +1,5 @@
 import argparse
+import json
 from typing import Callable
 import urllib.request
 import re
@@ -296,7 +297,12 @@ def log(args: argparse.Namespace) -> int:
     )
 
 
-def main():
+def log_parser(config_path: str | None = None) -> argparse.Namespace:
+    config = {}
+    if config_path and os.path.exists(f"{config_path}/config.json"):
+        with open(f"{config_path}/config.json", "r") as f:
+            config = json.load(f)
+
     parser = argparse.ArgumentParser()
     parser.add_argument("url", nargs="*", help="URL of the match.")
     parser.add_argument(
@@ -304,6 +310,7 @@ def main():
         "--lang",
         type=str,
         help="Language of the program and output files. Default is English. Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).",
+        default=config.get("lang", None),
     )
     parser.add_argument(
         "-f",
@@ -312,9 +319,14 @@ def main():
         type=str,
         help="Format of the output file. Default is csv. Available formats: xlsx, html, csv.",
         choices=avaiable_formats,
+        default=config.get("format", None),
     )
     parser.add_argument(
-        "-a", "--all-formats", action="store_true", help="Output all formats."
+        "-a",
+        "--all-formats",
+        action="store_true",
+        help="Output all formats.",
+        default=config.get("all_formats", False),
     )
     parser.add_argument(
         "-r",
@@ -323,7 +335,11 @@ def main():
         help="Remake the log file from url_log.h5 (past logging log). Use this when the program is updated, changing format or language of the log file, or the log file is missing. Note that this will overwrite the log file.",
     )
     parser.add_argument(
-        "-o", "--output", type=str, help="Output directory. Default is './'."
+        "-o",
+        "--output",
+        type=str,
+        help="Output directory. Default is './'.",
+        default=config.get("output", None),
     )
     parser.add_argument(
         "-v",
@@ -331,12 +347,25 @@ def main():
         action="store_true",
         help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.",
     )
-    parser.add_argument("--mjai", action="store_true", help="Output MJAI format paifu.")
+    parser.add_argument(
+        "--mjai",
+        action="store_true",
+        help="Output MJAI format paifu.",
+        default=config.get("mjai", False),
+    )
     # Args for Debugging
     parser.add_argument(
-        "--ignore-duplicated", action="store_true", help=argparse.SUPPRESS
+        "--ignore-duplicated",
+        action="store_true",
+        help=argparse.SUPPRESS,
+        default=config.get("ignore_duplicated", False),
     )
     args = parser.parse_args()
+    return args
+
+
+def main():
+    args = log_parser(".")
     return log(args)
 
 
