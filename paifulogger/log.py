@@ -307,7 +307,8 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         "-l",
         "--lang",
         type=str,
-        help="Language of the program and output files. Default is English. Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).",
+        help="""Language of the program and output files. Default is English. 
+        Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).""",
         default=config.get("lang", None),
     )
     parser.add_argument(
@@ -330,7 +331,9 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         "-r",
         "--remake",
         action="store_true",
-        help="Remake the log file from url_log.h5 (past logging log). Use this when the program is updated, changing format or language of the log file, or the log file is missing. Note that this will overwrite the log file.",
+        help="""Remake the log file from url_log.h5 (past logging log). 
+        Use this when the program is updated, changing format or language of the log file, or the log file is missing. 
+        Note that this will overwrite the log file.""",
     )
     parser.add_argument(
         "-o",
