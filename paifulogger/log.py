@@ -224,7 +224,7 @@ def log_paifu(
         int
     """
 
-    retCode = []
+    retCode = [0]
     _urls: list[str] = []
     for url in urls:
         if isinstance(url, list):
