@@ -1,7 +1,9 @@
 from datetime import datetime
+from typing import cast
 import re
 
 import openpyxl as xl
+from openpyxl.worksheet.worksheet import Worksheet
 
 from .get_place import get_place
 from .i18n import local_str
@@ -16,11 +18,11 @@ def log_into_xlsx(paifu: Paifu, local_lang: local_str, output: str):
             paifu_str = local_lang.yonma + local_lang.paifu
         path = f"{output}/{local_lang.paifu}/{paifu_str}.xlsx"
         wb = xl.load_workbook(path)
-        sheet = wb.active
+        sheet = cast(Worksheet, wb.active)
         sheet.delete_rows(sheet.max_row)
     except FileNotFoundError:
         wb = xl.Workbook()
-        sheet = wb.active
+        sheet = cast(Worksheet, wb.active)
         sheet.append(
             [
                 local_lang.date,
