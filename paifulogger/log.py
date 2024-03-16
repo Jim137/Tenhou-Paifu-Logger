@@ -100,29 +100,27 @@ def _get_urls(
 
     urls = []
     if remake:
-        store = HDFStore(f"{output}/{local_lang.paifu}/url_log.h5")
-        try:
+        with HDFStore(f"{output}/{local_lang.paifu}/url_log.h5") as store:
+            ############################################################
             # Special case: if "url" not in store, add it.
             # It will be deprecated in the future.
             if "url" not in store:
                 store["url"] = DataFrame(columns=["url"])
                 warnings.warn(
                     """The url_log.h5 you used is deprecated. 
-                    You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
+                    You have to manually copy all urls and delete url_log.h5,
+                    then run and paste the urls to the program. 
                     The new url_log.h5 will be automatically created.
                     """,
                     DeprecationWarning,
                 )
-
+            ############################################################
             urlstore = store["url"]["url"].values
             for _url in urlstore:
                 if not re.match(url_reg, _url):
                     urls.append("https://" + _url)
                     continue
-
                 urls.append(_url)
-        finally:
-            store.close()
     elif not url:
         for _url in re.findall(url_reg, input(local_lang.hint_input)):
             urls.append(_url)
