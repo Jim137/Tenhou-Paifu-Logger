@@ -8,6 +8,7 @@ import sys
 import warnings
 
 from pandas import HDFStore, DataFrame
+from platformdirs import user_data_dir
 
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, local_str
@@ -376,8 +377,24 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
     return args
 
 
+def config_path() -> str | None:
+    """
+    Try to get the path of the config file from current directory or %APPDATA% / Home directory.
+    """
+
+    appname = "paifulogger"
+    appauthor = "Jim137"
+    user_data_dir(appname, appauthor)
+    if os.path.exists(f"./config.json"):
+        return "."
+    elif os.path.exists(f"{user_data_dir(appname, appauthor)}/config.json"):
+        return user_data_dir(appname, appauthor)
+    else:
+        return None
+
+
 def main():
-    args = log_parser(".")
+    args = log_parser(config_path())
     return log(args)
 
 
