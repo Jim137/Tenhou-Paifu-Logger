@@ -2,4 +2,4 @@ openpyxl
 lxml
 tables
 pandas
-platformdirs==4.2.0
+platformdirs
