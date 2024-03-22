@@ -132,7 +132,7 @@ def _get_urls(
 
 def _get_formats(format: list[str] | None = None) -> list:
     """
-    Get formats from args.format.
+    Get formats from `args.format`.
 
     If not given, return ["csv"].
     """
@@ -148,7 +148,7 @@ def _remake_log(
     local_lang: local_str, output: str, formats: list[str], all_formats: bool = False
 ) -> None:
     """
-    Remake the log file from url_log.h5 (past logging log).
+    Remake the log file from url_log.h5 (past logging log), and remove old paifu files.
     """
 
     paifu_str3 = local_lang.paifu + "/" + local_lang.sanma + local_lang.paifu
@@ -169,7 +169,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
     """
     Parse the formats and return the corresponding log functions.
 
-    If all_formats, return all log functions.
+    If `all_formats`, return all log functions.
     """
 
     assert formats, "No format is given."
@@ -201,7 +201,7 @@ def log_paifu(
     mjai: bool = False,
 ) -> int:
     """
-    Log the paifu files
+    Log paifu files.
 
     Args:
         urls: list[str]
@@ -262,7 +262,7 @@ def log_paifu(
 
 def log(args: argparse.Namespace) -> int:
     """
-    Parse the arguments and log the paifu files.
+    Parse the arguments and log paifu files.
     """
 
     # get version and exit
@@ -296,6 +296,17 @@ def log(args: argparse.Namespace) -> int:
 
 
 def log_parser(config_path: str | None = None) -> argparse.Namespace:
+    """
+    Parse the arguments from the command line.
+
+    Args:
+        config_path: str
+            The path of the config file.
+
+    Returns:
+        argparse.Namespace
+    """
+
     config = {}
     if config_path and os.path.exists(f"{config_path}/config.json"):
         with open(f"{config_path}/config.json", "r") as f:
