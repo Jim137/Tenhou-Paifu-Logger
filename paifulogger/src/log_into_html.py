@@ -70,7 +70,7 @@ def average_plc(html_str, local_lang: local_str):
     )
     wrapper = io.StringIO(html_p)
     df = read_html(wrapper)[0]
-    avg_plc = df[f"{local_str.plc}"].mean()
+    avg_plc = df[f"{local_lang.plc}"].mean()
     return avg_plc
 
 
