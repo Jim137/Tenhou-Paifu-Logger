@@ -7,9 +7,12 @@ class Paifu:
         self.ban = int(url[-1])
         self.root = root
 
-        self.go_type = int(root[1].get("type"))
-        self.owari = root[-1].get("owari").split(",")
-        self.r = root[2].get("rate").split(",")
+        if gtype := root[1].get("type"):
+            self.go_type = int(gtype)
+        if owari := root[-1].get("owari"):
+            self.owari = owari.split(",")
+        if rate := root[2].get("rate"):
+            self.r = rate.split(",")
 
         self.go_type_distinguish()
 

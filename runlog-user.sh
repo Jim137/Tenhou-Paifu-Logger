@@ -25,9 +25,10 @@
 # Japanese: ja
 # export LANG=
 
-# Set format after FORMAT=, default is html
+# Set format after FORMAT=, default is csv
 # Excel: xlsx
 # html: html
+# csv: csv
 # export FORMAT=
 
 # Set ALLFORMAT=true to generate all formats

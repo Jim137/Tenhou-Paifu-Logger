@@ -1,6 +1,14 @@
 # 天鳳牌譜記錄器
 
-[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[![build](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/publish-to-test-pypi.yml/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/publish-to-test-pypi.yml)
+[![lint](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/test.yml/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/test.yml)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/)
+[![Downloads](https://static.pepy.tech/badge/Paifulogger)](https://pepy.tech/project/Paifulogger)
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/)
+[<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+![support-version](https://img.shields.io/pypi/pyversions/PaifuLogger?style=plastic)
+![platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgray?style=plastic)
+![License](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 快速記錄天鳳牌譜的工具。
 
@@ -20,7 +28,7 @@
 2. 首次使用時，右鍵編輯 `runlog-user.bat` (Linux用戶則 `runlog-user.sh` )，在set LANG= (export LANG=)後加上語言代碼 `zh_tw`，保存後運行此檔案。
   使用pip則運行以下命令。
 
-    `log -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
+    `plog -l zh_tw -o <輸出目錄> (-r <多個牌譜網址>)`
 
 3. 複製天鳳牌譜至剪貼簿。
 4. 在出現![1675260159266](image/README_zh/1675260159266.png)後，貼上天鳳牌譜並按下Enter。\

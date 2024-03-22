@@ -1,6 +1,14 @@
 # Tenhou Paifu Logger
 
-[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/) [<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/) [<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases) ![GitHub](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
+[![build](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/publish-to-test-pypi.yml/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/publish-to-test-pypi.yml)
+[![lint](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/test.yml/badge.svg)](https://github.com/Jim137/Tenhou-Paifu-Logger/actions/workflows/test.yml)
+[<img src="https://img.shields.io/pypi/v/PaifuLogger?style=plastic"> <img src="https://img.shields.io/pypi/wheel/PaifuLogger?style=plastic">](https://pypi.org/project/PaifuLogger/)
+[![Downloads](https://static.pepy.tech/badge/Paifulogger)](https://pepy.tech/project/Paifulogger)
+[<img src="https://img.shields.io/github/stars/Jim137/Tenhou-Paifu-Logger?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/)
+[<img src="https://img.shields.io/github/downloads/Jim137/Tenhou-Paifu-Logger/total?style=plastic">](https://github.com/Jim137/Tenhou-Paifu-Logger/releases)
+![support-version](https://img.shields.io/pypi/pyversions/PaifuLogger?style=plastic)
+![platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgray?style=plastic)
+![License](https://img.shields.io/github/license/Jim137/Tenhou-Paifu-Logger?style=plastic)
 
 Logging tenhou paifu into excel, csv or html file with some key information.
 
@@ -10,28 +18,47 @@ If you like this project, please leave a star. It will be a great encouragement 
 
 [Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 
+## Requirements
+
+* Python 3.10 or later
+
+Since CLI-0.3.8, the project is only compatible with Python 3.10 or later.
+For Python 3.9 or earlier users, please use [CLI-0.3.7.1](https://github.com/Jim137/Tenhou-Paifu-Logger/tree/CLI-0.3.7.1) which is the last version that supports Python 3.9 or earlier.
+Or download from pypi with the following command.
+
+```
+pip install PaifuLogger==0.3.7.1
+```
+
 ## Usage
 
 1. Download the project.
 
-  >a. Download from github.
-
-  >>i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
-
-    git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
-
-  >>ii. Copy the paifu URL from tenhou.net to clipboard.
-  >>iii. Open `runlog-user.bat`.
-    
-  >b. Download from pypi.
-
-  >>i. Open command line and type
-
-    pip install PaifuLogger
-
-  >>ii. Copy the paifu URL from tenhou.net to clipboard. And type
-
-    log -l [language] -o [output directory] [paifu URLs]
+> a. Download from github.
+>
+>> i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
+>>
+>> ```
+>> git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+>> ```
+>>
+>> ii. Copy the paifu URL from tenhou.net to clipboard.
+>>
+>> iii. Open `runlog-user.bat`.
+>
+> b. Download from pypi.
+>
+>> i. Open command line and type
+>>
+>> ```
+>> pip install PaifuLogger
+>> ```
+>>
+>> ii. Copy the paifu URL from tenhou.net to clipboard. And type
+>>
+>> ```
+>> plog -l [language] -o [output directory] [paifu URLs]
+>> ```
 
 2. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
