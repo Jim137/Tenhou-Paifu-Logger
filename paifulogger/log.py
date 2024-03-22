@@ -1,4 +1,5 @@
 import argparse
+import json
 from typing import Callable
 import urllib.request
 import re
@@ -7,6 +8,7 @@ import sys
 import warnings
 
 from pandas import HDFStore, DataFrame
+from platformdirs import user_data_dir
 
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, local_str
@@ -99,29 +101,27 @@ def _get_urls(
 
     urls = []
     if remake:
-        store = HDFStore(f"{output}/{local_lang.paifu}/url_log.h5")
-        try:
+        with HDFStore(f"{output}/{local_lang.paifu}/url_log.h5") as store:
+            ############################################################
             # Special case: if "url" not in store, add it.
             # It will be deprecated in the future.
             if "url" not in store:
                 store["url"] = DataFrame(columns=["url"])
                 warnings.warn(
                     """The url_log.h5 you used is deprecated. 
-                    You have to manually copy all urls and delete url_log.h5, then run and paste the urls to the program. 
+                    You have to manually copy all urls and delete url_log.h5,
+                    then run and paste the urls to the program. 
                     The new url_log.h5 will be automatically created.
                     """,
                     DeprecationWarning,
                 )
-
+            ############################################################
             urlstore = store["url"]["url"].values
             for _url in urlstore:
                 if not re.match(url_reg, _url):
                     urls.append("https://" + _url)
                     continue
-
                 urls.append(_url)
-        finally:
-            store.close()
     elif not url:
         for _url in re.findall(url_reg, input(local_lang.hint_input)):
             urls.append(_url)
@@ -133,7 +133,7 @@ def _get_urls(
 
 def _get_formats(format: list[str] | None = None) -> list:
     """
-    Get formats from args.format.
+    Get formats from `args.format`.
 
     If not given, return ["csv"].
     """
@@ -149,7 +149,7 @@ def _remake_log(
     local_lang: local_str, output: str, formats: list[str], all_formats: bool = False
 ) -> None:
     """
-    Remake the log file from url_log.h5 (past logging log).
+    Remake the log file from url_log.h5 (past logging log), and remove old paifu files.
     """
 
     paifu_str3 = local_lang.paifu + "/" + local_lang.sanma + local_lang.paifu
@@ -170,7 +170,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
     """
     Parse the formats and return the corresponding log functions.
 
-    If all_formats, return all log functions.
+    If `all_formats`, return all log functions.
     """
 
     assert formats, "No format is given."
@@ -202,7 +202,7 @@ def log_paifu(
     mjai: bool = False,
 ) -> int:
     """
-    Log the paifu files
+    Log paifu files.
 
     Args:
         urls: list[str]
@@ -263,7 +263,7 @@ def log_paifu(
 
 def log(args: argparse.Namespace) -> int:
     """
-    Parse the arguments and log the paifu files.
+    Parse the arguments and log paifu files.
     """
 
     # get version and exit
@@ -296,14 +296,32 @@ def log(args: argparse.Namespace) -> int:
     )
 
 
-def main():
+def log_parser(config_path: str | None = None) -> argparse.Namespace:
+    """
+    Parse the arguments from the command line.
+
+    Args:
+        config_path: str
+            The path of the config file.
+
+    Returns:
+        argparse.Namespace
+    """
+
+    config = {}
+    if config_path and os.path.exists(f"{config_path}/config.json"):
+        with open(f"{config_path}/config.json", "r") as f:
+            config = json.load(f)
+
     parser = argparse.ArgumentParser()
     parser.add_argument("url", nargs="*", help="URL of the match.")
     parser.add_argument(
         "-l",
         "--lang",
         type=str,
-        help="Language of the program and output files. Default is English. Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).",
+        help="""Language of the program and output files. Default is English. 
+        Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).""",
+        default=config.get("lang", None),
     )
     parser.add_argument(
         "-f",
@@ -312,18 +330,29 @@ def main():
         type=str,
         help="Format of the output file. Default is csv. Available formats: xlsx, html, csv.",
         choices=avaiable_formats,
+        default=config.get("format", None),
     )
     parser.add_argument(
-        "-a", "--all-formats", action="store_true", help="Output all formats."
+        "-a",
+        "--all-formats",
+        action="store_true",
+        help="Output all formats.",
+        default=config.get("all_formats", False),
     )
     parser.add_argument(
         "-r",
         "--remake",
         action="store_true",
-        help="Remake the log file from url_log.h5 (past logging log). Use this when the program is updated, changing format or language of the log file, or the log file is missing. Note that this will overwrite the log file.",
+        help="""Remake the log file from url_log.h5 (past logging log). 
+        Use this when the program is updated, changing format or language of the log file, or the log file is missing. 
+        Note that this will overwrite the log file.""",
     )
     parser.add_argument(
-        "-o", "--output", type=str, help="Output directory. Default is './'."
+        "-o",
+        "--output",
+        type=str,
+        help="Output directory. Default is './'.",
+        default=config.get("output", None),
     )
     parser.add_argument(
         "-v",
@@ -331,12 +360,41 @@ def main():
         action="store_true",
         help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.",
     )
-    parser.add_argument("--mjai", action="store_true", help="Output MJAI format paifu.")
+    parser.add_argument(
+        "--mjai",
+        action="store_true",
+        help="Output MJAI format paifu.",
+        default=config.get("mjai", False),
+    )
     # Args for Debugging
     parser.add_argument(
-        "--ignore-duplicated", action="store_true", help=argparse.SUPPRESS
+        "--ignore-duplicated",
+        action="store_true",
+        help=argparse.SUPPRESS,
+        default=config.get("ignore_duplicated", False),
     )
     args = parser.parse_args()
+    return args
+
+
+def config_path() -> str | None:
+    """
+    Try to get the path of the config file from current directory or user_data_dir.
+    """
+
+    appname = "paifulogger"
+    appauthor = "Jim137"
+    user_data_dir(appname, appauthor)
+    if os.path.exists(f"./config.json"):
+        return "."
+    elif os.path.exists(f"{user_data_dir(appname, appauthor)}/config.json"):
+        return user_data_dir(appname, appauthor)
+    else:
+        return None
+
+
+def main():
+    args = log_parser(config_path())
     return log(args)
 
 
