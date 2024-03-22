@@ -379,7 +379,7 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
 
 def config_path() -> str | None:
     """
-    Try to get the path of the config file from current directory or %APPDATA% / Home directory.
+    Try to get the path of the config file from current directory or user_data_dir.
     """
 
     appname = "paifulogger"
