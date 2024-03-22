@@ -7,6 +7,7 @@ Paifu/
 my_runlog.bat
 debug.bat
 file_version_info.txt
+config.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
