@@ -6,11 +6,11 @@ import os.path
 import pandas as pd
 
 from .get_place import get_place
-from .i18n import local_str
+from .i18n import LocalStr
 from .Paifu import Paifu
 
 
-def log_into_csv(paifu: Paifu, local_lang: local_str, output: str):
+def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
     if paifu.player_num == 3:
         paifu_str = local_lang.sanma + local_lang.paifu
     else:

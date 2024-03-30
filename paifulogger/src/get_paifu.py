@@ -1,12 +1,12 @@
 import os
 import xml.etree.ElementTree as ET
 
-from .i18n import local_str
+from .i18n import LocalStr
 from .Paifu import Paifu
 from .url_request_handler import url_request_handler
 
 
-def get_paifu(url: str, local_lang: local_str, output: str, mjai: bool = False):
+def get_paifu(url: str, local_lang: LocalStr, output: str, mjai: bool = False):
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)

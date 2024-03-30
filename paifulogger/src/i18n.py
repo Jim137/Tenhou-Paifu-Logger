@@ -1,7 +1,7 @@
 import json
 
 
-class local_str:
+class LocalStr:
     def __init__(self, lang: str = "en", main_path: str = "./"):
         self.lang = lang
         self.main_path = main_path
@@ -22,8 +22,8 @@ class local_str:
         return data[name]
 
 
-def localized_str(lang: str, main_path: str) -> local_str:
-    localized = local_str(lang, main_path)
+def localized_str(lang: str, main_path: str) -> LocalStr:
+    localized = LocalStr(lang, main_path)
     try:
         with open(f"{main_path}/localizations/{lang}.json", encoding="utf-8") as f:
             data = json.load(f)

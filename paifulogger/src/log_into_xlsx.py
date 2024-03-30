@@ -6,11 +6,11 @@ import openpyxl as xl
 from openpyxl.worksheet.worksheet import Worksheet
 
 from .get_place import get_place
-from .i18n import local_str
+from .i18n import LocalStr
 from .Paifu import Paifu
 
 
-def log_into_xlsx(paifu: Paifu, local_lang: local_str, output: str):
+def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
     try:
         if paifu.player_num == 3:
             paifu_str = local_lang.sanma + local_lang.paifu

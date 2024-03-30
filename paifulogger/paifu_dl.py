@@ -1,14 +1,14 @@
 import os
 import re
 
-from .src.i18n import local_str
+from .src.i18n import LocalStr
 from .src.get_paifu import get_paifu
 
 
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
-def _get_urls(urls, local_lang: local_str) -> list[str]:
+def _get_urls(urls, local_lang: LocalStr) -> list[str]:
     """
     Get urls from input or args.url.
 
@@ -32,7 +32,7 @@ def _get_urls(urls, local_lang: local_str) -> list[str]:
 
 def paifu_dl(
     urls: str | list[str] | None = None,
-    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     mjai: bool = False,
 ) -> None:
@@ -42,7 +42,7 @@ def paifu_dl(
     Args:
         urls: str | list[str]
             The url of the game log.
-        local_lang: local_str
+        local_lang: LocalStr
             The localized string.
         output: str
             The output directory.
