@@ -1,6 +1,6 @@
+import re
 from datetime import datetime
 from typing import cast
-import re
 
 import openpyxl as xl
 from openpyxl.worksheet.worksheet import Worksheet

@@ -1,11 +1,11 @@
 import argparse
 import json
-from typing import Callable
 import urllib.request
 import re
 import os
 import sys
 import warnings
+from typing import Callable
 
 from pandas import HDFStore, DataFrame
 from platformdirs import user_data_dir

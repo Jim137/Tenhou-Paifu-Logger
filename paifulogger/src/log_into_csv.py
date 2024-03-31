@@ -1,7 +1,7 @@
 import csv
-from datetime import datetime
 import re
 import os.path
+from datetime import datetime
 
 import pandas as pd
 

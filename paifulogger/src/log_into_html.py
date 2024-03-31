@@ -1,6 +1,6 @@
-from datetime import datetime
 import io
 import re
+from datetime import datetime
 
 import pandas as pd
 
