@@ -226,7 +226,7 @@ def log_paifu(
         int
     """
 
-    retCode = [0]
+    retCode = 0
     _urls: list[str] = []
     for url in urls:
         if isinstance(url, list):
@@ -250,17 +250,16 @@ def log_paifu(
                 pass
             else:
                 url_log(url, local_lang, output)
-            retCode.append(0)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            retCode.append(1)
+            retCode = 1
         except OSError:
             print(local_lang.hint_url, url)
-            retCode.append(1)
+            retCode = 1
         except ValueError:
             print(local_lang.hint_tw, url)
-            retCode.append(1)
-    return max(retCode)
+            retCode = 1
+    return retCode
 
 
 def log(args: argparse.Namespace) -> int:
