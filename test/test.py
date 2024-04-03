@@ -22,7 +22,7 @@ ATTR = [
 
 
 class Test(unittest.TestCase):
-    def test0(self):
+    def test_0(self):
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(log.log(args), 0)
 
-    def test1(self):
+    def test_1(self):
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(log.log(args), 0)
 
-    def test2(self):
+    def test_2(self):
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(log.log(args), 0)
 
-    def test3(self):
+    def test_3(self):
         urls = [
             # yonma tests
             "https://tenhou.net/3/?log=2022052501gm-00c1-0000-f71e7910&tw=1",
@@ -91,7 +91,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(paifu_dl.paifu_dl(urls, output="./test/"), 0)
 
-    def test4(self):
+    def test_4(self):
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
