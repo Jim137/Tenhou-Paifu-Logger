@@ -85,7 +85,9 @@ def _get_output(output: str = "./") -> str:
 
 def _get_urls(
     url: list[str] | None = None,
-    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = localized_str(
+        "en", os.path.dirname(os.path.abspath(__file__))
+    ),
     output: str = os.path.abspath("./"),
     remake: bool = False,
 ) -> list[str]:
