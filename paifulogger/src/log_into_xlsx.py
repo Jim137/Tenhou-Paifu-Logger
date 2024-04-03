@@ -5,7 +5,6 @@ from typing import cast
 import openpyxl as xl
 from openpyxl.worksheet.worksheet import Worksheet
 
-from .get_place import get_place
 from .i18n import LocalStr
 from .Paifu import Paifu
 
@@ -38,7 +37,7 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
     sheet.append(
         [
             datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
-            get_place(paifu, paifu.ban),
+            paifu.get_place(paifu.ban),
             paifu.url,
             "",
             float(paifu.r[paifu.ban]),

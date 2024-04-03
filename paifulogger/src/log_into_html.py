@@ -4,7 +4,6 @@ from datetime import datetime
 
 import pandas as pd
 
-from .get_place import get_place
 from .i18n import LocalStr
 from .Paifu import Paifu
 
@@ -51,7 +50,7 @@ def log_into_table(html_str, paifu: Paifu, local_lang: LocalStr):
     html_str += f"""
                 <tr>
                     <td>{time_str}</td>
-                    <td>{get_place(paifu, paifu.ban)}</td>
+                    <td>{paifu.get_place(paifu.ban)}</td>
                     <td><a href="{paifu.url}">{paifu.url}</a></td>
                     <td><textarea id="persisted-text"></textarea></td>
                     <td>{float(paifu.r[paifu.ban])}</td>
