@@ -35,7 +35,7 @@ def paifu_dl(
     local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     mjai: bool = False,
-) -> None:
+) -> int:
     """
     Download paifu from tenhou.net.
 
@@ -61,3 +61,5 @@ def paifu_dl(
             print(f"paifu_dl: {url} has been downloaded.")
         except Exception as e:
             print(e)
+            return 1
+    return 0
