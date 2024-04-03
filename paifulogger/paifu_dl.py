@@ -1,14 +1,14 @@
 import os
 import re
 
-from .src.i18n import local_str
+from .src.i18n import LocalStr
 from .src.get_paifu import get_paifu
 
 
 url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
-def _get_urls(urls, local_lang: local_str) -> list[str]:
+def _get_urls(urls, local_lang: LocalStr) -> list[str]:
     """
     Get urls from input or args.url.
 
@@ -32,17 +32,17 @@ def _get_urls(urls, local_lang: local_str) -> list[str]:
 
 def paifu_dl(
     urls: str | list[str] | None = None,
-    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     mjai: bool = False,
-) -> None:
+) -> int:
     """
     Download paifu from tenhou.net.
 
     Args:
         urls: str | list[str]
             The url of the game log.
-        local_lang: local_str
+        local_lang: LocalStr
             The localized string.
         output: str
             The output directory.
@@ -55,9 +55,12 @@ def paifu_dl(
 
     check_urls = _get_urls(urls, local_lang)
 
+    retCode = 0
     for url in check_urls:
         try:
             get_paifu(url, local_lang, output, mjai)
             print(f"paifu_dl: {url} has been downloaded.")
         except Exception as e:
             print(e)
+            retCode = 1
+    return retCode

@@ -1,15 +1,14 @@
-from datetime import datetime
 import io
 import re
+from datetime import datetime
 
 import pandas as pd
 
-from .get_place import get_place
-from .i18n import local_str
+from .i18n import LocalStr
 from .Paifu import Paifu
 
 
-def create_html(html_str, paifu_str, local_lang: local_str):
+def create_html(html_str, paifu_str, local_lang: LocalStr):
     html_str += f"""<!DOCTYPE html>
     <html lang={local_lang.lang}>
     <head>
@@ -46,12 +45,12 @@ def create_html(html_str, paifu_str, local_lang: local_str):
     return html_str
 
 
-def log_into_table(html_str, paifu: Paifu, local_lang: local_str):
+def log_into_table(html_str, paifu: Paifu, local_lang: LocalStr):
     time_str = datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H")
     html_str += f"""
                 <tr>
                     <td>{time_str}</td>
-                    <td>{get_place(paifu, paifu.ban)}</td>
+                    <td>{paifu.get_place(paifu.ban)}</td>
                     <td><a href="{paifu.url}">{paifu.url}</a></td>
                     <td><textarea id="persisted-text"></textarea></td>
                     <td>{float(paifu.r[paifu.ban])}</td>
@@ -60,7 +59,7 @@ def log_into_table(html_str, paifu: Paifu, local_lang: local_str):
     return html_str
 
 
-def average_plc(html_str, local_lang: local_str):
+def average_plc(html_str, local_lang: LocalStr):
     html_p = (
         html_str
         + """
@@ -76,7 +75,7 @@ def average_plc(html_str, local_lang: local_str):
     return avg_plc
 
 
-def end_of_table(html_str, avg_plc, local_lang: local_str):
+def end_of_table(html_str, avg_plc, local_lang: LocalStr):
     html_str += (
         f"""
             </tbody>
@@ -107,7 +106,7 @@ def clear_end(html_str):
     return html_str
 
 
-def log_into_html(paifu: Paifu, local_lang: local_str, output: str):
+def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
     if paifu.player_num == 3:
         paifu_str = local_lang.sanma + local_lang.paifu
     else:

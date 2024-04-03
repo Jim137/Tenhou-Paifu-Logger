@@ -1,16 +1,15 @@
 import csv
-from datetime import datetime
 import re
 import os.path
+from datetime import datetime
 
 import pandas as pd
 
-from .get_place import get_place
-from .i18n import local_str
+from .i18n import LocalStr
 from .Paifu import Paifu
 
 
-def log_into_csv(paifu: Paifu, local_lang: local_str, output: str):
+def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
     if paifu.player_num == 3:
         paifu_str = local_lang.sanma + local_lang.paifu
     else:
@@ -39,7 +38,7 @@ def log_into_csv(paifu: Paifu, local_lang: local_str, output: str):
         [
             df.shape[0],
             datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
-            get_place(paifu, paifu.ban),
+            paifu.get_place(paifu.ban),
             paifu.url,
             float(paifu.r[paifu.ban]),
         ]
