@@ -55,11 +55,12 @@ def paifu_dl(
 
     check_urls = _get_urls(urls, local_lang)
 
+    retCode = 0
     for url in check_urls:
         try:
             get_paifu(url, local_lang, output, mjai)
             print(f"paifu_dl: {url} has been downloaded.")
         except Exception as e:
             print(e)
-            return 1
-    return 0
+            retCode = 1
+    return retCode
