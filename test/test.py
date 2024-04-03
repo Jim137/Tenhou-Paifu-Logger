@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
         args.version = True
 
-        self.assertRaises(Exception, log.log(args))
+        self.assertEqual(log.log(args), 0)
 
     def test1(self):
         parser = argparse.ArgumentParser()
@@ -53,7 +53,7 @@ class Test(unittest.TestCase):
         args.ignore_duplicated = True
         args.output = "./test/"
 
-        self.assertRaises(Exception, log.log(args))
+        self.assertEqual(log.log(args), 0)
 
     def test2(self):
         parser = argparse.ArgumentParser()
@@ -76,7 +76,7 @@ class Test(unittest.TestCase):
         args.output = "./test/"
         args.lang = "zh_tw"
 
-        self.assertRaises(Exception, log.log(args))
+        self.assertEqual(log.log(args), 0)
 
     def test3(self):
         urls = [
@@ -89,7 +89,7 @@ class Test(unittest.TestCase):
             "http://tenhou.net/0/?log=2023050419gm-0099-0000-b3111c7e&tw=0",
         ]
 
-        self.assertRaises(Exception, paifu_dl.paifu_dl(urls, output="./test/"))
+        self.assertEqual(paifu_dl.paifu_dl(urls, output="./test/"), 0)
 
     def test4(self):
         parser = argparse.ArgumentParser()
@@ -102,7 +102,7 @@ class Test(unittest.TestCase):
         args.output = "./test/"
         args.remake = True
 
-        self.assertRaises(Exception, log.log(args))
+        self.assertEqual(log.log(args), 0)
 
 
 if __name__ == "__main__":
