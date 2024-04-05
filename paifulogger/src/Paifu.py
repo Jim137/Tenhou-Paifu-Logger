@@ -82,3 +82,31 @@ class Paifu:
                     if sp[i] < sp[j]:
                         placing[i] += 1
         return placing[ban]
+
+    def get_round_num(self) -> int:
+        """
+        Return the total number of rounds
+        """
+        return len(self.root.findall("INIT"))
+
+    def get_deal_in_num(self, ban) -> int:
+        """
+        Return the number of deal-in
+        """
+        agaris = self.root.findall("AGARI")
+        count = 0
+        for agari in agaris:
+            if agari.get("fromWho") == str(ban) and agari.get("who") != str(ban):
+                count += 1
+        return count
+
+    def get_win_num(self, ban) -> int:
+        """
+        Return the number of win
+        """
+        agaris = self.root.findall("AGARI")
+        count = 0
+        for agari in agaris:
+            if agari.get("who") == str(ban):
+                count += 1
+        return count
