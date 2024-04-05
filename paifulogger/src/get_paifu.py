@@ -27,7 +27,7 @@ def url_request_handler(url: str):
     return response
 
 
-def get_paifu(url: str, local_lang: LocalStr, output: str, mjai: bool = False):
+def get_paifu(url: str, local_lang: LocalStr, output: str, mjai: bool = False) -> Paifu:
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
