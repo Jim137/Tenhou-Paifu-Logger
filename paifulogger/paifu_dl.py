@@ -32,6 +32,7 @@ def _get_urls(urls, local_lang: LocalStr) -> list[str]:
 
 def paifu_dl(
     urls: str | list[str] | None = None,
+    *,
     local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = "./",
     mjai: bool = False,
