@@ -70,6 +70,10 @@ class PaifuHtml:
                         <th>{local_lang.paifu}</th>
                         <th>{local_lang.remark}</th>
                         <th>{local_lang.preR}</th>
+                        <th>{local_lang.r_change}</th>
+                        <th>{local_lang.round_num}</th>
+                        <th>{local_lang.win}</th>
+                        <th>{local_lang.deal_in}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,11 +87,15 @@ class PaifuHtml:
                         <td>{paifu.get_place(paifu.ban)}</td>
                         <td><a href="{paifu.url}">{paifu.url}</a></td>
                         <td><textarea id="persisted-text"></textarea></td>
-                        <td>{float(paifu.r[paifu.ban])}</td>
+                        <td>{paifu.r[paifu.ban]}</td>
+                        <td>{paifu.rate_change:.03f}</td>
+                        <td>{paifu.get_round_num()}</td>
+                        <td>{paifu.get_win_num(paifu.ban)}</td>
+                        <td>{paifu.get_deal_in_num(paifu.ban)}</td>
                     </tr>
         """
 
-    def average_plc(self, local_lang: LocalStr) -> float:
+    def _retrieve(self, local_lang: LocalStr) -> tuple[int, float, float, float]:
         pseudo_html = (
             self.logged
             + self.new_log
@@ -99,14 +107,23 @@ class PaifuHtml:
         )
         wrapper = io.StringIO(pseudo_html)
         df = pd.read_html(wrapper)[0]
+        logged_num = df.shape[0] - 1
         avg_plc = df[f"{local_lang.plc}"].mean()
-        return avg_plc
+        win_rate = df[f"{local_lang.win}"].sum() / df[f"{local_lang.round_num}"].sum()
+        deal_in_rate = (
+            df[f"{local_lang.deal_in}"].sum() / df[f"{local_lang.round_num}"].sum()
+        )
+        return logged_num, avg_plc, win_rate, deal_in_rate
 
     def end_of_table(self, local_lang: LocalStr) -> None:
+        logged_num, avg_plc, win_rate, deal_in_rate = self._retrieve(local_lang)
         self.end_table += f"""
                 </tbody>  
             </table>
-            <p>{local_lang.avg_plc} = {self.average_plc(local_lang)}</p>
+            <p>{local_lang.log_num} = {logged_num}</p>
+            <p>{local_lang.avg_plc} = {avg_plc:.2}</p>
+            <p>{local_lang.win_rate} = {win_rate:.3%}</p>
+            <p>{local_lang.deal_in_rate} = {deal_in_rate:.3%}</p>
         """
 
 

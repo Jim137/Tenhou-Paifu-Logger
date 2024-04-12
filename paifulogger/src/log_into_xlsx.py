@@ -29,6 +29,10 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
                 local_lang.paifu,
                 local_lang.remark,
                 local_lang.preR,
+                local_lang.r_change,
+                local_lang.round_num,
+                local_lang.win,
+                local_lang.deal_in,
             ]
         )
         sheet.column_dimensions["A"].width = 20
@@ -41,10 +45,27 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
             paifu.url,
             "",
             float(paifu.r[paifu.ban]),
+            paifu.rate_change,
+            paifu.get_round_num(),
+            paifu.get_win_num(paifu.ban),
+            paifu.get_deal_in_num(paifu.ban),
         ]
     )
     sheet["C" + str(sheet.max_row)].style = "Hyperlink"
-    sheet.append([local_lang.avg_plc, "=average(B2:B" + str(sheet.max_row) + ")"])
+    sheet.append(
+        [
+            local_lang.avg_plc,
+            f"=average(B2:B{sheet.max_row})",
+            "",
+            local_lang.win_rate,
+            f"=sum(H2:H{sheet.max_row})/sum(G2:G{sheet.max_row})",
+            "",
+            local_lang.deal_in_rate,
+            f"=sum(I2:I{sheet.max_row})/sum(G2:G{sheet.max_row})",
+        ]
+    )
+    sheet["E" + str(sheet.max_row)].style = "Percent"
+    sheet["H" + str(sheet.max_row)].style = "Percent"
     wb.save(path)
     print(
         "xlsx: "
