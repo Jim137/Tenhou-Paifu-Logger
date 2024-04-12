@@ -107,8 +107,7 @@ class PaifuHtml:
                 </tbody>  
             </table>
             <p>{local_lang.avg_plc} = {self.average_plc(local_lang)}</p>
-        </body>
-        </html>"""
+        """
 
 
 def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
