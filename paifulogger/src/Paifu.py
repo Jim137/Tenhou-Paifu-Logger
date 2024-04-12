@@ -6,7 +6,6 @@ class Paifu:
         self.url = url
         self.ban = int(url[-1])
         self.root = root
-        self.plc = self.get_place(self.ban)
 
         if gtype := root[1].get("type"):
             self.go_type = int(gtype)
@@ -17,6 +16,7 @@ class Paifu:
 
         self.go_type_distinguish()
         self._rounds()
+        self.plc = self.get_place(self.ban)
         self.rate_change = self.get_rate_change()
 
     def go_type_distinguish(self):
@@ -105,11 +105,11 @@ class Paifu:
 
         if self.player_num == 4:
             dr_result = (30, 10, -10, -30)
-            corr = (sum([int(r) for r in self.r]) / 4 - int(self.r[self.ban])) / 40
+            corr = (sum([float(r) for r in self.r]) / 4 - float(self.r[self.ban])) / 40
             return 0.2 * (dr_result[self.plc - 1] + corr)
         else:
             dr_result = (30, 0, -30)
-            corr = (sum([int(r) for r in self.r]) / 3 - int(self.r[self.ban])) / 40
+            corr = (sum([float(r) for r in self.r]) / 3 - float(self.r[self.ban])) / 40
             return 0.2 * (dr_result[self.plc - 1] + corr)
 
     def get_round_num(self) -> int:
