@@ -22,7 +22,7 @@ class PaifuHtml:
         elif len(html_str.split("</body>")) < 2:
             self.replay = ""
         else:
-            self.replay = html_str.split("</body>")[1]
+            self.replay = html_str.split("</body>")[1].split("</html>")[0]
         self.end = "</body></html>"
         pass
 
