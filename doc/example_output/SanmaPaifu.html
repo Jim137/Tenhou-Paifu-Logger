@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+        <html lang=en>
+        <head>
+            <meta charset="utf-8">
+            <title>SanmaPaifu</title>
+            <style>
+                table {
+                    border-collapse: collapse;
+                }
+                table, th, td {
+                    border: 1px solid black;
+                }
+                th, td {
+                    padding: 5px;
+                }
+                th {
+                    text-align: left;
+                }
+            </style>
+            <script>
+                if (window.localStorage) {
+                    var p = document.querySelector('#persisted-text');
+                    if (localStorage.text == null) {
+                        localStorage.text = p.value;
+                    } else {
+                        p.value = localStorage.text;
+                    }
+                    p.addEventListener('keyup', function(){ localStorage.text = p.value; }, false);
+                }
+            </script>
+        </head>
+        <body>
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Placing</th>
+                        <th>Paifu</th>
+                        <th>Remark</th>
+                        <th>Rate before match</th>
+                        <th>Change of rate</th>
+                        <th>Round number</th>
+                        <th>Win num</th>
+                        <th>Deal-in num</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>2023-05-02 00:00:00</td>
+                        <td>1</td>
+                        <td><a href="https://tenhou.net/0/?log=2023050200gm-0099-0000-50c65fbf&tw=2">https://tenhou.net/0/?log=2023050200gm-0099-0000-50c65fbf&tw=2</a></td>
+                        <td><textarea id="persisted-text"></textarea></td>
+                        <td>1635.52</td>
+                        <td>8.439</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>0</td>
+                    </tr>
+        
+                
+                    <tr>
+                        <td>2023-05-04 19:00:00</td>
+                        <td>2</td>
+                        <td><a href="https://tenhou.net/0/?log=2023050419gm-0099-0000-b3111c7e&tw=0">https://tenhou.net/0/?log=2023050419gm-0099-0000-b3111c7e&tw=0</a></td>
+                        <td><textarea id="persisted-text"></textarea></td>
+                        <td>1657.02</td>
+                        <td>2.396</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td>2</td>
+                    </tr>
+        
+                </tbody>  
+            </table>
+            <p>Total games logged = 1</p>
+            <p>Average Placing = 1.5</p>
+            <p>Win rate = 41.176%</p>
+            <p>Deal-in rate = 11.765%</p>
+        </html></body></html>
