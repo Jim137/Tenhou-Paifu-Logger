@@ -44,7 +44,7 @@ pip install PaifuLogger==0.3.7.1
 >>
 >> ii. Copy the paifu URL from tenhou.net to clipboard.
 >>
->> iii. Open `runlog-user.bat`.
+>> iii. Open `runlog-user.bat` or `runlog-user.sh`.
 >
 > b. Download from pypi.
 >
