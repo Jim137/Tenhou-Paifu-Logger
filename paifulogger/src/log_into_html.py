@@ -29,7 +29,7 @@ class html:
     def __repr__(self) -> str:
         return self.logged + self.new_log + self.end_table + self.replay + self.end
 
-    def create_html(self, paifu_str, local_lang: LocalStr):
+    def create_html(self, paifu_str, local_lang: LocalStr) -> None:
         self.logged += f"""<!DOCTYPE html>
         <html lang={local_lang.lang}>
         <head>
@@ -49,6 +49,17 @@ class html:
                     text-align: left;
                 }}
             </style>
+            <script>
+                if (window.localStorage) {{
+                    var p = document.querySelector('#persisted-text');
+                    if (localStorage.text == null) {{
+                        localStorage.text = p.value;
+                    }} else {{
+                        p.value = localStorage.text;
+                    }}
+                    p.addEventListener('keyup', function(){{ localStorage.text = p.value; }}, false);
+                }}
+            </script>
         </head>
         <body>
             <table style="width:100%">
@@ -64,7 +75,7 @@ class html:
                 <tbody>
         """
 
-    def log_into_table(self, paifu: Paifu):
+    def log_into_table(self, paifu: Paifu) -> None:
         time_str = datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H")
         self.new_log += f"""
                     <tr>
@@ -76,44 +87,28 @@ class html:
                     </tr>
         """
 
-    def average_plc(self, local_lang: LocalStr):
-        html_p = (
+    def average_plc(self, local_lang: LocalStr) -> float:
+        pseudo_html = (
             self.logged
             + self.new_log
             + """
-                    </tbody>
-                </table>
-            </body>
-            </html>
-        """
+                </tbody>
+            </table>
+        </body>
+        </html>"""
         )
-        wrapper = io.StringIO(html_p)
+        wrapper = io.StringIO(pseudo_html)
         df = pd.read_html(wrapper)[0]
         avg_plc = df[f"{local_lang.plc}"].mean()
         return avg_plc
 
-    def end_of_table(self, local_lang: LocalStr):
-        self.end_table += (
-            f"""
+    def end_of_table(self, local_lang: LocalStr) -> None:
+        self.end_table += f"""
                 </tbody>  
             </table>
             <p>{local_lang.avg_plc} = {self.average_plc(local_lang)}</p>
-            """
-            + """
-            <script>
-                if (window.localStorage) {
-                    var p = document.querySelector('#persisted-text');
-                    if (localStorage.text == null) {
-                        localStorage.text = p.value;
-                    } else {
-                        p.value = localStorage.text;
-                    }
-                    p.addEventListener('keyup', function(){ localStorage.text = p.value; }, false);
-                }
-            </script>
         </body>
-        """
-        )
+        </html>"""
 
 
 def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
