@@ -15,6 +15,7 @@ class Paifu:
             self.r = rate.split(",")
 
         self.go_type_distinguish()
+        self._rounds()
 
     def go_type_distinguish(self):
         """
@@ -60,6 +61,15 @@ class Paifu:
 
         if self.go_type & 64:
             self.go_str += "速"
+
+    def _rounds(self):
+        self.rounds = [[] for _ in range(self.get_round_num() + 1)]
+        round_idx = -1
+        for el in self.root:
+            # Each element has tag: str, attrib: dict, text, tail attributes
+            if el.tag == "INIT":
+                round_idx += 1
+            self.rounds[round_idx].append(el)
 
     def get_place(self, ban):
         """
