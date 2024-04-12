@@ -3,7 +3,7 @@ import os
 import urllib.request
 import xml.etree.ElementTree as ET
 
-from .i18n import LocalStr
+from .i18n import LocalStr, localized_str
 from .Paifu import Paifu
 
 
@@ -27,7 +27,14 @@ def url_request_handler(url: str):
     return response
 
 
-def get_paifu(url: str, local_lang: LocalStr, output: str, mjai: bool = False) -> Paifu:
+def get_paifu(
+    url: str,
+    local_lang: LocalStr = localized_str(
+        "en", os.path.dirname(os.path.abspath(__file__)).split("src")[0]
+    ),
+    output: str = "./",
+    mjai: bool = False,
+) -> Paifu:
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
