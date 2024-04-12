@@ -8,7 +8,7 @@ from .i18n import LocalStr
 from .Paifu import Paifu
 
 
-class html:
+class PaifuHtml:
     def __init__(self, html_str: str, paifu_str, local_lang: LocalStr):
         if html_str.split("</tbody>")[0] == "":
             self.logged = ""
@@ -120,9 +120,9 @@ def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
     try:
         with open(path, "r", encoding="utf-8") as f:
             html_str = f.read()
-        html_c = html(html_str, paifu_str, local_lang)
+        html_c = PaifuHtml(html_str, paifu_str, local_lang)
     except FileNotFoundError:
-        html_c = html("", paifu_str, local_lang)
+        html_c = PaifuHtml("", paifu_str, local_lang)
     html_c.log_into_table(paifu)
     html_c.end_of_table(local_lang)
     with open(path, "w", encoding="utf-8") as f:
