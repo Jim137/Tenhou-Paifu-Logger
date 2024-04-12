@@ -19,6 +19,7 @@ def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
         csvfile = open(path, "a+", encoding="utf-8")
         writer = csv.writer(csvfile)
     else:
+        # Create a new csv file
         csvfile = open(path, "w", encoding="utf-8")
         writer = csv.writer(csvfile)
         writer.writerow(
@@ -35,10 +36,13 @@ def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
             ]
         )
     try:
-        df = pd.read_csv(path, index_col=0, encoding="utf-8")
-    except pd.errors.EmptyDataError:
-        df = pd.DataFrame(columns=["id", "date", "plc", "paifu", "preR", "r_change", "round_num", "win", "deal_in"])
-    else:
+        try:
+            # Read the csv file
+            df = pd.read_csv(path, index_col=0, encoding="utf-8")
+        except pd.errors.EmptyDataError:
+            # If the csv file is empty, create a new DataFrame
+            df = pd.DataFrame(columns=["id", "date", "plc", "paifu", "preR", "r_change", "round_num", "win", "deal_in"])
+        # Append new paifu data to the csv file
         writer.writerow(
             [
                 df.shape[0],

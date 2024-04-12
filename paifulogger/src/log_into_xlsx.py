@@ -17,9 +17,13 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
             paifu_str = local_lang.yonma + local_lang.paifu
         path = f"{output}/{local_lang.paifu}/{paifu_str}.xlsx"
         wb = xl.load_workbook(path)
+
+        # Prevent MyPy warning
         sheet = cast(Worksheet, wb.active)
+        # Remove final statistics
         sheet.delete_rows(sheet.max_row)
     except FileNotFoundError:
+        # Create a new workbook
         wb = xl.Workbook()
         sheet = cast(Worksheet, wb.active)
         sheet.append(
@@ -35,9 +39,11 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
                 local_lang.deal_in,
             ]
         )
+        # set column width
         sheet.column_dimensions["A"].width = 20
         sheet.column_dimensions["C"].width = 71
         sheet.column_dimensions["E"].width = local_lang.excelE
+    # Append new paifu data to the sheet
     sheet.append(
         [
             datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
@@ -52,6 +58,7 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
         ]
     )
     sheet["C" + str(sheet.max_row)].style = "Hyperlink"
+    # Add final statistics
     sheet.append(
         [
             local_lang.avg_plc,

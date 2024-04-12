@@ -96,6 +96,10 @@ class PaifuHtml:
         """
 
     def _retrieve(self, local_lang: LocalStr) -> tuple[int, float, float, float]:
+        """
+        Retrieve the data from the html table.
+        """
+
         pseudo_html = (
             self.logged
             + self.new_log
