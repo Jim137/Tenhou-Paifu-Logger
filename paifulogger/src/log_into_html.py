@@ -1,16 +1,18 @@
-from datetime import datetime
+import io
 import re
+from datetime import datetime
+
 import pandas as pd
-from .get_place import get_place
+
+from .i18n import LocalStr
 from .Paifu import Paifu
-from .local import local_str
 
 
 class html():
-    def __init__(self, html_str: str, paifu_str, local_str: local_str):
+    def __init__(self, html_str: str, paifu_str, local_lang: LocalStr):
         if html_str.split('</tbody>')[0] == '':
             self.logged = ''
-            self.create_html(paifu_str, local_str)
+            self.create_html(paifu_str, local_lang)
         else:
             self.logged = html_str.split('</tbody>')[0]
         self.new_log = ''
@@ -27,9 +29,9 @@ class html():
     def __repr__(self) -> str:
         return self.logged + self.new_log + self.end_table + self.replay + self.end
 
-    def create_html(self, paifu_str, local_str: local_str):
-        self.logged += f'''<!DOCTYPE html>
-        <html lang={local_str.lang}>
+    def create_html(self, paifu_str, local_lang: LocalStr):
+        self.logged += f"""<!DOCTYPE html>
+        <html lang={local_lang.lang}>
         <head>
             <meta charset="utf-8">
             <title>{paifu_str}</title>
@@ -52,15 +54,15 @@ class html():
             <table style="width:100%">
                 <thead>
                     <tr>
-                        <th>{local_str.date}</th>
-                        <th>{local_str.plc}</th>
-                        <th>{local_str.paifu}</th>
-                        <th>{local_str.remark}</th>
-                        <th>{local_str.preR}</th>
+                        <th>{local_lang.date}</th>
+                        <th>{local_lang.plc}</th>
+                        <th>{local_lang.paifu}</th>
+                        <th>{local_lang.remark}</th>
+                        <th>{local_lang.preR}</th>
                     </tr>
                 </thead>
                 <tbody>
-        '''
+        """
 
     def log_into_table(self, paifu: Paifu):
         time_str = datetime.strptime(re.findall(
@@ -68,32 +70,35 @@ class html():
         self.new_log += f'''
                     <tr>
                         <td>{time_str}</td>
-                        <td>{get_place(paifu, paifu.ban)}</td>
+                        <td>{paifu.get_place(paifu.ban)}</td>
                         <td><a href="{paifu.url}">{paifu.url}</a></td>
                         <td><textarea id="persisted-text"></textarea></td>
                         <td>{float(paifu.r[paifu.ban])}</td>
                     </tr>
         '''
 
-    def average_plc(self, local_str: local_str):
-        html_p = self.logged + self.new_log +'''
-                </tbody>    
-            </table>
-        </body>
-        </html>
-        '''
-        
-        df = pd.read_html(html_p)[0]
-        avg_plc = df[f'{local_str.plc}'].mean()
+    def average_plc(self, local_lang: LocalStr):
+        html_p = (
+            self.logged + self.new_log 
+            + """
+                    </tbody>
+                </table>
+            </body>
+            </html>
+        """
+        )
+        wrapper = io.StringIO(html_p)
+        df = pd.read_html(wrapper)[0]
+        avg_plc = df[f"{local_lang.plc}"].mean()
         return avg_plc
 
 
-    def end_of_table(self, local_str: local_str):
-        self.end_table += f'''
+    def end_of_table(self, local_lang: LocalStr):
+        self.end_table += f"""
                 </tbody>  
             </table>
-            <p>{local_str.avg_plc} = {self.average_plc(local_str)}</p>
-            '''+'''
+            <p>{local_lang.avg_plc} = {self.average_plc(local_lang)}</p>
+            """+"""
             <script>
                 if (window.localStorage) {
                     var p = document.querySelector('#persisted-text');
@@ -106,25 +111,25 @@ class html():
                 }
             </script>
         </body>
-        '''
+        """
 
 
-def log_into_html(paifu: Paifu, local_str: local_str, output: str):
+def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
     if paifu.player_num == 3:
-        paifu_str = local_str.sanma + local_str.paifu
+        paifu_str = local_lang.sanma + local_lang.paifu
     else:
-        paifu_str = local_str.yonma + local_str.paifu
-    path = f'{output}/{local_str.paifu}/{paifu_str}.html'
+        paifu_str = local_lang.yonma + local_lang.paifu
+    path = f"{output}/{local_lang.paifu}/{paifu_str}.html"
     try:
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             html_str = f.read()
-        html_c = html(html_str, paifu_str, local_str)
+        html_c = html(html_str, paifu_str, local_lang)
     except FileNotFoundError:
-        html_c = html('', paifu_str, local_str)
+        html_c = html('', paifu_str, local_lang)
     html_c.log_into_table(paifu)
-    html_c.end_of_table(local_str)
+    html_c.end_of_table(local_lang)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(repr(html_c))
-    print('html: '+local_str.hint_record1 +
-          re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0]+local_str.hint_record2)
+    print('html: '+ local_lang.hint_record1 +
+          re.findall(r'\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d', paifu.url)[0] + local_lang.hint_record2)
     return None

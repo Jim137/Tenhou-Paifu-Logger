@@ -1,0 +1,44 @@
+name: Feature Request
+description: Suggestions or feature requests for paifu-logger
+labels: ["enhancement"]
+assignees: 
+  - Jim137
+body:
+  - type: "markdown"
+    attributes:
+      value: |
+        Please provide a brief description of the feature in the title.
+  - type: checkboxes
+    id: beforeraise
+    attributes:
+      label: Before raising the request...
+      options:
+        - label: I've filled in a brief title.
+          required: true
+        - label: I've verified that the latest version does not have this feature and no one has previously made this request.
+          required: true
+  - type: "textarea"
+    id: describe
+    attributes:
+      label: Description of the request
+      description: |
+        Please provide a detailed description of the suggestion. If there are any reference links, you can paste them here.
+    validations:
+      required: true
+  - type: input
+    id: nativeLanguage
+    attributes:
+      label: Native Language
+      description: |
+        If you are not familiar with English, please fill in your native language to help us gather information more effectively.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checkagain
+    attributes:
+      label: Important notes
+      description: |
+        1. Please make sure this feature request is not duplicated with existing ones.
+      options:
+        - label: I've' confirmed the above notes.
+          required: true

@@ -15,5 +15,5 @@
     "yonma": "四麻",
     "hint_duplicate": "既にこの牌譜は記録されています",
     "sanma_mjai_error": "三麻の対局ではまだmjai牌譜形式はサポートされていません",
-    "log2mjai_import_error": "サブモジュール「mjlog2mjai」が見つかりません。`git pull --recurse-submodules`コマンドを実行してください。"
+    "log2mjai_import_error": "サブモジュール「mjlog2mjai」が見つかりません。`git pull --recurse-submodules`または`git submodule update --init --recursive`コマンドを実行してください。"
 }

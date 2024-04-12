@@ -4,15 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PaifuLogger"
-version = "0.3.3a"
+version = "0.3.9.1"
 description = "Logging tenhou paifu into excel or html file with some key information."
 readme = "README.md"
 authors = [{ name = "Jim137", email = "jim@mail.jim137.eu.org" }]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 keywords = ["mahjong", "review", "logger", "paifu", "tenhou", "haifu", "paipu", "riichi-mahjong"]
 dependencies = [
@@ -20,14 +21,17 @@ dependencies = [
     "lxml",
     "tables",
     "pandas",
+    "platformdirs",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 [project.urls]
 Homepage = "https://github.com/Jim137/Tenhou-Paifu-Logger"
 
 [project.scripts]
 log = "paifulogger.__main__:main"
+plog = "paifulogger.__main__:main"
+pdl = "paifulogger.paifu_dl:paifu_dl"
 
 [tool.setuptools.packages.find]
 exclude = [
