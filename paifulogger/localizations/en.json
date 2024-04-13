@@ -15,5 +15,12 @@
     "yonma": "",
     "hint_duplicate": "The match is duplicated.",
     "sanma_mjai_error": "The Sanma match does not support Mjai format.",
-    "log2mjai_import_error": "The submodule \"mjlog2mjai\" not found. Please run `git pull --recurse-submodules` or `git submodule update --init --recursive` to update the submodule."
+    "log2mjai_import_error": "The submodule \"mjlog2mjai\" not found. Please run `git pull --recurse-submodules` or `git submodule update --init --recursive` to update the submodule.",
+    "r_change": "Change of rate",
+    "round_num": "Round number",
+    "win": "Win num",
+    "deal_in": "Deal-in num",
+    "win_rate": "Win rate",
+    "deal_in_rate": "Deal-in rate",
+    "log_num": "Total games logged"
 }

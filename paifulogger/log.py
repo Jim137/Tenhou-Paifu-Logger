@@ -1,17 +1,17 @@
 import argparse
 import json
-from typing import Callable
 import urllib.request
-import re
 import os
+import re
 import sys
 import warnings
+from typing import Callable
 
 from pandas import HDFStore, DataFrame
-from platformdirs import user_data_dir
 
+from .src.config import config_path
 from .src.get_paifu import get_paifu
-from .src.i18n import localized_str, local_str
+from .src.i18n import localized_str, LocalStr
 from .src.log_into_csv import log_into_csv
 from .src.log_into_xlsx import log_into_xlsx
 from .src.log_into_html import log_into_html
@@ -53,7 +53,7 @@ def remove_old_paifu(paifu_str: str, formats: list[str], output: str) -> None:
     return None
 
 
-def _get_lang(lang: str | None = None) -> local_str:
+def _get_lang(lang: str | None = None) -> LocalStr:
     """
     Get the localized string.
 
@@ -85,7 +85,9 @@ def _get_output(output: str = "./") -> str:
 
 def _get_urls(
     url: list[str] | None = None,
-    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = localized_str(
+        "en", os.path.dirname(os.path.abspath(__file__))
+    ),
     output: str = os.path.abspath("./"),
     remake: bool = False,
 ) -> list[str]:
@@ -146,7 +148,7 @@ def _get_formats(format: list[str] | None = None) -> list:
 
 
 def _remake_log(
-    local_lang: local_str, output: str, formats: list[str], all_formats: bool = False
+    local_lang: LocalStr, output: str, formats: list[str], all_formats: bool = False
 ) -> None:
     """
     Remake the log file from url_log.h5 (past logging log), and remove old paifu files.
@@ -195,7 +197,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 def log_paifu(
     *urls: list[str] | str,
     log_formats: list[Callable] = [log_into_csv],
-    local_lang: local_str = local_str("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
     output: str = os.path.abspath("./"),
     remake: bool = False,
     ignore_duplicated: bool = False,
@@ -209,7 +211,7 @@ def log_paifu(
             The urls of the paifu files.
         log_formats: list
             The list of log functions.
-        local_lang: local_str
+        local_lang: LocalStr
             The localized string.
         output: str
             The output directory.
@@ -224,7 +226,7 @@ def log_paifu(
         int
     """
 
-    retCode = [0]
+    retCode = 0
     _urls: list[str] = []
     for url in urls:
         if isinstance(url, list):
@@ -248,17 +250,16 @@ def log_paifu(
                 pass
             else:
                 url_log(url, local_lang, output)
-            retCode.append(0)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            retCode.append(1)
+            retCode = 1
         except OSError:
             print(local_lang.hint_url, url)
-            retCode.append(1)
+            retCode = 1
         except ValueError:
             print(local_lang.hint_tw, url)
-            retCode.append(1)
-    return max(retCode)
+            retCode = 1
+    return retCode
 
 
 def log(args: argparse.Namespace) -> int:
@@ -268,10 +269,8 @@ def log(args: argparse.Namespace) -> int:
 
     # get version and exit
     if args.version:
-        try:
-            from paifulogger import __version__
-        except ImportError:
-            from . import __version__
+        from .version import __version__
+
         print("Tenhou-Paifu-Logger", __version__)
         return 0
 
@@ -296,7 +295,9 @@ def log(args: argparse.Namespace) -> int:
     )
 
 
-def log_parser(config_path: str | None = None) -> argparse.Namespace:
+def log_parser(
+    config_path: str | None = None, parser: argparse.ArgumentParser | None = None
+) -> argparse.Namespace:
     """
     Parse the arguments from the command line.
 
@@ -313,7 +314,8 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         with open(f"{config_path}/config.json", "r") as f:
             config = json.load(f)
 
-    parser = argparse.ArgumentParser()
+    if parser is None:
+        parser = argparse.ArgumentParser(description="Paifu Logger")
     parser.add_argument("url", nargs="*", help="URL of the match.")
     parser.add_argument(
         "-l",
@@ -374,27 +376,13 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         default=config.get("ignore_duplicated", False),
     )
     args = parser.parse_args()
+    if "plog" in args.url:
+        args.url.remove("plog")
     return args
 
 
-def config_path() -> str | None:
-    """
-    Try to get the path of the config file from current directory or user_data_dir.
-    """
-
-    appname = "paifulogger"
-    appauthor = "Jim137"
-    user_data_dir(appname, appauthor)
-    if os.path.exists(f"./config.json"):
-        return "."
-    elif os.path.exists(f"{user_data_dir(appname, appauthor)}/config.json"):
-        return user_data_dir(appname, appauthor)
-    else:
-        return None
-
-
-def main():
-    args = log_parser(config_path())
+def main(plog_parser: argparse.ArgumentParser | None = None):
+    args = log_parser(config_path(), plog_parser)
     return log(args)
 
 

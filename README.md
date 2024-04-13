@@ -44,7 +44,7 @@ pip install PaifuLogger==0.3.7.1
 >>
 >> ii. Copy the paifu URL from tenhou.net to clipboard.
 >>
->> iii. Open `runlog-user.bat`.
+>> iii. Open `runlog-user.bat` or `runlog-user.sh`.
 >
 > b. Download from pypi.
 >
@@ -79,6 +79,10 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
   * [x] Traditional Chinese: zh_tw
   * [x] Simplified Chinese: zh
   * [x] Japanese (ChatGPT): ja
+* [x] Support config file. Placing `config.json` in the same directory as the execution enables local configuration. For global configuration, place it in the following directories:
+  * Windows: `%localappdata%\Jim137\paifulogger\config.json`
+  * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
+  * Linux: `~/.local/share/paifulogger/config.json`
 
 ## Information logged
 
@@ -86,11 +90,13 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 * Placing
 * URL (for future use)
 * Rate before the game
+* The change of Rate: Note it assumes that the player has played more than 400 games.
+* Number of wins
+* Number of deal-ins
 
 ## Future features
 
 * [ ] Add match replay for every round in html file
-* [ ] The change of Rate
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
