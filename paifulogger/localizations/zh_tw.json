@@ -15,5 +15,12 @@
     "yonma": "四麻",
     "hint_duplicate": "已記錄過此牌譜",
     "sanma_mjai_error": "三麻對局尚不支援mjai牌譜格式",
-    "log2mjai_import_error": "找不到子模組 \"mjlog2mjai\"。請執行 `git pull --recurse-submodules` 或 `git submodule update --init --recursive` 來更新子模組。"
+    "log2mjai_import_error": "找不到子模組 \"mjlog2mjai\"。請執行 `git pull --recurse-submodules` 或 `git submodule update --init --recursive` 來更新子模組。",
+    "r_change": "R值變化",
+    "round_num": "局數",
+    "win": "和牌數",
+    "deal_in": "放銃數",
+    "win_rate": "和牌率",
+    "deal_in_rate": "放銃率",
+    "log_num": "總對局數"
 }

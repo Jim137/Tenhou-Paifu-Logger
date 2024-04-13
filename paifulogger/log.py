@@ -1,15 +1,15 @@
 import argparse
 import json
 import urllib.request
-import re
 import os
+import re
 import sys
 import warnings
 from typing import Callable
 
 from pandas import HDFStore, DataFrame
-from platformdirs import user_data_dir
 
+from .src.config import config_path
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, LocalStr
 from .src.log_into_csv import log_into_csv
@@ -269,10 +269,8 @@ def log(args: argparse.Namespace) -> int:
 
     # get version and exit
     if args.version:
-        try:
-            from paifulogger import __version__
-        except ImportError:
-            from . import __version__
+        from .version import __version__
+
         print("Tenhou-Paifu-Logger", __version__)
         return 0
 
@@ -297,7 +295,9 @@ def log(args: argparse.Namespace) -> int:
     )
 
 
-def log_parser(config_path: str | None = None) -> argparse.Namespace:
+def log_parser(
+    config_path: str | None = None, parser: argparse.ArgumentParser | None = None
+) -> argparse.Namespace:
     """
     Parse the arguments from the command line.
 
@@ -314,7 +314,8 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         with open(f"{config_path}/config.json", "r") as f:
             config = json.load(f)
 
-    parser = argparse.ArgumentParser()
+    if parser is None:
+        parser = argparse.ArgumentParser(description="Paifu Logger")
     parser.add_argument("url", nargs="*", help="URL of the match.")
     parser.add_argument(
         "-l",
@@ -375,27 +376,13 @@ def log_parser(config_path: str | None = None) -> argparse.Namespace:
         default=config.get("ignore_duplicated", False),
     )
     args = parser.parse_args()
+    if "plog" in args.url:
+        args.url.remove("plog")
     return args
 
 
-def config_path() -> str | None:
-    """
-    Try to get the path of the config file from current directory or user_data_dir.
-    """
-
-    appname = "paifulogger"
-    appauthor = "Jim137"
-    user_data_dir(appname, appauthor)
-    if os.path.exists(f"./config.json"):
-        return "."
-    elif os.path.exists(f"{user_data_dir(appname, appauthor)}/config.json"):
-        return user_data_dir(appname, appauthor)
-    else:
-        return None
-
-
-def main():
-    args = log_parser(config_path())
+def main(plog_parser: argparse.ArgumentParser | None = None):
+    args = log_parser(config_path(), plog_parser)
     return log(args)
 
 
