@@ -80,7 +80,7 @@ def pdl(args: argparse.Namespace) -> int:
     if args.version:
         from .version import __version__
 
-        print(f"PaifuLogger version {__version__}")
+        print("Tenhou-Paifu-Logger", __version__)
         return 0
 
     local_lang = _get_lang(args.lang)
