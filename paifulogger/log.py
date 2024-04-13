@@ -259,6 +259,12 @@ def log_paifu(
         except ValueError:
             print(local_lang.hint_tw, url)
             retCode = 1
+        except KeyError:
+            print(
+                """Please remake the log file by `plog -f [format] -l [lang] -o [output] -r`,
+                  or `python -m plog -f [format] -l [lang] -o [output] -r` manually."""
+            )
+            return 1
     return retCode
 
 
