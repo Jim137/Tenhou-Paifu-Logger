@@ -1,7 +1,7 @@
 import sys
 
-from paifulogger import log
+from paifulogger.log import main
 
 
 if __name__ == "__main__":
-    sys.exit(log.main())
+    sys.exit(main())
