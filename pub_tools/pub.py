@@ -39,9 +39,12 @@ requires-python = ">=3.10"
 Homepage = "https://github.com/Jim137/Tenhou-Paifu-Logger"
 
 [project.scripts]
-log = "paifulogger.__main__:main"
-plog = "paifulogger.__main__:main"
-pdl = "paifulogger.paifu_dl:paifu_dl"
+paifu = "paifulogger.__main__:main"
+log = "paifulogger.log:main"
+plog = "paifulogger.log:main"
+plogger = "paifulogger.log:main"
+paifulog = "paifulogger.log:main"
+pdl = "paifulogger.paifu_dl:main"
 
 [tool.setuptools.packages.find]
 exclude = [
