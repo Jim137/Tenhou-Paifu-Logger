@@ -15,6 +15,9 @@ class Paifu:
             self.r = rate.split(",")
 
         self.go_type_distinguish()
+        self._rounds()
+        self.plc = self.get_place(self.ban)
+        self.rate_change = self.get_rate_change()
 
     def go_type_distinguish(self):
         """
@@ -61,6 +64,15 @@ class Paifu:
         if self.go_type & 64:
             self.go_str += "速"
 
+    def _rounds(self):
+        self.rounds = [[] for _ in range(self.get_round_num() + 1)]
+        round_idx = -1
+        for el in self.root:
+            # Each element has tag: str, attrib: dict, text, tail attributes
+            if el.tag == "INIT":
+                round_idx += 1
+            self.rounds[round_idx].append(el)
+
     def get_place(self, ban):
         """
         Return the placing and rate before match
@@ -82,6 +94,23 @@ class Paifu:
                     if sp[i] < sp[j]:
                         placing[i] += 1
         return placing[ban]
+
+    def get_rate_change(self):
+        """
+        Return the rate change after match.
+
+        Note: Since the rate change has a correction of number of played games. We assumed that player has played over 400 games,
+        which the correction is fixed to 0.2.
+        """
+
+        if self.player_num == 4:
+            dr_result = (30, 10, -10, -30)
+            corr = (sum([float(r) for r in self.r]) / 4 - float(self.r[self.ban])) / 40
+            return 0.2 * (dr_result[self.plc - 1] + corr)
+        else:
+            dr_result = (30, 0, -30)
+            corr = (sum([float(r) for r in self.r]) / 3 - float(self.r[self.ban])) / 40
+            return 0.2 * (dr_result[self.plc - 1] + corr)
 
     def get_round_num(self) -> int:
         """

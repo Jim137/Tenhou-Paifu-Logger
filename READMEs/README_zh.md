@@ -50,18 +50,21 @@
   * [x] 繁體中文: zh_tw
   * [x] 簡體中文: zh
   * [x] 日文 (ChatGPT): ja
-
+* [x] 支援使用 config 檔案設定。將 `config.json` 放置於相同使用環境下即可實現局域設定。若要實現全局設定，則將 `config.json` 放置於如下位置：
+  * Windows: `%localappdata%\Jim137\paifulogger\config.json`
+  * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
+  * Linux: `~/.local/share/paifulogger/config.json`
 ## 牌譜紀錄訊息
 
 * 對局時間
 * 順位
 * 牌譜網址 (方便未來新增新功能時能快速套用過去牌譜)
 * 對局前R值
+* R值變化量
 
 ## 預計新增功能
 
 * [ ] 每一本場的對局回放（html）
-* [ ] 對局R值變化
 * [ ] 和銃分析
 * [ ] 雀魂牌譜支援
 * [ ] 圖形使用者介面（GUI）

@@ -67,6 +67,10 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
   * [x] 繁体字中国語: zh_tw
   * [x] 簡体字中国語: zh
   * [x] 日本語 (ChatGPT): ja
+* [x] configファイル設定のサポート。`config.json` を同じ環境に配置すると、ローカル設定が有効になります。グローバル設定を有効にするには、下記の場所に `config.json` を配置します。
+  * Windows: `%localappdata%\Jim137\paifulogger\config.json`
+  * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
+  * Linux: `~/.local/share/paifulogger/config.json`
 
 ## 記録される情報
 
@@ -74,11 +78,13 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
 * 順位
 * URL (将来のために)
 * ゲーム前のレート
+* レート変化
+* 和了数
+* 放銃数
 
 ## 将来の機能
 
 * [ ] 各ラウンドの試合リプレイをHTMLファイルに追加
-* [ ] レートの変動
 * [ ] 和了解析
 * [ ] Majsoul牌譜のサポート
 * [ ] GUI
