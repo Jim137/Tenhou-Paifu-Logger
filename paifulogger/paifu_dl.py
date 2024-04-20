@@ -5,9 +5,10 @@ import re
 import sys
 import urllib.error
 
+from . import main_path
 from .log import _get_lang
 from .src.config import config_path
-from .src.i18n import LocalStr
+from .src.i18n import localized_str, LocalStr
 from .src.get_paifu import get_paifu
 
 
@@ -39,7 +40,7 @@ def _get_urls(urls, local_lang: LocalStr) -> list[str]:
 def paifu_dl(
     urls: str | list[str] | None = None,
     *,
-    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = localized_str("en"),
     output: str = "./",
     mjai: bool = False,
 ) -> int:

@@ -29,9 +29,7 @@ def url_request_handler(url: str):
 
 def get_paifu(
     url: str,
-    local_lang: LocalStr = localized_str(
-        "en", os.path.dirname(os.path.abspath(__file__)).split("src")[0]
-    ),
+    local_lang: LocalStr = localized_str("en"),
     output: str = "./",
     mjai: bool = False,
 ) -> Paifu:

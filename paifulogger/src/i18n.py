@@ -1,5 +1,7 @@
 import json
 
+from .. import main_path
+
 
 class LocalStr:
     def __init__(self, lang: str = "en", main_path: str = "./"):
@@ -22,7 +24,7 @@ class LocalStr:
         return data[name]
 
 
-def localized_str(lang: str, main_path: str) -> LocalStr:
+def localized_str(lang: str, main_path: str = main_path) -> LocalStr:
     localized = LocalStr(lang, main_path)
     try:
         with open(f"{main_path}/localizations/{lang}.json", encoding="utf-8") as f:
