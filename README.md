@@ -32,9 +32,11 @@ pip install PaifuLogger==0.3.7.1
 
 ## Usage
 
+### Command Line / Script
+
 1. Download the project.
 
-> a. Download from github.
+> a. Via GitHub.
 >
 >> i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
 >>
@@ -44,26 +46,54 @@ pip install PaifuLogger==0.3.7.1
 >>
 >> ii. Copy the paifu URL from tenhou.net to clipboard.
 >>
->> iii. Open `runlog-user.bat` or `runlog-user.sh`.
+>> iii. Run `runlog-user.bat` or `runlog-user.sh`.
 >
-> b. Download from pypi.
+> b. Via pypi.
 >
->> i. Open command line and type
+>> i. Open terminal and install with pip command.
 >>
 >> ```
 >> pip install PaifuLogger
 >> ```
 >>
->> ii. Copy the paifu URL from tenhou.net to clipboard. And type
+>> ii. Copy the paifu URL from tenhou.net to clipboard. And run by
 >>
->> ```
+>> ```shell
 >> plog -l [language] -o [output directory] [paifu URLs]
 >> ```
+>> ```shell
+>> paifulogger plog -l [language] -o [output directory] [paifu URLs]
+>> ```
 
-2. Once ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears, paste the paifu URL and press Enter.\
+2. Once `Please enter the URL of match:` appears, paste the URL and press Enter.\
 Note: In the latest version, you can input multiple URLs at once, separated by whatever you like. If you are lazy, you can just paste w/o anything.
-3. After ![1675264143738](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675264143738.png) appears, the paifu is successfully logged.
-4. When ![1675261153312](https://github.com/Jim137/Tenhou-Paifu-Logger/raw/master/READMEs/image/README/1675261153312.png) appears again, you can paste the next the URL.
+3. After `Match of {paifu name} has been recorded` appears, the paifu has been successfully logged.
+
+### Inline
+
+You can manually log the paifu by the following code.
+
+```python
+from paifulogger import get_paifu, localized_str, log_paifu, main_path
+from paifulogger.log import _get_log_func
+
+url = "Your paifu URL"
+local_lang = localized_str("en", main_path) # Localization
+log_formats = _get_log_func(["csv", "html"]) # Log into csv and html file.
+output = "./" # Output directory
+mjai = False # Whether have output in mjai format
+
+# Log the paifu into the file.
+log_paifu(
+    url,
+    log_formats = log_formats,
+    local_lang = local_lang,
+    output = output,
+    mjai = mjai
+)
+# Get Paifu object, which contains all the information of the paifu.
+paifu = get_paifu(url, local_lang)
+```
 
 ## Features
 * [x] Support multiple URLs at once.
@@ -108,4 +138,4 @@ See [CONTRIBUTING.md](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/
 
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
