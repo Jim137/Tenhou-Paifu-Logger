@@ -32,10 +32,15 @@ def get_paifu(
     local_lang: LocalStr = localized_str("en"),
     output: str = "./",
     mjai: bool = False,
+    no_output: bool = False,
 ) -> Paifu:
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
+
+    if no_output:
+        return paifu
+
     path = f"{output}/{local_lang.paifu}/{paifu.go_str}/"
     if not os.path.isdir(path):
         os.makedirs(path)
