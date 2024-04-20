@@ -73,7 +73,7 @@ class Paifu:
                 round_idx += 1
             self.rounds[round_idx].append(el)
 
-    def get_place(self, ban):
+    def get_place(self, ban) -> int:
         """
         Return the placing and rate before match
         """
@@ -95,7 +95,7 @@ class Paifu:
                         placing[i] += 1
         return placing[ban]
 
-    def get_rate_change(self):
+    def get_rate_change(self) -> float:
         """
         Return the rate change after match.
 
@@ -108,8 +108,10 @@ class Paifu:
             corr = (sum([float(r) for r in self.r]) / 4 - float(self.r[self.ban])) / 40
             return 0.2 * (dr_result[self.plc - 1] + corr)
         else:
-            dr_result = (30, 0, -30)
+            dr_result = (30, 0, -30, 0)
             corr = (sum([float(r) for r in self.r]) / 3 - float(self.r[self.ban])) / 40
+            if self.plc == 4:
+                assert False, "Sanma has no 4th place."
             return 0.2 * (dr_result[self.plc - 1] + corr)
 
     def get_round_num(self) -> int:
