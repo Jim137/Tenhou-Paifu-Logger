@@ -1,8 +1,12 @@
+import os
 import sys
 
 if sys.version_info < (3, 10):
     raise ImportError("Python 3.10 or above is required for PaifuLogger.")
 del sys
+
+main_path = os.path.dirname(os.path.abspath(__file__))
+del os
 
 from .log import config_path, log, log_paifu, log_parser, remove_old_paifu
 from .paifu_dl import paifu_dl
@@ -17,6 +21,7 @@ __all__ = [
     "log",
     "log_paifu",
     "log_parser",
+    "main_path",
     "remove_old_paifu",
     "paifu_dl",
     "__version__",
