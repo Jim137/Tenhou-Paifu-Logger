@@ -66,3 +66,22 @@ def get_paifu(
             f.write(parse_mjlog_to_mjai(load_mjlog(path + url + ".xml")))
 
     return paifu
+
+
+def get_paifu_from_local(
+    url: str,
+    go_str: str,
+    local_lang: LocalStr = localized_str("en"),
+    output: str = "./",
+) -> Paifu | None:
+    path = f"{output}/{local_lang.paifu}/{go_str}/"
+    url = url.split("=")[1] + "=" + url.split("=")[2]
+    try:
+        with open(path + url + ".xml", "r") as t:
+            response = t.read()
+    except FileNotFoundError:
+        print(f"Cannot find {path + url + '.xml'}")
+        return None
+    root = ET.fromstring(response)
+    paifu = Paifu(url, root)
+    return paifu
