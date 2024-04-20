@@ -1,9 +1,12 @@
+import re
+from datetime import datetime
 import xml.etree.ElementTree as ET
 
 
 class Paifu:
     def __init__(self, url: str, root: ET.Element):
         self.url = url
+        self.time = datetime.strptime(re.findall(r"\d{10}", self.url)[0], "%Y%m%d%H")
         self.ban = int(url[-1])
         self.root = root
 

@@ -1,7 +1,9 @@
+from datetime import datetime
 import xml.etree.ElementTree as ET
 
 class Paifu:
     url: str
+    time: datetime
     ban: int
     root: ET.Element
     go_type: int

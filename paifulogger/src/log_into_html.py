@@ -1,6 +1,5 @@
 import io
 import re
-from datetime import datetime
 
 import pandas as pd
 
@@ -80,10 +79,9 @@ class PaifuHtml:
         """
 
     def log_into_table(self, paifu: Paifu) -> None:
-        time_str = datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H")
         self.new_log += f"""
                     <tr>
-                        <td>{time_str}</td>
+                        <td>{paifu.time}</td>
                         <td>{paifu.get_place(paifu.ban)}</td>
                         <td><a href="{paifu.url}">{paifu.url}</a></td>
                         <td><textarea id="persisted-text"></textarea></td>

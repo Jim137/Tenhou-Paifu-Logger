@@ -1,5 +1,4 @@
 import re
-from datetime import datetime
 from typing import cast
 
 import openpyxl as xl
@@ -46,7 +45,7 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
     # Append new paifu data to the sheet
     sheet.append(
         [
-            datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
+            paifu.time,
             paifu.get_place(paifu.ban),
             paifu.url,
             "",

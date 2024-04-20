@@ -1,7 +1,6 @@
 import csv
 import re
 import os.path
-from datetime import datetime
 
 import pandas as pd
 
@@ -46,7 +45,7 @@ def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
         writer.writerow(
             [
                 df.shape[0],
-                datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
+                paifu.time,
                 paifu.get_place(paifu.ban),
                 paifu.url,
                 float(paifu.r[paifu.ban]),
