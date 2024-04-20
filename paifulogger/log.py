@@ -9,6 +9,7 @@ from typing import Callable
 
 from pandas import HDFStore, DataFrame
 
+from . import main_path
 from .src.config import config_path
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, LocalStr
@@ -18,7 +19,7 @@ from .src.log_into_html import log_into_html
 from .src.url_log import url_log, check_duplicate
 
 
-url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
+REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 avaiable_formats = ["xlsx", "html", "csv"]
 
 
@@ -64,7 +65,6 @@ def _get_lang(lang: str | None = None) -> LocalStr:
         _lang = lang
     else:
         _lang = "en"
-    main_path = os.path.dirname(os.path.abspath(__file__))
     local_lang = localized_str(_lang, main_path)
     return local_lang
 
@@ -85,9 +85,7 @@ def _get_output(output: str = "./") -> str:
 
 def _get_urls(
     url: list[str] | None = None,
-    local_lang: LocalStr = localized_str(
-        "en", os.path.dirname(os.path.abspath(__file__))
-    ),
+    local_lang: LocalStr = localized_str("en", main_path),
     output: str = os.path.abspath("./"),
     remake: bool = False,
 ) -> list[str]:
@@ -120,16 +118,16 @@ def _get_urls(
             ############################################################
             urlstore = store["url"]["url"].values
             for _url in urlstore:
-                if not re.match(url_reg, _url):
+                if not re.match(REG_URL, _url):
                     urls.append("https://" + _url)
                     continue
                 urls.append(_url)
     elif not url:
-        for _url in re.findall(url_reg, input(local_lang.hint_input)):
+        for _url in re.findall(REG_URL, input(local_lang.hint_input)):
             urls.append(_url)
     else:
         for _url in url:
-            urls.extend(re.findall(url_reg, _url))
+            urls.extend(re.findall(REG_URL, _url))
     return urls
 
 
@@ -197,7 +195,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 def log_paifu(
     *urls: list[str] | str,
     log_formats: list[Callable] = [log_into_csv],
-    local_lang: LocalStr = LocalStr("en", os.path.dirname(os.path.abspath(__file__))),
+    local_lang: LocalStr = LocalStr("en", main_path),
     output: str = os.path.abspath("./"),
     remake: bool = False,
     ignore_duplicated: bool = False,
@@ -234,7 +232,7 @@ def log_paifu(
         else:
             _urls.append(url)
     for url in _urls:
-        if not re.match(url_reg, url):
+        if not re.match(REG_URL, url):
             print(local_lang.hint_url, url)
             continue
         if remake:
@@ -262,7 +260,7 @@ def log_paifu(
         except KeyError:
             print(
                 """Please remake the log file by `plog -f [format] -l [lang] -o [output] -r`,
-                  or `python -m plog -f [format] -l [lang] -o [output] -r` manually."""
+                  or `python -m paifulogger plog -f [format] -l [lang] -o [output] -r` manually."""
             )
             return 1
     return retCode
