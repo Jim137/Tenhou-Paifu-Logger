@@ -16,7 +16,7 @@ Logging tenhou paifu into excel, csv or html file with some key information.
 
 If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
 
-[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
+[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [繁體中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh_TW.md) | [简体中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 
 ## Requirements
 

@@ -16,7 +16,7 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
 
 このプロジェクトが気に入った場合は、スターを付けていただけると大変励みになります。また、提案がある場合は、遠慮なく問題を作成してください。
 
-[ダウンロード](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
+[ダウンロード](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [English](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/README.md) | [繁體中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh_TW.md) | [简体中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md)
 
 ## 使い方
 
@@ -46,6 +46,9 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
 >>
 >> ```
 >> plog -l [言語] -o [出力ディレクトリ] [牌譜のURL]
+>> ```
+>> ```
+>> paifulogger plog -l [言語] -o [出力ディレクトリ] [牌譜のURL]
 >> ```
 
 2. 一度 ![Enter URLs](image/README_ja/enter_url.png) が表示されると、牌譜のURLを貼り付けてEnterキーを押します。\
