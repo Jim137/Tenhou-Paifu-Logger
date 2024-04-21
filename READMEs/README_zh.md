@@ -22,10 +22,13 @@
 
 1. 克隆此项目或下载[最新版本](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest)或使用pip下载。
 
-    `git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git`
+    ```shell
+    git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
+    ```
+    ```shell
+    pip install PaifuLogger
+    ```
 
-    `pip install PaifuLogger`
-    
 2. 首次使用时，右键编辑 `runlog-user.bat` （Linux 用户则 `runlog-user.sh` ），在 set LANG= （export LANG=）后加上语言代码 `zh` ，保存后运行此文件。
   使用 pip 则运行以下命令。
 
