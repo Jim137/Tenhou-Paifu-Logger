@@ -102,8 +102,8 @@ class Paifu:
         """
         Return the rate change after match.
 
-        Note: Since the rate change has a correction of number of played games. We assumed that player has played over 400 games,
-        which the correction is fixed to 0.2.
+        Note: Since the rate change has a correction of number of played games.
+        We assumed that player has played over 400 games, which the correction is fixed to 0.2.
         """
 
         if self.player_num == 4:

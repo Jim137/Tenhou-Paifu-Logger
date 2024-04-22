@@ -120,7 +120,7 @@ class PaifuHtml:
     def end_of_table(self, local_lang: LocalStr) -> None:
         logged_num, avg_plc, win_rate, deal_in_rate = self._retrieve(local_lang)
         self.end_table += f"""
-                </tbody>  
+                </tbody>
             </table>
             <p>{local_lang.log_num} = {logged_num}</p>
             <p>{local_lang.avg_plc} = {avg_plc:.2}</p>

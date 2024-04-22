@@ -9,8 +9,12 @@ def main():
     parser = argparse.ArgumentParser(description="PaifuLogger CLI")
     subparsers = parser.add_subparsers(required=False, dest="command")
 
-    plog_parser = subparsers.add_parser("plog", help="Paifu Logger. See 'paifulogger plog -h' for more info.")
-    pdl_parser = subparsers.add_parser("pdl", help="Paifu Downloader. See 'paifulogger pdl -h' for more info.")
+    plog_parser = subparsers.add_parser(
+        "plog", help="Paifu Logger. See 'paifulogger plog -h' for more info."
+    )
+    pdl_parser = subparsers.add_parser(
+        "pdl", help="Paifu Downloader. See 'paifulogger pdl -h' for more info."
+    )
 
     options = sys.argv
 
@@ -20,11 +24,13 @@ def main():
         sys.exit(pdl_main(pdl_parser))
     elif "-v" in options or "--version" in options:
         from .version import __version__
+
         print("Tenhou-Paifu-Logger", __version__)
         return 0
     else:
         parser.parse_args()
         sys.exit(parser.print_help())
+
 
 if __name__ == "__main__":
     main()

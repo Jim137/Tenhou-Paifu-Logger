@@ -11,7 +11,7 @@ def config_path() -> str | None:
     appname = "paifulogger"
     appauthor = "Jim137"
     user_data_dir(appname, appauthor)
-    if os.path.exists(f"./config.json"):
+    if os.path.exists("./config.json"):
         return "."
     elif os.path.exists(f"{user_data_dir(appname, appauthor)}/config.json"):
         return user_data_dir(appname, appauthor)

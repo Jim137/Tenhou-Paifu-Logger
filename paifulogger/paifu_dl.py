@@ -109,7 +109,7 @@ def pdl_parser(
         "-l",
         "--lang",
         type=str,
-        help="""Language of the program and output files. Default is English. 
+        help="""Language of the program and output files. Default is English.
         Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).""",
         default=config.get("lang", None),
     )
@@ -124,7 +124,8 @@ def pdl_parser(
         "-v",
         "--version",
         action="store_true",
-        help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.",
+        help="""Show version of the program.
+        If this is used, all other arguments will be ignored and the program will be closed.""",
     )
     parser.add_argument(
         "--mjai",

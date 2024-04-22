@@ -108,9 +108,9 @@ def _get_urls(
             if "url" not in store:
                 store["url"] = DataFrame(columns=["url"])
                 warnings.warn(
-                    """The url_log.h5 you used is deprecated. 
+                    """The url_log.h5 you used is deprecated.
                     You have to manually copy all urls and delete url_log.h5,
-                    then run and paste the urls to the program. 
+                    then run and paste the urls to the program.
                     The new url_log.h5 will be automatically created.
                     """,
                     DeprecationWarning,
@@ -325,7 +325,7 @@ def log_parser(
         "-l",
         "--lang",
         type=str,
-        help="""Language of the program and output files. Default is English. 
+        help="""Language of the program and output files. Default is English.
         Available languages: English(en), 繁體中文(zh_tw), 简体中文(zh), 日本語(ja).""",
         default=config.get("lang", None),
     )
@@ -349,8 +349,8 @@ def log_parser(
         "-r",
         "--remake",
         action="store_true",
-        help="""Remake the log file from url_log.h5 (past logging log). 
-        Use this when the program is updated, changing format or language of the log file, or the log file is missing. 
+        help="""Remake the log file from url_log.h5 (past logging log).
+        Use this when the program is updated, changing format or language of the log file, or the log file is missing.
         Note that this will overwrite the log file.""",
     )
     parser.add_argument(
