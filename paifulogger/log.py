@@ -195,7 +195,7 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
 def log_paifu(
     *urls: list[str] | str,
     log_formats: list[Callable] = [log_into_csv],
-    local_lang: LocalStr = LocalStr("en", main_path),
+    local_lang: LocalStr = localized_str("en", main_path),
     output: str = os.path.abspath("./"),
     remake: bool = False,
     ignore_duplicated: bool = False,
