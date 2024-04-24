@@ -96,7 +96,7 @@ def _get_urls(
     Else if not given url, get urls from input.
 
     Note:
-        `re.findall(url_reg, _url)` will return a list of urls that match the regular expression.
+        `re.findall(REG_URL, _url)` will return a list of urls that match the regular expression.
     """
 
     urls = []

@@ -12,7 +12,7 @@ from .src.i18n import localized_str, LocalStr
 from .src.get_paifu import get_paifu
 
 
-url_reg = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
+REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
 def _get_urls(urls, local_lang: LocalStr) -> list[str]:
@@ -23,17 +23,17 @@ def _get_urls(urls, local_lang: LocalStr) -> list[str]:
     Else if not given args.url, get urls from input.
 
     Note:
-        `re.findall(url_reg, url)` will return a list of urls that match the regular expression.
+        `re.findall(REG_URL, url)` will return a list of urls that match the regular expression.
     """
 
     check_urls = []
 
     if not urls:
-        for url in re.findall(url_reg, input(local_lang.hint_input)):
+        for url in re.findall(REG_URL, input(local_lang.hint_input)):
             check_urls.append(url)
     else:
         for url in urls:
-            check_urls.extend(re.findall(url_reg, url))
+            check_urls.extend(re.findall(REG_URL, url))
     return check_urls
 
 
