@@ -102,7 +102,7 @@ def _get_urls(
     urls = []
     if remake:
         with HDFStore(f"{output}/{local_lang.paifu}/url_log.h5") as store:
-            ############################################################
+            # ===============================================================
             # Special case: if "url" not in store, add it.
             # It will be deprecated in the future.
             if "url" not in store:
@@ -115,7 +115,7 @@ def _get_urls(
                     """,
                     DeprecationWarning,
                 )
-            ############################################################
+            # ===============================================================
             urlstore = store["url"]["url"].values
             for _url in urlstore:
                 if not re.match(REG_URL, _url):
