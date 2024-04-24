@@ -31,6 +31,7 @@ def localized_str(lang: str, main_path: str = main_path) -> LocalStr:
             data = json.load(f)
             localized.load_data(data)
     except FileNotFoundError:
+        print(f"Cannot find {lang}.json. Using English instead.")
         with open(f"{main_path}/localizations/en.json") as f:
             data = json.load(f)
             localized.load_data(data)
