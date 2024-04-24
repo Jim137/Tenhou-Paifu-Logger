@@ -15,7 +15,7 @@ from .src.get_paifu import get_paifu
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
 
-def _get_urls(urls, local_lang: LocalStr) -> list[str]:
+def _get_urls(urls, local_lang: LocalStr = localized_str("en", main_path)) -> list[str]:
     """
     Get urls from input or args.url.
 
@@ -40,7 +40,7 @@ def _get_urls(urls, local_lang: LocalStr) -> list[str]:
 def paifu_dl(
     urls: str | list[str] | None = None,
     *,
-    local_lang: LocalStr = localized_str("en"),
+    local_lang: LocalStr = localized_str("en", main_path),
     output: str = "./",
     mjai: bool = False,
 ) -> int:
