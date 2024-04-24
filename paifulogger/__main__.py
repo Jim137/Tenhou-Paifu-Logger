@@ -3,10 +3,19 @@ import sys
 
 from paifulogger.log import main as plog_main
 from paifulogger.paifu_dl import main as pdl_main
+from paifulogger.version import __version__
 
 
 def main():
-    parser = argparse.ArgumentParser(description="PaifuLogger CLI")
+    parser = argparse.ArgumentParser(description="PaifuLogger CLI", prog="PaifuLogger")
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        help="""Show version of the program.
+        If this is used, all other arguments will be ignored and the program will be closed.""",
+        version=f"%(prog)s {__version__}",
+    )
     subparsers = parser.add_subparsers(required=False, dest="command")
 
     plog_parser = subparsers.add_parser(
@@ -22,11 +31,6 @@ def main():
         sys.exit(plog_main(plog_parser))
     elif "pdl" in options:
         sys.exit(pdl_main(pdl_parser))
-    elif "-v" in options or "--version" in options:
-        from .version import __version__
-
-        print("Tenhou-Paifu-Logger", __version__)
-        return 0
     else:
         parser.parse_args()
         sys.exit(parser.print_help())

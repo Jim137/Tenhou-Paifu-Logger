@@ -9,7 +9,7 @@ from typing import Callable
 
 from pandas import HDFStore, DataFrame
 
-from . import main_path
+from . import main_path, __version__
 from .src.config import config_path
 from .src.get_paifu import get_paifu
 from .src.i18n import localized_str, LocalStr
@@ -271,13 +271,6 @@ def log(args: argparse.Namespace) -> int:
     Parse the arguments and log paifu files.
     """
 
-    # get version and exit
-    if args.version:
-        from .version import __version__
-
-        print("Tenhou-Paifu-Logger", __version__)
-        return 0
-
     local_lang = _get_lang(args.lang)
     output = _get_output(args.output)
     urls = _get_urls(args.url, local_lang, output, args.remake)
@@ -319,7 +312,7 @@ def log_parser(
             config = json.load(f)
 
     if parser is None:
-        parser = argparse.ArgumentParser(description="Paifu Logger")
+        parser = argparse.ArgumentParser(description="Paifu Logger", prog="PaifuLogger")
     parser.add_argument("url", nargs="*", help="URL of the match.")
     parser.add_argument(
         "-l",
@@ -363,8 +356,10 @@ def log_parser(
     parser.add_argument(
         "-v",
         "--version",
-        action="store_true",
-        help="Show version of the program. If this is used, all other arguments will be ignored and the program will be closed.",
+        action="version",
+        help="""Show version of the program.
+        If this is used, all other arguments will be ignored and the program will be closed.""",
+        version=f"%(prog)s {__version__}",
     )
     parser.add_argument(
         "--mjai",

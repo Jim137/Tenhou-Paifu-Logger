@@ -5,7 +5,7 @@ import re
 import sys
 import urllib.error
 
-from . import main_path
+from . import main_path, __version__
 from .log import _get_lang
 from .src.config import config_path
 from .src.i18n import localized_str, LocalStr
@@ -78,11 +78,6 @@ def paifu_dl(
 
 
 def pdl(args: argparse.Namespace) -> int:
-    if args.version:
-        from .version import __version__
-
-        print("Tenhou-Paifu-Logger", __version__)
-        return 0
 
     local_lang = _get_lang(args.lang)
 
@@ -123,9 +118,10 @@ def pdl_parser(
     parser.add_argument(
         "-v",
         "--version",
-        action="store_true",
+        action="version",
         help="""Show version of the program.
         If this is used, all other arguments will be ignored and the program will be closed.""",
+        version=f"%(prog)s {__version__}",
     )
     parser.add_argument(
         "--mjai",
