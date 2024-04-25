@@ -1,6 +1,7 @@
 import gzip
 import os
 import urllib.request
+from glob import glob
 import xml.etree.ElementTree as ET
 
 from .i18n import LocalStr, localized_str
@@ -84,3 +85,20 @@ def get_paifu_from_local(
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
     return paifu
+
+
+def get_paifu_from_client_log(
+    path: str,
+) -> list[Paifu] | None:
+    if not os.path.isdir(path):
+        print(f"Cannot find {path}")
+        return None
+    paifu_list = []
+    for file in glob(f"{path}/*.mjlog"):
+        url = "https://tenhou.net/0/?log=" + file.split("/")[-1][:-6]
+        with gzip.open(file, "r") as f:
+            file_content = f.read()
+        root = ET.fromstring(file_content)
+        paifu = Paifu(url, root)
+        paifu_list.append(paifu)
+    return paifu_list
