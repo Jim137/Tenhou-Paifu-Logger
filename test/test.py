@@ -15,7 +15,6 @@ ATTR = [
     "all-formats",
     "remake",
     "output",
-    "version",
     "mjai",
     "ignore-duplicated",
 ]
@@ -23,17 +22,15 @@ ATTR = [
 
 class Test(unittest.TestCase):
     def test_0(self):
-        parser = argparse.ArgumentParser()
-        args = parser.parse_args()
-
-        for attr in ATTR:
-            setattr(args, attr.replace("-", "_"), None)
-
-        args.version = True
-
-        self.assertEqual(log(args), 0)
+        """
+        Version test
+        """
+        self.assertEqual(os.system("python3 -m paifulogger -v"), 0)
 
     def test_1(self):
+        """
+        Normal test
+        """
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
@@ -56,6 +53,9 @@ class Test(unittest.TestCase):
         self.assertEqual(log(args), 0)
 
     def test_2(self):
+        """
+        i18n test
+        """
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
@@ -79,6 +79,9 @@ class Test(unittest.TestCase):
         self.assertEqual(log(args), 0)
 
     def test_3(self):
+        """
+        pdl test
+        """
         urls = [
             # yonma tests
             "https://tenhou.net/3/?log=2022052501gm-00c1-0000-f71e7910&tw=1",
@@ -92,6 +95,9 @@ class Test(unittest.TestCase):
         self.assertEqual(paifu_dl(urls, output="./test/"), 0)
 
     def test_4(self):
+        """
+        Remake test
+        """
         parser = argparse.ArgumentParser()
         args = parser.parse_args()
 
