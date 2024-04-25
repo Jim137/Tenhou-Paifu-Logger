@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 
 class Paifu:
     url: str
+    name: str
     time: datetime
     ban: int
     root: ET.Element

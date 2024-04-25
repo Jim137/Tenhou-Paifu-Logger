@@ -45,8 +45,7 @@ def get_paifu(
     if not os.path.isdir(path):
         os.makedirs(path)
 
-    url = url.split("=")[1] + "=" + url.split("=")[2]
-    with open(path + url + ".xml", "w") as t:
+    with open(path + paifu.name + ".xml", "w") as t:
         t.write(response)
 
     # mjai format output

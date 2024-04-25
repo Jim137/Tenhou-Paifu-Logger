@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 class Paifu:
     def __init__(self, url: str, root: ET.Element):
         self.url = url
+        self.name = url.split("=")[1] + "=" + url.split("=")[2]
         self.time = datetime.strptime(re.findall(r"\d{10}", self.url)[0], "%Y%m%d%H")
         self.ban = int(url[-1])
         self.root = root
