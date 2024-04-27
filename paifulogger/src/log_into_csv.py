@@ -1,6 +1,6 @@
 import csv
-import re
 import os.path
+import re
 
 import pandas as pd
 

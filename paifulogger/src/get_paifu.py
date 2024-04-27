@@ -1,12 +1,11 @@
 import gzip
 import os
 import urllib.request
-from glob import glob
 import xml.etree.ElementTree as ET
+from glob import glob
 
 from .i18n import LocalStr, localized_str
 from .Paifu import Paifu
-
 
 HEADER = {
     "Host": "e.mjv.jp",

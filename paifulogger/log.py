@@ -1,23 +1,22 @@
 import argparse
 import json
-import urllib.request
 import os
 import re
 import sys
+import urllib.request
 import warnings
 from typing import Callable
 
-from pandas import HDFStore, DataFrame
+from pandas import DataFrame, HDFStore
 
-from . import main_path, __version__
+from . import __version__, main_path
 from .src.config import config_path
 from .src.get_paifu import get_paifu
-from .src.i18n import localized_str, LocalStr
+from .src.i18n import LocalStr, localized_str
 from .src.log_into_csv import log_into_csv
-from .src.log_into_xlsx import log_into_xlsx
 from .src.log_into_html import log_into_html
-from .src.url_log import url_log, check_duplicate
-
+from .src.log_into_xlsx import log_into_xlsx
+from .src.url_log import check_duplicate, url_log
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 avaiable_formats = ["xlsx", "html", "csv"]

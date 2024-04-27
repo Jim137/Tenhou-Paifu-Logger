@@ -5,12 +5,11 @@ import re
 import sys
 import urllib.error
 
-from . import main_path, __version__
+from . import __version__, main_path
 from .log import _get_lang
 from .src.config import config_path
-from .src.i18n import localized_str, LocalStr
 from .src.get_paifu import get_paifu
-
+from .src.i18n import LocalStr, localized_str
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 
