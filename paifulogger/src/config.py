@@ -6,6 +6,11 @@ from platformdirs import user_data_dir
 def config_path() -> str | None:
     """
     Try to get the path of the config file from current directory or user_data_dir.
+
+    Returns
+    -------
+    str | None
+        The path of the config file.
     """
 
     appname = "paifulogger"

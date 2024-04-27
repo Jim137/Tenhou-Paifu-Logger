@@ -9,6 +9,19 @@ from .Paifu import Paifu
 
 
 def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
+    """
+    Log the paifu data into xlsx file.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    """
+
     try:
         if paifu.player_num == 3:
             paifu_str = local_lang.sanma + local_lang.paifu

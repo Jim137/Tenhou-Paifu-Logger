@@ -27,24 +27,25 @@ def remove_old_paifu(paifu_str: str, formats: list[str], output: str) -> None:
     """
     Remove old paifu files.
 
-    Args:
-        paifu_str: str
-            The name of the paifu file.
-        formats: list
-            The formats of the paifu file.
-        output: str
-            The output directory.
+    Parameters
+    ----------
+    paifu_str : str
+        The name of the paifu file.
+    formats : list
+        The formats of the paifu file.
+    output : str
+        The output directory.
 
-    Returns:
-        None
+    Returns
+    -------
+    None
 
-    ---
-
-    Examples:
-        >>> remove_old_paifu("paifu", ["xlsx", "html", "csv"], "./")
-        paifu.xlsx has been removed.
-        paifu.html has been removed.
-        paifu.csv has been removed.
+    Examples
+    --------
+    >>> remove_old_paifu("paifu", ["xlsx", "html", "csv"], "./")
+    paifu.xlsx has been removed.
+    paifu.html has been removed.
+    paifu.csv has been removed.
     """
 
     for format in formats:
@@ -59,6 +60,16 @@ def _get_lang(lang: str | None = None) -> LocalStr:
     Get the localized string.
 
     If not given, use English.
+
+    Parameters
+    ----------
+    lang : str
+        The language of the program.
+    
+    Returns
+    -------
+    LocalStr
+        The localized string.
     """
 
     return localized_str(lang, main_path) if lang else localized_str("en", main_path)
@@ -69,6 +80,16 @@ def _get_output(output: str = "./") -> str:
     Get output directory from args.output.
 
     If not given, use current directory "./".
+
+    Parameters
+    ----------
+    output : str
+        The output directory.
+
+    Returns
+    -------
+    str
+        The absolute path of the output directory.
     """
 
     return os.path.abspath(output) if output else os.path.abspath("./")
@@ -86,8 +107,25 @@ def _get_urls(
     If remake, get urls from url_log.h5
     Else if not given url, get urls from input.
 
-    Note:
-        `re.findall(REG_URL, _url)` will return a list of urls that match the regular expression.
+    Parameters
+    ----------
+    url : list[str]
+        The urls of the paifu files.
+    local_lang : LocalStr
+        The localized string.
+    output : str
+        The output directory.
+    remake : bool
+        Remake the log file from url_log.h5.
+
+    Returns
+    -------
+    list[str]
+        The list of urls.
+
+    Note
+    ----
+    `re.findall(REG_URL, _url)` will return a list of urls that match the regular expression.
     """
 
     urls = []
@@ -127,6 +165,16 @@ def _get_formats(format: list[str] | None = None) -> list:
     Get formats from `args.format`.
 
     If not given, return ["csv"].
+
+    Parameters
+    ----------
+    format : list
+        The formats of the output file.
+
+    Returns
+    -------
+    list
+        The formats of the output file.
     """
     return format if format else ["csv"]
 
@@ -136,6 +184,17 @@ def _remake_log(
 ) -> None:
     """
     Remake the log file from url_log.h5 (past logging log), and remove old paifu files.
+
+    Parameters
+    ----------
+    local_lang : LocalStr
+        The localized string.
+    output : str
+        The output directory to remove.
+    formats : list
+        The formats of the output file.
+    all_formats : bool
+        Remove all formats.
     """
 
     paifu_str3 = local_lang.paifu + "/" + local_lang.sanma + local_lang.paifu
@@ -162,6 +221,18 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
     Parse the formats and return the corresponding log functions.
 
     If `all_formats`, return all log functions.
+
+    Parameters
+    ----------
+    formats : list
+        The formats of the output file.
+    all_formats : bool
+        Output all formats.
+
+    Returns
+    -------
+    list
+        The list of log functions.
     """
 
     assert formats, "No format is given."
@@ -195,24 +266,27 @@ def log_paifu(
     """
     Log paifu files.
 
-    Args:
-        urls: list[str]
-            The urls of the paifu files.
-        log_formats: list
-            The list of log functions.
-        local_lang: LocalStr
-            The localized string.
-        output: str
-            The output directory.
-        remake: bool
-            Remake the log file from url_log.h5.
-        ignore_duplicated: bool
-            Ignore duplicated urls.
-        mjai: bool
-            Output MJAI format paifu.
+    Parameters
+    ----------
+    urls : list
+        The urls of the paifu files.
+    log_formats : list
+        The log functions.
+    local_lang : LocalStr
+        The localized string.
+    output : str
+        The output directory.
+    remake : bool
+        Remake the log file from url_log.h5.
+    ignore_duplicated : bool
+        Ignore duplicated urls.
+    mjai : bool
+        Output MJAI format paifu.
 
-    Returns:
-        int
+    Returns
+    -------
+    int
+        The return code.
     """
 
     retCode = 0
@@ -260,6 +334,16 @@ def log_paifu(
 def log(args: argparse.Namespace) -> int:
     """
     Parse the arguments and log paifu files.
+
+    Parameters
+    ----------
+    args : argparse.Namespace
+        The arguments from the command line.
+
+    Returns
+    -------
+    int
+        The return code.
     """
 
     local_lang = _get_lang(args.lang)
@@ -289,12 +373,17 @@ def log_parser(
     """
     Parse the arguments from the command line.
 
-    Args:
-        config_path: str
-            The path of the config file.
+    Parameters
+    ----------
+    config_path : str
+        The path of the config file.
+    parser : argparse.ArgumentParser
+        The argument parser.
 
-    Returns:
-        argparse.Namespace
+    Returns
+    -------
+    argparse.Namespace
+        The arguments from the command line.
     """
 
     config = {}

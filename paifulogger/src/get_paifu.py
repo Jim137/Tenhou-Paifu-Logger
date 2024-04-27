@@ -18,7 +18,20 @@ HEADER = {
 }
 
 
-def url_request_handler(url: str):
+def url_request_handler(url: str) -> str:
+    """
+    Request the url and return the response from Tenhou server.
+
+    Parameters
+    ----------
+    url: str
+        The url of the game log.
+
+    Returns
+    -------
+    str
+        The response from Tenhou server.
+    """
     url = url.split("=")[1]
     url = "https://tenhou.net/0/log/?" + url[:-3]
     req = urllib.request.Request(url=url, headers=HEADER)
@@ -35,6 +48,28 @@ def get_paifu(
     mjai: bool = False,
     no_output: bool = False,
 ) -> Paifu:
+    """
+    Get the paifu data from the given URL.
+
+    Parameters
+    ----------
+    url: str
+        The URL of the game log.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    mjai: bool
+        If True, output the paifu data in MJAI format.
+    no_output: bool
+        If True, do not output the paifu data.
+
+    Returns
+    -------
+    Paifu
+        The paifu data.
+    """
+
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
@@ -74,6 +109,26 @@ def get_paifu_from_local(
     local_lang: LocalStr = localized_str("en"),
     output: str = "./",
 ) -> Paifu | None:
+    """
+    Get the paifu data from the local file.
+
+    Parameters
+    ----------
+    url: str
+        The URL of the game log.
+    go_str: str
+        The go string of the game log.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+
+    Returns
+    -------
+    Paifu
+        The paifu data.
+    """
+
     path = f"{output}/{local_lang.paifu}/{go_str}/"
     url = url.split("=")[1] + "=" + url.split("=")[2]
     try:
@@ -90,6 +145,20 @@ def get_paifu_from_local(
 def get_paifu_from_client_log(
     path: str,
 ) -> list[Paifu] | None:
+    """
+    Get the paifu data from the client log.
+
+    Parameters
+    ----------
+    path: str
+        The path of the client log.
+
+    Returns
+    -------
+    list[Paifu]
+        The list of paifu data.
+    """
+
     if not os.path.isdir(path):
         print(f"Cannot find {path}")
         return None

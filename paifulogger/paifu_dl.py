@@ -22,7 +22,20 @@ def _get_urls(urls, local_lang: LocalStr = localized_str("en", main_path)) -> li
     If remake, get urls from url_log.h5
     Else if not given args.url, get urls from input.
 
-    Note:
+    Parameters
+    ----------
+    urls: str | list[str] | None
+        The url of the game log.
+    local_lang: LocalStr
+        The localized string.
+
+    Returns
+    -------
+    list
+        The list of urls.
+
+    Note
+    ----
         `re.findall(REG_URL, url)` will return a list of urls that match the regular expression.
     """
 
@@ -47,15 +60,21 @@ def paifu_dl(
     """
     Download paifu from tenhou.net.
 
-    Args:
-        urls: str | list[str]
-            The url of the game log.
-        local_lang: LocalStr
-            The localized string.
-        output: str
-            The output directory.
-        mjai: bool
-            If True, download MJAI format.
+    Parameters
+    ----------
+    urls: str | list[str] | None
+        The url of the game log.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    mjai: bool
+        Output MJAI format paifu.
+
+    Returns
+    -------
+    int
+        The return code.
     """
 
     if isinstance(urls, str):
@@ -92,6 +111,21 @@ def pdl(args: argparse.Namespace) -> int:
 def pdl_parser(
     config_path: str | None = None, parser: argparse.ArgumentParser | None = None
 ) -> argparse.Namespace:
+    """
+    Parse the arguments from the command line.
+
+    Parameters
+    ----------
+    config_path: str | None
+        The path of the config file.
+    parser: argparse.ArgumentParser | None
+        The parser.
+
+    Returns
+    -------
+    argparse.Namespace
+        The arguments.
+    """
     config = {}
     if config_path and os.path.exists(f"{config_path}/config.json"):
         with open(f"{config_path}/config.json", "r") as f:

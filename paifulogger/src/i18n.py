@@ -25,6 +25,22 @@ class LocalStr:
 
 
 def localized_str(lang: str, main_path: str = main_path) -> LocalStr:
+    """
+    Get the localized string.
+
+    Parameters
+    ----------
+    lang: str
+        The language.
+    main_path: str
+        The main path.
+
+    Returns
+    -------
+    LocalStr
+        The localized string.
+    """
+
     localized = LocalStr(lang, main_path)
     try:
         with open(f"{main_path}/localizations/{lang}.json", encoding="utf-8") as f:
