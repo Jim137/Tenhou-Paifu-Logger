@@ -143,9 +143,14 @@ def _remake_log(
     try:
         if all_formats:
             remove_old_paifu(paifu_str3, avaiable_formats, output)
-            remove_old_paifu(paifu_str4, avaiable_formats, output)
         else:
             remove_old_paifu(paifu_str3, formats, output)
+    except OSError:
+        pass
+    try:
+        if all_formats:
+            remove_old_paifu(paifu_str4, avaiable_formats, output)
+        else:
             remove_old_paifu(paifu_str4, formats, output)
     except OSError:
         pass
