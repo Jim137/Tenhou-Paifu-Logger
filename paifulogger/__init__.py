@@ -16,6 +16,7 @@ from .src.get_paifu import get_paifu
 from .src.i18n import localized_str
 
 __all__ = [
+    "__version__",
     "config_path",
     "get_paifu",
     "localized_str",
@@ -25,5 +26,4 @@ __all__ = [
     "main_path",
     "remove_old_paifu",
     "paifu_dl",
-    "__version__",
 ]
