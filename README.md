@@ -62,7 +62,7 @@ pip install PaifuLogger==0.3.7.1
 >> plog -l [language] -o [output directory] [paifu URLs]
 >> ```
 >> ```shell
->> paifulogger plog -l [language] -o [output directory] [paifu URLs]
+>> paifu plog -l [language] -o [output directory] [paifu URLs]
 >> ```
 
 2. Once `Please enter the URL of match:` appears, paste the URL and press Enter.\
