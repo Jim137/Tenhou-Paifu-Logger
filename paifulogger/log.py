@@ -61,12 +61,7 @@ def _get_lang(lang: str | None = None) -> LocalStr:
     If not given, use English.
     """
 
-    if lang:
-        _lang = lang
-    else:
-        _lang = "en"
-    local_lang = localized_str(_lang, main_path)
-    return local_lang
+    return localized_str(lang, main_path) if lang else localized_str("en", main_path)
 
 
 def _get_output(output: str = "./") -> str:
@@ -76,11 +71,7 @@ def _get_output(output: str = "./") -> str:
     If not given, use current directory "./".
     """
 
-    if output:
-        _output = os.path.abspath(output)
-    else:
-        _output = os.path.abspath("./")
-    return _output
+    return os.path.abspath(output) if output else os.path.abspath("./")
 
 
 def _get_urls(
@@ -137,12 +128,7 @@ def _get_formats(format: list[str] | None = None) -> list:
 
     If not given, return ["csv"].
     """
-
-    if format:
-        formats = format
-    else:
-        formats = ["csv"]
-    return formats
+    return format if format else ["csv"]
 
 
 def _remake_log(
