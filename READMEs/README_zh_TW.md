@@ -35,7 +35,7 @@
     plog -l zh_tw -o <輸出目錄> <多個牌譜網址>
     ```
     ```shell
-    paifulogger plog -l zh_tw -o <輸出目錄> <多個牌譜網址>
+    paifu plog -l zh_tw -o <輸出目錄> <多個牌譜網址>
     ```
 
 3. 複製天鳳牌譜至剪貼簿。
