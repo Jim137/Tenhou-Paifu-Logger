@@ -113,6 +113,8 @@ paifu = get_paifu(url, local_lang)
   * Windows: `%localappdata%\Jim137\paifulogger\config.json`
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
+* [x] Support logging from Tenhou client(*.mjlog). (-c, --from-client DIR_TO_MJLOG)\
+Note: Tpyically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
 
 ## Information logged
 

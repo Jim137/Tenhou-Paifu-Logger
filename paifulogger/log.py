@@ -11,11 +11,12 @@ from pandas import DataFrame, HDFStore
 
 from . import __version__, main_path
 from .src.config import config_path
-from .src.get_paifu import get_paifu
+from .src.get_paifu import get_paifu, get_paifu_from_client_log, save_mjai
 from .src.i18n import LocalStr, localized_str
 from .src.log_into_csv import log_into_csv
 from .src.log_into_html import log_into_html
 from .src.log_into_xlsx import log_into_xlsx
+from .src.Paifu import Paifu
 from .src.url_log import check_duplicate, url_log
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
@@ -64,7 +65,7 @@ def _get_lang(lang: str | None = None) -> LocalStr:
     ----------
     lang : str
         The language of the program.
-    
+
     Returns
     -------
     LocalStr
@@ -175,6 +176,7 @@ def _get_formats(format: list[str] | None = None) -> list:
     list
         The formats of the output file.
     """
+
     return format if format else ["csv"]
 
 
@@ -251,6 +253,65 @@ def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callabl
         if "csv" in formats:
             log_formats.append(log_into_csv)
     return log_formats
+
+
+def log_paifu_from_local(
+    paifus: list[Paifu],
+    *,
+    log_formats: list[Callable] = [log_into_csv],
+    local_lang: LocalStr = localized_str("en", main_path),
+    output: str = os.path.abspath("./"),
+    ignore_duplicated: bool = False,
+    mjai: bool = False,
+):
+    """
+    Log paifu files from local.
+
+    Parameters
+    ----------
+    paifus : list[Paifu]
+        The list of paifu files.
+    log_formats : list
+        The log functions.
+    local_lang : LocalStr
+        The localized string.
+    output : str
+        The output directory.
+    ignore_duplicated : bool
+        Ignore duplicated urls.
+    mjai : bool
+        Output MJAI format paifu.
+
+    Returns
+    -------
+    int
+        The return code.
+    """
+
+    retCode = 0
+    for paifu in paifus:
+        try:
+            if mjai:
+                save_mjai(paifu, output, paifu.name, local_lang)
+            if check_duplicate(paifu.url, local_lang, output) and not ignore_duplicated:
+                print(local_lang.hint_duplicate, paifu.url)
+                continue
+            for log_into_format in log_formats:
+                log_into_format(paifu, local_lang, output)
+            url_log(paifu.url, local_lang, output)
+        except OSError:
+            print(local_lang.hint_url, paifu.url)
+            retCode = 1
+        except ValueError:
+            print(local_lang.hint_tw, paifu.url)
+            retCode = 1
+        except KeyError:
+            print(
+                """Please remake the log file by `plog -f [format] -l [lang] -o [output] -r` first,
+                  or `python -m paifulogger plog -f [format] -l [lang] -o [output] -r` manually."""
+            )
+            return 1
+    return retCode
 
 
 def log_paifu(
@@ -347,7 +408,6 @@ def log(args: argparse.Namespace) -> int:
 
     local_lang = _get_lang(args.lang)
     output = _get_output(args.output)
-    urls = _get_urls(args.url, local_lang, output, args.remake)
     formats = _get_formats(args.format)
 
     # if remake, remove old files
@@ -355,6 +415,23 @@ def log(args: argparse.Namespace) -> int:
         _remake_log(local_lang, output, formats, args.all_formats)
 
     log_formats = _get_log_func(formats, args.all_formats)
+
+    if args.from_client:
+        paifus = get_paifu_from_client_log(args.from_client)
+        if not paifus:
+            print("No paifu files found.")
+            return 0
+        print(f"Found {len(paifus)} paifu files.")
+        return log_paifu_from_local(
+            paifus,
+            log_formats=log_formats,
+            local_lang=local_lang,
+            output=output,
+            ignore_duplicated=args.ignore_duplicated,
+            mjai=args.mjai,
+        )
+
+    urls = _get_urls(args.url, local_lang, output, args.remake)
     return log_paifu(
         urls,
         log_formats=log_formats,
@@ -445,6 +522,13 @@ def log_parser(
         action="store_true",
         help="Output MJAI format paifu.",
         default=config.get("mjai", False),
+    )
+    parser.add_argument(
+        "-c",
+        "--from-client",
+        nargs="+",
+        help="Log client saved paifu (*.mjlog) from given directory.",
+        type=str,
     )
     # Args for Debugging
     parser.add_argument(

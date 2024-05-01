@@ -85,21 +85,46 @@ def get_paifu(
 
     # mjai format output
     if mjai:
-        if paifu.player_num == 3:
-            print(local_lang.sanma_mjai_error)
-            return paifu
-
-        try:
-            from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
-        except ImportError:
-            print(local_lang.log2mjai_import_error)
-            return paifu
-        if not os.path.isdir(path + "/mjai/"):
-            os.makedirs(path + "/mjai/")
-        with open(path + "/mjai/" + url + ".mjson", "w", encoding="UTF-8") as f:
-            f.write(parse_mjlog_to_mjai(load_mjlog(path + url + ".xml")))
+        save_mjai(paifu, path, paifu.name, local_lang)
 
     return paifu
+
+
+def save_mjai(
+    paifu: Paifu, path: str, url: str, local_lang: LocalStr = localized_str("en")
+):
+    """
+    Save the paifu data in MJAI format.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    path: str
+        The output directory.
+    url: str
+        The URL of the game log.
+    local_lang: LocalStr
+        The localized string.
+
+    Returns
+    -------
+    None
+    """
+
+    if paifu.player_num == 3:
+        print(local_lang.sanma_mjai_error)
+        return
+    try:
+        from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
+    except ImportError:
+        print(local_lang.log2mjai_import_error)
+        return
+    if not os.path.isdir(path + "/mjai/"):
+        os.makedirs(path + "/mjai/")
+    with open(path + "/mjai/" + url + ".mjson", "w", encoding="UTF-8") as f:
+        f.write(parse_mjlog_to_mjai(load_mjlog(path + url + ".xml")))
+    return
 
 
 def get_paifu_from_local(

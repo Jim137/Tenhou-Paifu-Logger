@@ -7,7 +7,6 @@ sys.path.append(os.getcwd())
 
 from paifulogger import log, paifu_dl
 
-
 ATTR = [
     "url",
     "lang",
@@ -17,6 +16,7 @@ ATTR = [
     "output",
     "mjai",
     "ignore-duplicated",
+    "from-client",
 ]
 
 
@@ -107,6 +107,21 @@ class Test(unittest.TestCase):
         args.all_formats = True
         args.output = "./test/"
         args.remake = True
+
+        self.assertEqual(log(args), 0)
+
+    def test_5(self):
+        """
+        Log from client test
+        """
+        parser = argparse.ArgumentParser()
+        args = parser.parse_args()
+
+        for attr in ATTR:
+            setattr(args, attr.replace("-", "_"), None)
+
+        args.from_client = "./test/test_data/"
+        args.ignore_duplicated = True
 
         self.assertEqual(log(args), 0)
 
