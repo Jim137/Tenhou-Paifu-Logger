@@ -1,9 +1,13 @@
+import re
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
 
 class Paifu:
     def __init__(self, url: str, root: ET.Element):
         self.url = url
+        self.name = url.split("=")[1] + "=" + url.split("=")[2]
+        self.time = datetime.strptime(re.findall(r"\d{10}", self.url)[0], "%Y%m%d%H")
         self.ban = int(url[-1])
         self.root = root
 
@@ -23,9 +27,8 @@ class Paifu:
         """
         Distinguish the type of the game. And set the go_str and player_num.
 
-        ---
-
-        Examples:
+        Examples
+        --------
             三鳳南喰赤速 (go_type = 127) -> go_str = '三南喰赤速', player_num = 3
 
         """
@@ -65,6 +68,9 @@ class Paifu:
             self.go_str += "速"
 
     def _rounds(self):
+        """
+        Get rounds of the game.
+        """
         self.rounds = [[] for _ in range(self.get_round_num() + 1)]
         round_idx = -1
         for el in self.root:
@@ -73,9 +79,14 @@ class Paifu:
                 round_idx += 1
             self.rounds[round_idx].append(el)
 
-    def get_place(self, ban):
+    def get_place(self, ban) -> int:
         """
         Return the placing and rate before match
+
+        Parameters
+        ----------
+        ban: int
+            The player's seat number.
         """
         o0, s0, o1, s1, o2, s2, o3, s3 = self.owari
 
@@ -95,12 +106,19 @@ class Paifu:
                         placing[i] += 1
         return placing[ban]
 
-    def get_rate_change(self):
+    def get_rate_change(self) -> float:
         """
         Return the rate change after match.
 
-        Note: Since the rate change has a correction of number of played games. We assumed that player has played over 400 games,
-        which the correction is fixed to 0.2.
+        Returns
+        -------
+        float
+            The rate change after match.
+
+        Note
+        ----
+        Since the rate change has a correction of number of played games.
+        We assumed that player has played over 400 games, which the correction is fixed to 0.2.
         """
 
         if self.player_num == 4:
@@ -108,19 +126,36 @@ class Paifu:
             corr = (sum([float(r) for r in self.r]) / 4 - float(self.r[self.ban])) / 40
             return 0.2 * (dr_result[self.plc - 1] + corr)
         else:
-            dr_result = (30, 0, -30)
+            dr_result = (30, 0, -30, 0)
             corr = (sum([float(r) for r in self.r]) / 3 - float(self.r[self.ban])) / 40
+            if self.plc == 4:
+                assert False, "Sanma has no 4th place."
             return 0.2 * (dr_result[self.plc - 1] + corr)
 
     def get_round_num(self) -> int:
         """
-        Return the total number of rounds
+        Return the total number of rounds.
+
+        Returns
+        -------
+        int
+            The total number of rounds
         """
         return len(self.root.findall("INIT"))
 
     def get_deal_in_num(self, ban) -> int:
         """
-        Return the number of deal-in
+        Return number of deal-ins.
+
+        Parameters
+        ----------
+        ban: int
+            The player's seat number.
+
+        Returns
+        -------
+        int
+            The number of deal-in
         """
         agaris = self.root.findall("AGARI")
         count = 0
@@ -131,7 +166,17 @@ class Paifu:
 
     def get_win_num(self, ban) -> int:
         """
-        Return the number of win
+        Return number of wins.
+
+        Parameters
+        ----------
+        ban: int
+            The player's seat number.
+
+        Returns
+        -------
+        int
+            The number of wins
         """
         agaris = self.root.findall("AGARI")
         count = 0

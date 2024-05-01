@@ -2,10 +2,10 @@ import gzip
 import os
 import urllib.request
 import xml.etree.ElementTree as ET
+from glob import glob
 
 from .i18n import LocalStr, localized_str
 from .Paifu import Paifu
-
 
 HEADER = {
     "Host": "e.mjv.jp",
@@ -17,7 +17,20 @@ HEADER = {
 }
 
 
-def url_request_handler(url: str):
+def url_request_handler(url: str) -> str:
+    """
+    Request the url and return the response from Tenhou server.
+
+    Parameters
+    ----------
+    url: str
+        The url of the game log.
+
+    Returns
+    -------
+    str
+        The response from Tenhou server.
+    """
     url = url.split("=")[1]
     url = "https://tenhou.net/0/log/?" + url[:-3]
     req = urllib.request.Request(url=url, headers=HEADER)
@@ -29,37 +42,156 @@ def url_request_handler(url: str):
 
 def get_paifu(
     url: str,
-    local_lang: LocalStr = localized_str(
-        "en", os.path.dirname(os.path.abspath(__file__)).split("src")[0]
-    ),
+    local_lang: LocalStr = localized_str("en"),
     output: str = "./",
     mjai: bool = False,
+    no_output: bool = False,
 ) -> Paifu:
+    """
+    Get the paifu data from the given URL.
+
+    Parameters
+    ----------
+    url: str
+        The URL of the game log.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    mjai: bool
+        If True, output the paifu data in MJAI format.
+    no_output: bool
+        If True, do not output the paifu data.
+
+    Returns
+    -------
+    Paifu
+        The paifu data.
+    """
+
     response = url_request_handler(url)
     root = ET.fromstring(response)
     paifu = Paifu(url, root)
+
+    if no_output:
+        return paifu
+
     path = f"{output}/{local_lang.paifu}/{paifu.go_str}/"
     if not os.path.isdir(path):
         os.makedirs(path)
 
-    url = url.split("=")[1] + "=" + url.split("=")[2]
-    with open(path + url + ".xml", "w") as t:
+    with open(path + paifu.name + ".xml", "w") as t:
         t.write(response)
 
     # mjai format output
     if mjai:
-        if paifu.player_num == 3:
-            print(local_lang.sanma_mjai_error)
-            return paifu
-
-        try:
-            from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
-        except ImportError:
-            print(local_lang.log2mjai_import_error)
-            return paifu
-        if not os.path.isdir(path + "/mjai/"):
-            os.makedirs(path + "/mjai/")
-        with open(path + "/mjai/" + url + ".mjson", "w", encoding="UTF-8") as f:
-            f.write(parse_mjlog_to_mjai(load_mjlog(path + url + ".xml")))
+        save_mjai(paifu, path, paifu.name, local_lang)
 
     return paifu
+
+
+def save_mjai(
+    paifu: Paifu, path: str, url: str, local_lang: LocalStr = localized_str("en")
+):
+    """
+    Save the paifu data in MJAI format.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    path: str
+        The output directory.
+    url: str
+        The URL of the game log.
+    local_lang: LocalStr
+        The localized string.
+
+    Returns
+    -------
+    None
+    """
+
+    if paifu.player_num == 3:
+        print(local_lang.sanma_mjai_error)
+        return
+    try:
+        from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
+    except ImportError:
+        print(local_lang.log2mjai_import_error)
+        return
+    if not os.path.isdir(path + "/mjai/"):
+        os.makedirs(path + "/mjai/")
+    with open(path + "/mjai/" + url + ".mjson", "w", encoding="UTF-8") as f:
+        f.write(parse_mjlog_to_mjai(load_mjlog(path + url + ".xml")))
+    return
+
+
+def get_paifu_from_local(
+    url: str,
+    go_str: str,
+    local_lang: LocalStr = localized_str("en"),
+    output: str = "./",
+) -> Paifu | None:
+    """
+    Get the paifu data from the local file.
+
+    Parameters
+    ----------
+    url: str
+        The URL of the game log.
+    go_str: str
+        The go string of the game log.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+
+    Returns
+    -------
+    Paifu
+        The paifu data.
+    """
+
+    path = f"{output}/{local_lang.paifu}/{go_str}/"
+    url = url.split("=")[1] + "=" + url.split("=")[2]
+    try:
+        with open(path + url + ".xml", "r") as t:
+            response = t.read()
+    except FileNotFoundError:
+        print(f"Cannot find {path + url + '.xml'}")
+        return None
+    root = ET.fromstring(response)
+    paifu = Paifu(url, root)
+    return paifu
+
+
+def get_paifu_from_client_log(
+    path: str,
+) -> list[Paifu] | None:
+    """
+    Get the paifu data from the client log.
+
+    Parameters
+    ----------
+    path: str
+        The path of the client log.
+
+    Returns
+    -------
+    list[Paifu]
+        The list of paifu data.
+    """
+
+    if not os.path.isdir(path):
+        print(f"Cannot find {path}")
+        return None
+    paifu_list = []
+    for file in glob(f"{path}/*.mjlog"):
+        url = "https://tenhou.net/0/?log=" + file.split("/")[-1][:-6]
+        with gzip.open(file, "r") as f:
+            file_content = f.read()
+        root = ET.fromstring(file_content)
+        paifu = Paifu(url, root)
+        paifu_list.append(paifu)
+    return paifu_list

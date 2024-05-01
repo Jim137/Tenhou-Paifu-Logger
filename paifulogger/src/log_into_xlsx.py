@@ -1,5 +1,4 @@
 import re
-from datetime import datetime
 from typing import cast
 
 import openpyxl as xl
@@ -10,6 +9,19 @@ from .Paifu import Paifu
 
 
 def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
+    """
+    Log the paifu data into xlsx file.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    """
+
     try:
         if paifu.player_num == 3:
             paifu_str = local_lang.sanma + local_lang.paifu
@@ -46,7 +58,7 @@ def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
     # Append new paifu data to the sheet
     sheet.append(
         [
-            datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
+            paifu.time,
             paifu.get_place(paifu.ban),
             paifu.url,
             "",

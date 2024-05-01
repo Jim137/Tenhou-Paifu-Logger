@@ -1,6 +1,5 @@
 import io
 import re
-from datetime import datetime
 
 import pandas as pd
 
@@ -27,9 +26,29 @@ class PaifuHtml:
         pass
 
     def __repr__(self) -> str:
+        """
+        Return the html string.
+
+        Returns
+        -------
+        str
+            The html string.
+        """
+
         return self.logged + self.new_log + self.end_table + self.replay + self.end
 
     def create_html(self, paifu_str, local_lang: LocalStr) -> None:
+        """
+        Create the html file.
+
+        Parameters
+        ----------
+        paifu_str: str
+            The paifu string.
+        local_lang: LocalStr
+            The localized string.
+        """
+
         self.logged += f"""<!DOCTYPE html>
         <html lang={local_lang.lang}>
         <head>
@@ -80,10 +99,18 @@ class PaifuHtml:
         """
 
     def log_into_table(self, paifu: Paifu) -> None:
-        time_str = datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H")
+        """
+        Log the paifu data into the html table.
+        
+        Parameters
+        ----------
+        paifu: Paifu
+            The paifu data.
+        """
+
         self.new_log += f"""
                     <tr>
-                        <td>{time_str}</td>
+                        <td>{paifu.time}</td>
                         <td>{paifu.get_place(paifu.ban)}</td>
                         <td><a href="{paifu.url}">{paifu.url}</a></td>
                         <td><textarea id="persisted-text"></textarea></td>
@@ -98,6 +125,16 @@ class PaifuHtml:
     def _retrieve(self, local_lang: LocalStr) -> tuple[int, float, float, float]:
         """
         Retrieve the data from the html table.
+
+        Parameters
+        ----------
+        local_lang: LocalStr
+            The localized string.
+
+        Returns
+        -------
+        tuple[int, float, float, float]
+            The number of logged data, the average place, the win rate, and the deal-in rate.
         """
 
         pseudo_html = (
@@ -120,9 +157,18 @@ class PaifuHtml:
         return logged_num, avg_plc, win_rate, deal_in_rate
 
     def end_of_table(self, local_lang: LocalStr) -> None:
+        """
+        The end of the table.
+
+        Parameters
+        ----------
+        local_lang: LocalStr
+            The localized string.
+        """
+
         logged_num, avg_plc, win_rate, deal_in_rate = self._retrieve(local_lang)
         self.end_table += f"""
-                </tbody>  
+                </tbody>
             </table>
             <p>{local_lang.log_num} = {logged_num}</p>
             <p>{local_lang.avg_plc} = {avg_plc:.2}</p>
@@ -132,6 +178,19 @@ class PaifuHtml:
 
 
 def log_into_html(paifu: Paifu, local_lang: LocalStr, output: str):
+    """
+    Log the paifu data into html file.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    """
+
     if paifu.player_num == 3:
         paifu_str = local_lang.sanma + local_lang.paifu
     else:
