@@ -288,7 +288,7 @@ def log_paifu_from_local(
         The return code.
     """
 
-    retCode = 0
+    retcode = 0
     for paifu in paifus:
         try:
             if mjai:
@@ -301,17 +301,17 @@ def log_paifu_from_local(
             url_log(paifu.url, local_lang, output)
         except OSError:
             print(local_lang.hint_url, paifu.url)
-            retCode = 1
+            retcode = 1
         except ValueError:
             print(local_lang.hint_tw, paifu.url)
-            retCode = 1
+            retcode = 1
         except KeyError:
             print(
                 """Please remake the log file by `plog -f [format] -l [lang] -o [output] -r` first,
                   or `python -m paifulogger plog -f [format] -l [lang] -o [output] -r` manually."""
             )
             return 1
-    return retCode
+    return retcode
 
 
 def log_paifu(
@@ -349,7 +349,7 @@ def log_paifu(
         The return code.
     """
 
-    retCode = 0
+    retcode = 0
     _urls: list[str] = []
     for url in urls:
         if isinstance(url, list):
@@ -375,20 +375,20 @@ def log_paifu(
                 url_log(url, local_lang, output)
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            retCode = 1
+            retcode = 1
         except OSError:
             print(local_lang.hint_url, url)
-            retCode = 1
+            retcode = 1
         except ValueError:
             print(local_lang.hint_tw, url)
-            retCode = 1
+            retcode = 1
         except KeyError:
             print(
                 """Please remake the log file by `plog -f [format] -l [lang] -o [output] -r`,
                   or `python -m paifulogger plog -f [format] -l [lang] -o [output] -r` manually."""
             )
             return 1
-    return retCode
+    return retcode
 
 
 def log(args: argparse.Namespace) -> int:

@@ -81,18 +81,18 @@ def paifu_dl(
 
     check_urls = _get_urls(urls, local_lang)
 
-    retCode = 0
+    retcode = 0
     for url in check_urls:
         try:
             get_paifu(url, local_lang, output, mjai)
             print(f"paifu_dl: {url} has been downloaded.")
         except urllib.error.URLError:
             print(local_lang.hint_url, url)
-            retCode = 1
+            retcode = 1
         except OSError:
             print(local_lang.hint_url, url)
-            retCode = 1
-    return retCode
+            retcode = 1
+    return retcode
 
 
 def pdl(args: argparse.Namespace) -> int:
