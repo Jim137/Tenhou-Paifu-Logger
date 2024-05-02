@@ -8,7 +8,7 @@ If you have encountered a bug or have a feature request, please open an issue an
    - The logs are stored in the `Paifu` folder in the same directory as the executable if you don't specify the path.
    - Use `--output [path]` to specify the path to store the logs.
    - If you used pip to install the PaifuLogger, the logs are stored in the `Paifu` folder where the command line opened.
-2. There are new elements in the log file that makes the tables broken.
+2. There are new elements in the log file that makes the tables broken. Or, it raised `KeyError`. What should I do?
    - Use `--remake` to remake the log file.
 
 # Developer’s Guide
@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 Then you can run the program with
 ```
-python -m paifulogger
+python -m paifulogger (plog/pdl) [options]
 ```
 
 ## Adding a new feature
@@ -37,11 +37,11 @@ Then you can follow the steps below to add the feature.
    git checkout -b BRANCH_NAME
    ```
 4. Make your changes.
-5. Run some tests with:
+5. Run unitest with:
    ```
-   python -m paifulogger --all-formats [--ignore-duplicated]
+   python -m unittest
    ```
-   To make sure that your changes don't break the program.
+   To make sure that your changes don't break the program and all the tests pass.
 6. Commit your changes with:
    ```
    git add [WHAT YOU CHANGED]

@@ -4,6 +4,8 @@ import sys
 
 bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
 
+from .. import main_path
+
 
 class LocalStr:
     def __init__(self, lang: str = "en", main_path: str = "./"):
@@ -26,13 +28,30 @@ class LocalStr:
         return data[name]
 
 
-def localized_str(lang: str, main_path: str) -> LocalStr:
+def localized_str(lang: str, main_path: str = main_path) -> LocalStr:
+    """
+    Get the localized string.
+
+    Parameters
+    ----------
+    lang: str
+        The language.
+    main_path: str
+        The main path.
+
+    Returns
+    -------
+    LocalStr
+        The localized string.
+    """
+
     localized = LocalStr(lang, main_path)
     try:
         with open(f"{main_path}/localizations/{lang}.json", encoding="utf-8") as f:
             data = json.load(f)
             localized.load_data(data)
     except FileNotFoundError:
+        print(f"Cannot find {lang}.json. Using English instead.")
         with open(f"{main_path}/localizations/en.json") as f:
             data = json.load(f)
             localized.load_data(data)
