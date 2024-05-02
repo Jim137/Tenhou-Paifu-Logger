@@ -24,6 +24,24 @@ from .i18n import LocalStr
 
 
 def check_duplicate(url, local_lang: LocalStr, output: str) -> bool:
+    """
+    Check if the given URL is already in the log file.
+
+    Parameters
+    ----------
+    url: str
+        The URL to check.
+    local_lang: LocalStr
+        The language settings.
+    output: str
+        The output directory.
+
+    Returns
+    -------
+    bool
+        True if the URL is duplicated, False otherwise.
+    """
+
     path = f"{output}/{local_lang.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)
@@ -36,6 +54,19 @@ def check_duplicate(url, local_lang: LocalStr, output: str) -> bool:
 
 
 def url_log(url, local_lang: LocalStr, output: str) -> None:
+    """
+    Logs the given URL to the log file.
+
+    Parameters
+    ----------
+    url: str
+        The URL to log.
+    local_lang: LocalStr
+        The language settings.
+    output: str
+        The output directory.
+    """
+
     path = f"{output}/{local_lang.paifu}"
     if not os.path.isdir(path):
         os.makedirs(path)

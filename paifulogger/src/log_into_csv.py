@@ -1,7 +1,6 @@
 import csv
-import re
 import os.path
-from datetime import datetime
+import re
 
 import pandas as pd
 
@@ -10,6 +9,19 @@ from .Paifu import Paifu
 
 
 def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
+    """
+    Log the paifu data into csv file.
+
+    Parameters
+    ----------
+    paifu: Paifu
+        The paifu data.
+    local_lang: LocalStr
+        The localized string.
+    output: str
+        The output directory.
+    """
+
     if paifu.player_num == 3:
         paifu_str = local_lang.sanma + local_lang.paifu
     else:
@@ -46,7 +58,7 @@ def log_into_csv(paifu: Paifu, local_lang: LocalStr, output: str):
         writer.writerow(
             [
                 df.shape[0],
-                datetime.strptime(re.findall(r"\d{10}", paifu.url)[0], "%Y%m%d%H"),
+                paifu.time,
                 paifu.get_place(paifu.ban),
                 paifu.url,
                 float(paifu.r[paifu.ban]),

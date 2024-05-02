@@ -16,7 +16,7 @@ Logging tenhou paifu into excel, csv or html file with some key information.
 
 If you like this project, please leave a star. It will be a great encouragement for me. And if you have any suggestions, please feel free to create an issue.
 
-[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [中文說明](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
+[Downloads](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest) | [繁體中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh_TW.md) | [简体中文](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_zh.md) | [日本語](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/READMEs/README_ja.md)
 
 ## Requirements
 
@@ -74,11 +74,11 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 You can manually log the paifu by the following code.
 
 ```python
-from paifulogger import get_paifu, localized_str, log_paifu, main_path
+from paifulogger import get_paifu, localized_str, log_paifu
 from paifulogger.log import _get_log_func
 
 url = "Your paifu URL"
-local_lang = localized_str("en", main_path) # Localization
+local_lang = localized_str("en") # Localization
 log_formats = _get_log_func(["csv", "html"]) # Log into csv and html file.
 output = "./" # Output directory
 mjai = False # Whether have output in mjai format
@@ -113,6 +113,8 @@ paifu = get_paifu(url, local_lang)
   * Windows: `%localappdata%\Jim137\paifulogger\config.json`
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
+* [x] Support logging from Tenhou client(*.mjlog). (-c, --from-client DIR_TO_MJLOG)\
+Note: Tpyically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
 
 ## Information logged
 
