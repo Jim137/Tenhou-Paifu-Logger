@@ -20,7 +20,7 @@ from .src.Paifu import Paifu
 from .src.url_log import check_duplicate, url_log
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
-avaiable_formats = ["xlsx", "html", "csv"]
+available_formats = ["xlsx", "html", "csv"]
 
 
 def remove_old_paifu(paifu_str: str, formats: list[str], output: str) -> None:
@@ -202,14 +202,14 @@ def _remake_log(
     paifu_str4 = local_lang.paifu + "/" + local_lang.yonma + local_lang.paifu
     try:
         if all_formats:
-            remove_old_paifu(paifu_str3, avaiable_formats, output)
+            remove_old_paifu(paifu_str3, available_formats, output)
         else:
             remove_old_paifu(paifu_str3, formats, output)
     except OSError:
         pass
     try:
         if all_formats:
-            remove_old_paifu(paifu_str4, avaiable_formats, output)
+            remove_old_paifu(paifu_str4, available_formats, output)
         else:
             remove_old_paifu(paifu_str4, formats, output)
     except OSError:
@@ -484,7 +484,7 @@ def log_parser(
         action="append",
         type=str,
         help="Format of the output file. Default is csv. Available formats: xlsx, html, csv.",
-        choices=avaiable_formats,
+        choices=available_formats,
         default=config.get("format", None),
     )
     parser.add_argument(
