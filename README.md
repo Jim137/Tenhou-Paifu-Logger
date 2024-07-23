@@ -74,12 +74,11 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 You can manually log the paifu by the following code.
 
 ```python
-from paifulogger import get_paifu, localized_str, log_paifu
-from paifulogger.log import _get_log_func
+from paifulogger import get_log_func, get_paifu, localized_str, log_paifu
 
 url = "Your paifu URL"
 local_lang = localized_str("en") # Localization
-log_formats = _get_log_func(["csv", "html"]) # Log into csv and html file.
+log_formats = get_log_func(["csv", "html"]) # Log into csv and html file.
 output = "./" # Output directory
 mjai = False # Whether have output in mjai format
 

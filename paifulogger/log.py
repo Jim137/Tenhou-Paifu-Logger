@@ -217,7 +217,7 @@ def _remake_log(
     return None
 
 
-def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callable]:
+def get_log_func(formats: list[str], all_formats: bool = False) -> list[Callable]:
     """
     Parse the formats and return the corresponding log functions.
 
@@ -414,7 +414,7 @@ def log(args: argparse.Namespace) -> int:
     if args.remake:
         _remake_log(local_lang, output, formats, args.all_formats)
 
-    log_formats = _get_log_func(formats, args.all_formats)
+    log_formats = get_log_func(formats, args.all_formats)
 
     if args.from_client:
         paifus = get_paifu_from_client_log(args.from_client)
