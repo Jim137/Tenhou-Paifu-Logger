@@ -54,7 +54,47 @@ class PaifuHtml:
         <head>
             <meta charset="utf-8">
             <title>{paifu_str}</title>
+            <script src= 
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+            </script> 
+            <script src= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"> 
+            </script> 
+            <link rel="stylesheet" href= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"> 
+            <link rel="stylesheet" 
+                type="text/css" href= 
+        "https://use.fontawesome.com/releases/v5.6.3/css/all.css"> 
+        
+            <script type="text/javascript"> 
+                function showHideRow(row) {{ 
+                    $("#" + row).toggle(); 
+                }}
+                window.onload = function bar() {{
+                    var rows = document.getElementsByClassName("hidden_row")
+                    for (var i = 0; i < rows.length; i++) {{
+                        var rowid = rows[i].id;
+                        $("#" + rowid).toggle();
+                    }}
+                }}
+            </script> 
+        
             <style>
+                #table_detail {{ 
+                    text-align: center; 
+                    border-collapse: collapse; 
+                    color: #2E2E2E; 
+                    border: #A4A4A4; 
+                }} 
+        
+                #table_detail tr:hover {{ 
+                    background-color: #F2F2F2; 
+                }}
+        
+                #table_detail .hidden_row {{ 
+                    display: table-row;
+                }} 
+                
                 table {{
                     border-collapse: collapse;
                 }}
@@ -81,7 +121,10 @@ class PaifuHtml:
             </script>
         </head>
         <body>
-            <table style="width:100%">
+            <div id="wrapper"> 
+    
+            <table border=1 id="table_detail" 
+                align=center cellpadding=10>
                 <thead>
                     <tr>
                         <th>{local_lang.date}</th>
@@ -107,9 +150,11 @@ class PaifuHtml:
         paifu: Paifu
             The paifu data.
         """
+        paifu_dest = re.findall(r"\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d", paifu.url)[0]
+        paifu_id = re.findall(r"\d{10}gm-\w{4}-\w{4}-\w{8}", paifu.url)[0]
 
         self.new_log += f"""
-                    <tr>
+                    <tr onclick="showHideRow('{paifu_id}');"> 
                         <td>{paifu.time}</td>
                         <td>{paifu.get_place(paifu.ban)}</td>
                         <td><a href="{paifu.url}">{paifu.url}</a></td>
@@ -119,6 +164,14 @@ class PaifuHtml:
                         <td>{paifu.get_round_num()}</td>
                         <td>{paifu.get_win_num(paifu.ban)}</td>
                         <td>{paifu.get_deal_in_num(paifu.ban)}</td>
+                    </tr>
+                    <tr id="{paifu_id}" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log={paifu_dest}"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
                     </tr>
         """
 
@@ -170,6 +223,7 @@ class PaifuHtml:
         self.end_table += f"""
                 </tbody>
             </table>
+            <div>
             <p>{local_lang.log_num} = {logged_num}</p>
             <p>{local_lang.avg_plc} = {avg_plc:.2}</p>
             <p>{local_lang.win_rate} = {win_rate:.3%}</p>
