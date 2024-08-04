@@ -116,6 +116,7 @@ paifu = get_paifu(url, local_lang)
   * Linux: `~/.local/share/paifulogger/config.json`
 * [x] Support logging from Tenhou client(*.mjlog). (-c, --from-client DIR_TO_MJLOG)\
 Note: Typically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
+* [x] Match replay for html format. By clicking the match you want to review, the match replay will pop up accordingly.
 
 ## Information logged
 
@@ -129,7 +130,6 @@ Note: Typically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
 
 ## Future features
 
-* [ ] Add match replay for every round in html file
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
