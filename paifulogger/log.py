@@ -10,14 +10,17 @@ from typing import Callable
 from pandas import DataFrame, HDFStore
 
 from . import __version__, main_path
-from .src.config import config_path
-from .src.get_paifu import get_paifu, get_paifu_from_client_log, save_mjai
-from .src.i18n import LocalStr, localized_str
-from .src.log_into_csv import log_into_csv
-from .src.log_into_html import log_into_html
-from .src.log_into_xlsx import log_into_xlsx
-from .src.Paifu import Paifu
-from .src.url_log import check_duplicate, url_log
+from .config import config_path
+from .i18n import LocalStr, localized_str
+from .logfile import log_into_csv, log_into_html, log_into_xlsx
+from .paifu import Paifu
+from .utils import (
+    check_duplicate,
+    get_paifu,
+    get_paifu_from_client_log,
+    save_mjai,
+    url_log,
+)
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 available_formats = ["xlsx", "html", "csv"]

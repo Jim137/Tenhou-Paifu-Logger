@@ -3,8 +3,8 @@ import re
 
 import pandas as pd
 
-from .i18n import LocalStr
-from .Paifu import Paifu
+from ..i18n import LocalStr
+from ..paifu import Paifu
 
 
 class PaifuHtml:

@@ -20,7 +20,7 @@ import os
 
 import pandas as pd
 
-from .i18n import LocalStr
+from ..i18n import LocalStr
 
 
 def check_duplicate(url, local_lang: LocalStr, output: str) -> bool:

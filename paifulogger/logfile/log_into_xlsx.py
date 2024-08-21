@@ -4,8 +4,8 @@ from typing import cast
 import openpyxl as xl
 from openpyxl.worksheet.worksheet import Worksheet
 
-from .i18n import LocalStr
-from .Paifu import Paifu
+from ..i18n import LocalStr
+from ..paifu import Paifu
 
 
 def log_into_xlsx(paifu: Paifu, local_lang: LocalStr, output: str):
