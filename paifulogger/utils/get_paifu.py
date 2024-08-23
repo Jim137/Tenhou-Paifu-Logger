@@ -116,7 +116,7 @@ def save_mjai(
         print(local_lang.sanma_mjai_error)
         return
     try:
-        from ..src.mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
+        from ..mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
     except ImportError:
         print(local_lang.log2mjai_import_error)
         return
