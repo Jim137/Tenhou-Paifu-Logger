@@ -26,7 +26,7 @@ Since CLI-0.3.8, the project is only compatible with Python 3.10 or later.
 For Python 3.9 or earlier users, please use [CLI-0.3.7.1](https://github.com/Jim137/Tenhou-Paifu-Logger/tree/CLI-0.3.7.1) which is the last version that supports Python 3.9 or earlier.
 Or download from pypi with the following command.
 
-```
+```shell
 pip install PaifuLogger==0.3.7.1
 ```
 
@@ -40,7 +40,7 @@ pip install PaifuLogger==0.3.7.1
 >
 >> i. Clone the repository or download the [latest release](https://github.com/Jim137/Tenhou-Paifu-Logger/releases/latest).
 >>
->> ```
+>> ```shell
 >> git clone https://github.com/Jim137/Tenhou-Paifu-Logger.git
 >> ```
 >>
@@ -52,7 +52,7 @@ pip install PaifuLogger==0.3.7.1
 >
 >> i. Open terminal and install with pip command.
 >>
->> ```
+>> ```shell
 >> pip install PaifuLogger
 >> ```
 >>
@@ -61,6 +61,7 @@ pip install PaifuLogger==0.3.7.1
 >> ```shell
 >> plog -l [language] -o [output directory] [paifu URLs]
 >> ```
+>>
 >> ```shell
 >> paifu plog -l [language] -o [output directory] [paifu URLs]
 >> ```
@@ -74,12 +75,11 @@ Note: In the latest version, you can input multiple URLs at once, separated by w
 You can manually log the paifu by the following code.
 
 ```python
-from paifulogger import get_paifu, localized_str, log_paifu
-from paifulogger.log import _get_log_func
+from paifulogger import get_log_func, get_paifu, localized_str, log_paifu
 
 url = "Your paifu URL"
 local_lang = localized_str("en") # Localization
-log_formats = _get_log_func(["csv", "html"]) # Log into csv and html file.
+log_formats = get_log_func(["csv", "html"]) # Log into csv and html file.
 output = "./" # Output directory
 mjai = False # Whether have output in mjai format
 
@@ -96,6 +96,7 @@ paifu = get_paifu(url, local_lang)
 ```
 
 ## Features
+
 * [x] Support multiple URLs at once.
 * [x] Log paifu into excel, csv or html file with some key information. (-f, --format)
 * [x] Support logging to multiple formats at once. (e.g.: -f csv -f html; -a, --all-formats)
@@ -114,7 +115,8 @@ paifu = get_paifu(url, local_lang)
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
 * [x] Support logging from Tenhou client(*.mjlog). (-c, --from-client DIR_TO_MJLOG)\
-Note: Tpyically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
+Note: Typically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
+* [x] Match replay for html format. By clicking the match you want to review, the match replay will pop up accordingly.
 
 ## Information logged
 
@@ -128,12 +130,12 @@ Note: Tpyically, the saved directory is `{Documents}/My Tenhou/log/` on Windows.
 
 ## Future features
 
-* [ ] Add match replay for every round in html file
 * [ ] Agari analysis
 * [ ] Support Majsoul paifu
 * [ ] GUI
 
 ## Contribute
+
 We welcome all kinds of contributions, including but not limited to bug reports, pull requests, feature requests, documentation improvements, localizations...etc.
 
 See [CONTRIBUTING.md](https://github.com/Jim137/Tenhou-Paifu-Logger/blob/master/CONTRIBUTING.md) for more details.

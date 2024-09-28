@@ -64,6 +64,7 @@
   * Windows: `%localappdata%\Jim137\paifulogger\config.json`
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
+* [x] 对局回放（仅限 html 牌谱）。
 
 ## 牌谱记录信息
 
@@ -75,7 +76,6 @@
 
 ## 预计新增功能
 
-* [ ] 每一本场的对局回放（html）
 * [ ] 和铳分析
 * [ ] 雀魂牌谱支持
 * [ ] 图形用户界面（GUI）

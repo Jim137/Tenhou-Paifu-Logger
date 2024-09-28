@@ -7,9 +7,9 @@ import urllib.error
 
 from . import __version__, main_path
 from .log import _get_lang
-from .src.config import config_path
-from .src.get_paifu import get_paifu
-from .src.i18n import LocalStr, localized_str
+from .config import config_path
+from .utils import get_paifu
+from .i18n import LocalStr, localized_str
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
 

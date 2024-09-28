@@ -3,7 +3,47 @@
         <head>
             <meta charset="utf-8">
             <title>SanmaPaifu</title>
+            <script src= 
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+            </script> 
+            <script src= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"> 
+            </script> 
+            <link rel="stylesheet" href= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"> 
+            <link rel="stylesheet" 
+                type="text/css" href= 
+        "https://use.fontawesome.com/releases/v5.6.3/css/all.css"> 
+        
+            <script type="text/javascript"> 
+                function showHideRow(row) { 
+                    $("#" + row).toggle(); 
+                }
+                window.onload = function bar() {
+                    var rows = document.getElementsByClassName("hidden_row")
+                    for (var i = 0; i < rows.length; i++) {
+                        var rowid = rows[i].id;
+                        $("#" + rowid).toggle();
+                    }
+                }
+            </script> 
+        
             <style>
+                #table_detail { 
+                    text-align: center; 
+                    border-collapse: collapse; 
+                    color: #2E2E2E; 
+                    border: #A4A4A4; 
+                } 
+        
+                #table_detail tr:hover { 
+                    background-color: #F2F2F2; 
+                }
+        
+                #table_detail .hidden_row { 
+                    display: table-row;
+                } 
+                
                 table {
                     border-collapse: collapse;
                 }
@@ -30,7 +70,10 @@
             </script>
         </head>
         <body>
-            <table style="width:100%">
+            <div id="wrapper"> 
+    
+            <table border=1 id="table_detail" 
+                align=center cellpadding=10>
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -46,7 +89,7 @@
                 </thead>
                 <tbody>
         
-                    <tr>
+                    <tr onclick="showHideRow('2023050200gm-0099-0000-50c65fbf');"> 
                         <td>2023-05-02 00:00:00</td>
                         <td>1</td>
                         <td><a href="https://tenhou.net/0/?log=2023050200gm-0099-0000-50c65fbf&tw=2">https://tenhou.net/0/?log=2023050200gm-0099-0000-50c65fbf&tw=2</a></td>
@@ -57,9 +100,17 @@
                         <td>3</td>
                         <td>0</td>
                     </tr>
+                    <tr id="2023050200gm-0099-0000-50c65fbf" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log=2023050200gm-0099-0000-50c65fbf&tw=2"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
+                    </tr>
         
                 
-                    <tr>
+                    <tr onclick="showHideRow('2023050419gm-0099-0000-b3111c7e');"> 
                         <td>2023-05-04 19:00:00</td>
                         <td>2</td>
                         <td><a href="https://tenhou.net/0/?log=2023050419gm-0099-0000-b3111c7e&tw=0">https://tenhou.net/0/?log=2023050419gm-0099-0000-b3111c7e&tw=0</a></td>
@@ -70,10 +121,19 @@
                         <td>4</td>
                         <td>2</td>
                     </tr>
+                    <tr id="2023050419gm-0099-0000-b3111c7e" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log=2023050419gm-0099-0000-b3111c7e&tw=0"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
+                    </tr>
         
-                </tbody>  
+                </tbody>
             </table>
-            <p>Total games logged = 1</p>
+            <div>
+            <p>Total games logged = 3</p>
             <p>Average Placing = 1.5</p>
             <p>Win rate = 41.176%</p>
             <p>Deal-in rate = 11.765%</p>

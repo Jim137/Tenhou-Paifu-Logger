@@ -74,6 +74,7 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
   * Windows: `%localappdata%\Jim137\paifulogger\config.json`
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
+* 試合リプレイ（HTML牌譜のみ）。レビューしたい試合をクリックすると、その試合のリプレイが表示されます。
 
 ## 記録される情報
 
@@ -87,7 +88,6 @@ CSV、ExcelまたはHTMLファイルに天鳳の牌譜をいくつかの主要�
 
 ## 将来の機能
 
-* [ ] 各ラウンドの試合リプレイをHTMLファイルに追加
 * [ ] 和了解析
 * [ ] Majsoul牌譜のサポート
 * [ ] GUI
