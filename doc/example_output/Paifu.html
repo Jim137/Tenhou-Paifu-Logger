@@ -3,7 +3,47 @@
         <head>
             <meta charset="utf-8">
             <title>Paifu</title>
+            <script src= 
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+            </script> 
+            <script src= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"> 
+            </script> 
+            <link rel="stylesheet" href= 
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"> 
+            <link rel="stylesheet" 
+                type="text/css" href= 
+        "https://use.fontawesome.com/releases/v5.6.3/css/all.css"> 
+        
+            <script type="text/javascript"> 
+                function showHideRow(row) { 
+                    $("#" + row).toggle(); 
+                }
+                window.onload = function bar() {
+                    var rows = document.getElementsByClassName("hidden_row")
+                    for (var i = 0; i < rows.length; i++) {
+                        var rowid = rows[i].id;
+                        $("#" + rowid).toggle();
+                    }
+                }
+            </script> 
+        
             <style>
+                #table_detail { 
+                    text-align: center; 
+                    border-collapse: collapse; 
+                    color: #2E2E2E; 
+                    border: #A4A4A4; 
+                } 
+        
+                #table_detail tr:hover { 
+                    background-color: #F2F2F2; 
+                }
+        
+                #table_detail .hidden_row { 
+                    display: table-row;
+                } 
+                
                 table {
                     border-collapse: collapse;
                 }
@@ -30,7 +70,10 @@
             </script>
         </head>
         <body>
-            <table style="width:100%">
+            <div id="wrapper"> 
+    
+            <table border=1 id="table_detail" 
+                align=center cellpadding=10>
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -46,7 +89,7 @@
                 </thead>
                 <tbody>
         
-                    <tr>
+                    <tr onclick="showHideRow('2022052501gm-00c1-0000-f71e7910');"> 
                         <td>2022-05-25 01:00:00</td>
                         <td>1</td>
                         <td><a href="https://tenhou.net/3/?log=2022052501gm-00c1-0000-f71e7910&tw=1">https://tenhou.net/3/?log=2022052501gm-00c1-0000-f71e7910&tw=1</a></td>
@@ -57,9 +100,17 @@
                         <td>1</td>
                         <td>1</td>
                     </tr>
+                    <tr id="2022052501gm-00c1-0000-f71e7910" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log=2022052501gm-00c1-0000-f71e7910&tw=1"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
+                    </tr>
         
                 
-                    <tr>
+                    <tr onclick="showHideRow('2023051123gm-0001-0000-b3720f99');"> 
                         <td>2023-05-11 23:00:00</td>
                         <td>1</td>
                         <td><a href="https://tenhou.net/0/?log=2023051123gm-0001-0000-b3720f99&tw=2">https://tenhou.net/0/?log=2023051123gm-0001-0000-b3720f99&tw=2</a></td>
@@ -70,9 +121,17 @@
                         <td>2</td>
                         <td>0</td>
                     </tr>
+                    <tr id="2023051123gm-0001-0000-b3720f99" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log=2023051123gm-0001-0000-b3720f99&tw=2"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
+                    </tr>
         
                 
-                    <tr>
+                    <tr onclick="showHideRow('2023051216gm-0001-0000-5fd022cc');"> 
                         <td>2023-05-12 16:00:00</td>
                         <td>1</td>
                         <td><a href="https://tenhou.net/0/?log=2023051216gm-0001-0000-5fd022cc&tw=1">https://tenhou.net/0/?log=2023051216gm-0001-0000-5fd022cc&tw=1</a></td>
@@ -83,10 +142,19 @@
                         <td>1</td>
                         <td>0</td>
                     </tr>
+                    <tr id="2023051216gm-0001-0000-5fd022cc" class="hidden_row"> 
+                        <td colspan=9> 
+                            <iframe src="https://tenhou.net/5/?log=2023051216gm-0001-0000-5fd022cc&tw=1"
+                            width="960px" height="640px"
+                            scrolling="no">
+                            </iframe>
+                        </td> 
+                    </tr>
         
-                </tbody>  
+                </tbody>
             </table>
-            <p>Total games logged = 2</p>
+            <div>
+            <p>Total games logged = 5</p>
             <p>Average Placing = 1.0</p>
             <p>Win rate = 44.444%</p>
             <p>Deal-in rate = 11.111%</p>

@@ -62,6 +62,8 @@
   * Windows: `%localappdata%\Jim137\paifulogger\config.json`
   * macOS: `/Users/{UserName}/Library/Application Support/paifulogger/config.json`
   * Linux: `~/.local/share/paifulogger/config.json`
+* [x] 對局回放（僅限 html 牌譜）。
+
 ## 牌譜紀錄訊息
 
 * 對局時間
@@ -72,7 +74,6 @@
 
 ## 預計新增功能
 
-* [ ] 每一本場的對局回放（html）
 * [ ] 和銃分析
 * [ ] 雀魂牌譜支援
 * [ ] 圖形使用者介面（GUI）

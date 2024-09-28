@@ -1,0 +1,1 @@
+from .paifu import Paifu

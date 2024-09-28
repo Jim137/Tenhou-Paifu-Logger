@@ -10,17 +10,20 @@ from typing import Callable
 from pandas import DataFrame, HDFStore
 
 from . import __version__, main_path
-from .src.config import config_path
-from .src.get_paifu import get_paifu, get_paifu_from_client_log, save_mjai
-from .src.i18n import LocalStr, localized_str
-from .src.log_into_csv import log_into_csv
-from .src.log_into_html import log_into_html
-from .src.log_into_xlsx import log_into_xlsx
-from .src.Paifu import Paifu
-from .src.url_log import check_duplicate, url_log
+from .config import config_path
+from .i18n import LocalStr, localized_str
+from .logfile import log_into_csv, log_into_html, log_into_xlsx
+from .paifu import Paifu
+from .utils import (
+    check_duplicate,
+    get_paifu,
+    get_paifu_from_client_log,
+    save_mjai,
+    url_log,
+)
 
 REG_URL = r"https?://tenhou\.net/\d/\?log=\d{10}gm-\w{4}-\w{4}-\w{8}&tw=\d"
-avaiable_formats = ["xlsx", "html", "csv"]
+available_formats = ["xlsx", "html", "csv"]
 
 
 def remove_old_paifu(paifu_str: str, formats: list[str], output: str) -> None:
@@ -202,14 +205,14 @@ def _remake_log(
     paifu_str4 = local_lang.paifu + "/" + local_lang.yonma + local_lang.paifu
     try:
         if all_formats:
-            remove_old_paifu(paifu_str3, avaiable_formats, output)
+            remove_old_paifu(paifu_str3, available_formats, output)
         else:
             remove_old_paifu(paifu_str3, formats, output)
     except OSError:
         pass
     try:
         if all_formats:
-            remove_old_paifu(paifu_str4, avaiable_formats, output)
+            remove_old_paifu(paifu_str4, available_formats, output)
         else:
             remove_old_paifu(paifu_str4, formats, output)
     except OSError:
@@ -217,7 +220,7 @@ def _remake_log(
     return None
 
 
-def _get_log_func(formats: list[str], all_formats: bool = False) -> list[Callable]:
+def get_log_func(formats: list[str], all_formats: bool = False) -> list[Callable]:
     """
     Parse the formats and return the corresponding log functions.
 
@@ -414,7 +417,7 @@ def log(args: argparse.Namespace) -> int:
     if args.remake:
         _remake_log(local_lang, output, formats, args.all_formats)
 
-    log_formats = _get_log_func(formats, args.all_formats)
+    log_formats = get_log_func(formats, args.all_formats)
 
     if args.from_client:
         paifus = get_paifu_from_client_log(args.from_client)
@@ -484,7 +487,7 @@ def log_parser(
         action="append",
         type=str,
         help="Format of the output file. Default is csv. Available formats: xlsx, html, csv.",
-        choices=avaiable_formats,
+        choices=available_formats,
         default=config.get("format", None),
     )
     parser.add_argument(

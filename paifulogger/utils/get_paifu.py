@@ -4,8 +4,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from glob import glob
 
-from .i18n import LocalStr, localized_str
-from .Paifu import Paifu
+from ..i18n import LocalStr, localized_str
+from ..paifu import Paifu
 
 HEADER = {
     "Host": "e.mjv.jp",
@@ -116,7 +116,7 @@ def save_mjai(
         print(local_lang.sanma_mjai_error)
         return
     try:
-        from .mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
+        from ..mjlog2mjai.parse import load_mjlog, parse_mjlog_to_mjai
     except ImportError:
         print(local_lang.log2mjai_import_error)
         return
