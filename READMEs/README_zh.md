@@ -33,10 +33,10 @@
   使用 pip 则运行以下命令。
 
     ```shell
-    plog -l zh -o <输出目录> <多个牌谱网址>
+    plog -l zh [-o <输出目录>] <多个牌谱网址>
     ```
     ```shell
-    paifu plog -l zh -o <输出目录> <多个牌谱网址>
+    paifu plog -l zh [-o <输出目录>] <多个牌谱网址>
     ```
 
 3. 复制天凤牌谱至剪贴板。

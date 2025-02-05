@@ -59,11 +59,11 @@ pip install PaifuLogger==0.3.7.1
 >> ii. Copy the paifu URL from tenhou.net to clipboard. And run by
 >>
 >> ```shell
->> plog -l [language] -o [output directory] [paifu URLs]
+>> plog [-l <language>] [-o <output directory?] <paifu URLs>
 >> ```
 >>
 >> ```shell
->> paifu plog -l [language] -o [output directory] [paifu URLs]
+>> paifu plog [-l <language>] [-o <output directory?] <paifu URLs>
 >> ```
 
 2. Once `Please enter the URL of match:` appears, paste the URL and press Enter.\
